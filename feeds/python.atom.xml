@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="http://www.parbhatpuri.com/" rel="alternate"></link><link href="http://www.parbhatpuri.com/feeds/python.atom.xml" rel="self"></link><id>http://www.parbhatpuri.com/</id><updated>2014-07-18T19:30:00+05:30</updated><entry><title>Django (Python Web Framework) Tutorials</title><link href="http://www.parbhatpuri.com/django_tutorials.html" rel="alternate"></link><updated>2014-07-18T19:30:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:www.parbhatpuri.com,2014-07-18:django_tutorials.html</id><summary type="html">&lt;h2&gt;Django Tutorials&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://www.djangoproject.com" target="_blank"&gt;Django&lt;/a&gt; is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.6/intro/tutorial01/" target="_blank"&gt;Official Tutorial &lt;/a&gt; - It is the Official tutorial of django on the django site.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.tangowithdjango.com/" target="_blank"&gt;Tango with Django&lt;/a&gt; - A Good Introduction to the django terminology.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gettingstartedwithdjango.com" target="_blank"&gt;Getting Started With Django&lt;/a&gt; - A video series to upgrade  from beginner to pro.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://twoscoopspress.org" target="_blank"&gt;Two Scoops of Django&lt;/a&gt; - A book covering the best practices in Django.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category><category term="django"></category><category term="web"></category></entry></feed>
