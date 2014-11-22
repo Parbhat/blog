@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Parbhat Puri</title><link>http://www.parbhatpuri.com/</link><description></description><atom:link href="http://www.parbhatpuri.com/feeds/parbhat-puri.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 18 Jul 2014 19:30:00 +0530</lastBuildDate><item><title>Django (Python Web Framework) Tutorials</title><link>http://www.parbhatpuri.com/django_tutorials.html</link><description>&lt;h2&gt;Django Tutorials&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Parbhat Puri</title><link>http://www.parbhatpuri.com/</link><description></description><atom:link href="http://www.parbhatpuri.com/feeds/parbhat-puri.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 22 Nov 2014 19:40:00 +0530</lastBuildDate><item><title>Why use Linux for Python development?</title><link>http://www.parbhatpuri.com/why-use-linux-for-python-development.html</link><description>&lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is a high level programming language. The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;
+&lt;p&gt;I had been using windows for a couple of months for my &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; Projects. Initially during my learning stage windows was working fine for me but as the knowledge and project size grew I faced many difficulties which I want to summarize here. I am not supporting any operating system here but want every Developer to understand the reasons for switching. For following reasons every Developer should switch to Linux based OS like &lt;a href="http://www.ubuntu.com/"&gt;Ubuntu&lt;/a&gt; for Python Development.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Some packages are &lt;strong&gt;not&lt;/strong&gt; available for windows, if they are available it will be difficult to configure them in your projects.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you are working on a project in Django, flask and other frameworks you would like to &lt;strong&gt;deploy&lt;/strong&gt; it so it will be available for public to see. In more than 90% of the cases your deployment environment will be Linux based so its best to test your application locally on the same environment as in deployment because here you are allowed to make mistakes and improve.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Almost every tutorial on Python use Linux based systems like Ubuntu. These tutorials are by experts so it's good to follow best practices used by experienced developers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When your projects get complex its very easy to find Dependencies for your projects like extensions, libraries etc. in Linux based OS. In Windows you have to search for the right site to download the package and go through the hassle of installation and configuration. Sometimes the search for packages takes a lot of time, in Linux its just &lt;em&gt;&lt;strong&gt;"apt-get"&lt;/strong&gt;&lt;/em&gt; (or similar).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python comes pre-installed in Ubuntu and other versions so no need to install python on your system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="python-linux" src="http://i.imgur.com/lhlh6Lx.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Switch to linux and use apt-get to install your packages&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Happy Coding.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Parbhat Puri</dc:creator><pubDate>Sat, 22 Nov 2014 19:40:00 +0530</pubDate><guid>tag:www.parbhatpuri.com,2014-11-22:why-use-linux-for-python-development.html</guid><category>python</category><category>linux</category><category>windows</category><category>ubuntu</category><category>Programming</category></item><item><title>Django (Python Web Framework) Tutorials</title><link>http://www.parbhatpuri.com/django_tutorials.html</link><description>&lt;h2&gt;Django Tutorials&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;&lt;a href="https://www.djangoproject.com" target="_blank"&gt;Django&lt;/a&gt; is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.6/intro/tutorial01/" target="_blank"&gt;Official Tutorial &lt;/a&gt; - It is the Official tutorial of django on the django site.&lt;/li&gt;
