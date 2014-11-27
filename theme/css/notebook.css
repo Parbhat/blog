@@ -273,6 +273,7 @@ border-bottom: 1px solid #328cc7;
 /*--------Responsive------------*/
 
 @media (max-width: 800px) {
+
   aside {
     width: 100%;
     height: auto;
@@ -305,3 +306,7 @@ border-bottom: 1px solid #328cc7;
     margin-left: 10px;
   }
 }
+
+img {
+  max-width: 100%;
+} 
