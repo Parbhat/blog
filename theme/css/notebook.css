@@ -31,19 +31,22 @@ h1, h2 {
 
 .post_detail
 {
-  font-size: 2vw;
+  font-size: 2em;
+  line-height: 1em;
 }
 
 .entry-content
 {
   margin-top: 50px;
   margin-bottom: 50px;
+  text-align: justify;
 }
 
 article section .about
 {
   font-size: 18px;
   color: #444;
+  text-align: justify;
 }
 
 article section .blog-post
