@@ -10,7 +10,7 @@ language.
 
 ## Screenshot
 
-![parbhatpuri.com](http://i.imgur.com/SSvAZHH.png)
+![parbhatpuri.com](http://i.imgur.com/vh0XwYF.png)
 
 ## Features
 - Blog built with Pelican
