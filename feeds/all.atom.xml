@@ -36,7 +36,7 @@ HTML and gives behaviour to HTML which helps in declaring dynamic views in web-a
 &lt;li&gt;Soft skills&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/user/learncodeacademy" target="_blank"&gt;learncode.acedemy&lt;/a&gt; in his &lt;a href="https://www.youtube.com/watch?v=zXqs6X0lzKI" target="_blank"&gt;video&lt;/a&gt; gives a graphical presentation of above skills.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="skills-graph" src="http://i.imgur.com/EB3TIdK.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://i.imgur.com/EB3TIdK.png" target="_blank"&gt;&lt;center&gt;&lt;img alt="skills-graph" src="http://i.imgur.com/EB3TIdK.png" /&gt;&lt;/center&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Now I will give you a brief description of the above skills.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
