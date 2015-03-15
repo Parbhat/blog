@@ -45,17 +45,17 @@ As usual the best way to install any python package is to use pip.&lt;/p&gt;
 &lt;h4&gt;Creating a Virtual Environment using Virtualenv Wrapper&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 &lt;center&gt;&lt;code&gt;$ mkvirtualenv env_name&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;div class="imga"&gt;&lt;img src="http://i.imgur.com/eCXWgI8.png"&gt;&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;div class="imga"&gt;&lt;img src="https://i.imgur.com/eCXWgI8.png"&gt;&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;h4&gt;Activating the Virtual environment&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 &lt;center&gt;&lt;code&gt;$ workon env_name&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;You can see the changes before the username. This indicates that your virtual
 environment is activated.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="virtualenv" src="http://i.imgur.com/MytTSyR.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="virtualenv" src="https://i.imgur.com/MytTSyR.png" /&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;h4&gt;Installing and listing packages using pip&lt;/h4&gt;
 &lt;hr&gt;
 
-&lt;p&gt;&lt;center&gt;&lt;img alt="virtualenv" src="http://i.imgur.com/v0iftDF.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="virtualenv" src="https://i.imgur.com/v0iftDF.png" /&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;h4&gt;Deactivate Environment&lt;/h4&gt;
 &lt;hr&gt;
 
@@ -86,7 +86,7 @@ environment is activated.&lt;/p&gt;
 &lt;p&gt;Python comes pre-installed in Ubuntu and other versions so no need to install python on your system.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="python-linux" src="http://i.imgur.com/lhlh6Lx.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="python-linux" src="https://i.imgur.com/lhlh6Lx.png" /&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Switch to linux and use apt-get to install your packages&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Happy Coding.&lt;/p&gt;</summary><category term="python"></category><category term="linux"></category><category term="windows"></category><category term="ubuntu"></category><category term="Programming"></category></entry><entry><title>Django (Python Web Framework) Tutorials</title><link href="https://parbhatpuri.com/django_tutorials.html" rel="alternate"></link><updated>2014-07-18T19:30:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-07-18:django_tutorials.html</id><summary type="html">&lt;h2&gt;Django Tutorials&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;&lt;a href="https://www.djangoproject.com" target="_blank"&gt;Django&lt;/a&gt; is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.&lt;/em&gt;&lt;/p&gt;
