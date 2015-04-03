@@ -62,7 +62,7 @@ body > article, footer {
   display: block;
   max-width: 700px;
   margin: 40px auto auto 355px;
-  padding: 20px 50px 0;
+  padding: 20px 50px 10px;
 }
 
 /* Articles */
