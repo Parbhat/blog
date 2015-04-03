@@ -23,32 +23,64 @@ Best learning Resource - &lt;a href="https://www.edx.org/course/introduction-com
 &lt;h4&gt;Installing Virtualenv&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 The easiest way to install virtualenv is to use &lt;a href="http://pip.readthedocs.org/en/latest"&gt;pip&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ [sudo] pip install virtualenv&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h4&gt;Usage&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 &lt;strong&gt;To create a Virtual environment&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ virtualenv ENV_NAME&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv ENV_NAME
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;strong&gt; Activate the Virtual environment&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ source bin/activate&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source &lt;/span&gt;bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h2&gt;But wait where is &lt;strike&gt;Virtualenv&lt;/strike&gt; VirtualenvWrapper&lt;/h2&gt;
 &lt;h4&gt;Virtualenv Wrapper is the Hero&lt;/h4&gt;
 &lt;p&gt;virtualenvwrapper is the extension to virtualenv. It makes the process of creating and managing virtual environments smoother and easier. It provides a set of commands which helps in managing multiple environments easily and remove conflicts.&lt;/p&gt;
 &lt;h4&gt;Installing Virtualenvwrapper&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 As usual the best way to install any python package is to use pip.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ pip install virtualenvwrapper&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install virtualenvwrapper
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;strong&gt;Some configuration&lt;/strong&gt;
 &lt;hr&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ export WORKON_HOME=~/Envs&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ mkdir -p $WORKON_HOME&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ source /usr/local/bin/virtualenvwrapper.sh&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;vi ~/.bashrc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(maybe virtualenvwrapper.sh is in other location, change if necessary)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;export WORKON_HOME=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.virtualenvs&lt;/span&gt;
+&lt;span class="x"&gt;source /usr/local/bin/virtualenvwrapper.sh&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Load file .bashrc&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;source ~/.bashrc
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h4&gt;Creating a Virtual Environment using Virtualenv Wrapper&lt;/h4&gt;
-&lt;p&gt;&lt;hr&gt;
-&lt;center&gt;&lt;code&gt;$ mkvirtualenv env_name&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkvirtualenv env_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;center&gt;&lt;div class="imga"&gt;&lt;img src="https://i.imgur.com/eCXWgI8.png"&gt;&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;h4&gt;Activating the Virtual environment&lt;/h4&gt;
-&lt;p&gt;&lt;hr&gt;
-&lt;center&gt;&lt;code&gt;$ workon env_name&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;workon env_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;You can see the changes before the username. This indicates that your virtual
 environment is activated.&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;img alt="virtualenv" src="https://i.imgur.com/MytTSyR.png" /&gt;&lt;/center&gt;&lt;/p&gt;
@@ -59,7 +91,10 @@ environment is activated.&lt;/p&gt;
 &lt;h4&gt;Deactivate Environment&lt;/h4&gt;
 &lt;hr&gt;
 
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ deactivate&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;strong&gt;Great we have come to the end of this post.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;virtualenv is a great tool for any python project and virtualenvwrapper makes the process easier. For more details refer to their Official Documentation - &lt;/p&gt;
 &lt;ul&gt;
@@ -67,7 +102,8 @@ environment is activated.&lt;/p&gt;
 &lt;li&gt;&lt;a href="http://virtualenvwrapper.readthedocs.org/en/latest"&gt;http://virtualenvwrapper.readthedocs.org/en/latest&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Oh I forget something&lt;/h2&gt;
-&lt;p&gt;&lt;center&gt;&lt;code&gt;$ pip install have-a-great-development&lt;/code&gt;&lt;/center&gt;&lt;/p&gt;</summary><category term="python"></category><category term="virtualenv"></category><category term="Programming"></category></entry><entry><title>Why use Linux for Python development?</title><link href="https://parbhatpuri.com/why-use-linux-for-python-development.html" rel="alternate"></link><updated>2014-11-22T19:40:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-22:why-use-linux-for-python-development.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is a high level programming language. The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install have-a-great-development
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category><category term="virtualenv"></category><category term="Programming"></category></entry><entry><title>Why use Linux for Python development?</title><link href="https://parbhatpuri.com/why-use-linux-for-python-development.html" rel="alternate"></link><updated>2014-11-22T19:40:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-22:why-use-linux-for-python-development.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is a high level programming language. The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;
 &lt;p&gt;I had been using windows for a couple of months for my &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; Projects. Initially during my learning stage windows was working fine for me but as the knowledge and project size grew I faced many difficulties which I want to summarize here. I am not supporting any operating system here but want every Developer to understand the reasons for switching. For following reasons every Developer should switch to Linux based OS like &lt;a href="http://www.ubuntu.com/"&gt;Ubuntu&lt;/a&gt; for Python Development.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;

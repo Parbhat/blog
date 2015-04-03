@@ -20,7 +20,7 @@
   play with web technologies.">
 
   <!-- Style Meta Data -->
-  <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/blue.css" type="text/css" />
+  <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css" />
   <link rel="shortcut icon" href="/images/parbhat.jpg">
 
   <!-- Feed Meta Data -->
@@ -115,32 +115,64 @@
 <h4>Installing Virtualenv</h4>
 <p><hr>
 The easiest way to install virtualenv is to use <a href="http://pip.readthedocs.org/en/latest">pip</a></p>
-<p><center><code>$ [sudo] pip install virtualenv</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install virtualenv
+</pre></div>
+
+
 <h4>Usage</h4>
 <p><hr>
 <strong>To create a Virtual environment</strong></p>
-<p><center><code>$ virtualenv ENV_NAME</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span>virtualenv ENV_NAME
+</pre></div>
+
+
 <p><strong> Activate the Virtual environment</strong></p>
-<p><center><code>$ source bin/activate</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">source </span>bin/activate
+</pre></div>
+
+
 <h2>But wait where is <strike>Virtualenv</strike> VirtualenvWrapper</h2>
 <h4>Virtualenv Wrapper is the Hero</h4>
 <p>virtualenvwrapper is the extension to virtualenv. It makes the process of creating and managing virtual environments smoother and easier. It provides a set of commands which helps in managing multiple environments easily and remove conflicts.</p>
 <h4>Installing Virtualenvwrapper</h4>
 <p><hr>
 As usual the best way to install any python package is to use pip.</p>
-<p><center><code>$ pip install virtualenvwrapper</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install virtualenvwrapper
+</pre></div>
+
+
 <p><strong>Some configuration</strong>
 <hr></p>
-<p><center><code>$ export WORKON_HOME=~/Envs</code></center></p>
-<p><center><code>$ mkdir -p $WORKON_HOME</code></center></p>
-<p><center><code>$ source /usr/local/bin/virtualenvwrapper.sh</code></center></p>
+<div class="highlight"><pre>vi ~/.bashrc
+</pre></div>
+
+
+<p>(maybe virtualenvwrapper.sh is in other location, change if necessary)</p>
+<div class="highlight"><pre><span class="x">export WORKON_HOME=</span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.virtualenvs</span>
+<span class="x">source /usr/local/bin/virtualenvwrapper.sh</span>
+</pre></div>
+
+
+<p>Load file .bashrc</p>
+<div class="highlight"><pre>source ~/.bashrc
+</pre></div>
+
+
 <h4>Creating a Virtual Environment using Virtualenv Wrapper</h4>
-<p><hr>
-<center><code>$ mkvirtualenv env_name</code></center></p>
+<hr>
+
+<div class="highlight"><pre><span class="nv">$ </span>mkvirtualenv env_name
+</pre></div>
+
+
 <p><center><div class="imga"><img src="https://i.imgur.com/eCXWgI8.png"></div></center></p>
 <h4>Activating the Virtual environment</h4>
-<p><hr>
-<center><code>$ workon env_name</code></center></p>
+<hr>
+
+<div class="highlight"><pre><span class="nv">$ </span>workon env_name
+</pre></div>
+
+
 <p>You can see the changes before the username. This indicates that your virtual
 environment is activated.</p>
 <p><center><img alt="virtualenv" src="https://i.imgur.com/MytTSyR.png" /></center></p>
@@ -151,7 +183,10 @@ environment is activated.</p>
 <h4>Deactivate Environment</h4>
 <hr>
 
-<p><center><code>$ deactivate</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span>deactivate
+</pre></div>
+
+
 <p><strong>Great we have come to the end of this post.</strong></p>
 <p>virtualenv is a great tool for any python project and virtualenvwrapper makes the process easier. For more details refer to their Official Documentation - </p>
 <ul>
@@ -159,7 +194,8 @@ environment is activated.</p>
 <li><a href="http://virtualenvwrapper.readthedocs.org/en/latest">http://virtualenvwrapper.readthedocs.org/en/latest</a></li>
 </ul>
 <h2>Oh I forget something</h2>
-<p><center><code>$ pip install have-a-great-development</code></center></p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install have-a-great-development
+</pre></div>
         </div>
         <div class="post_list">
             <span>By </span>
