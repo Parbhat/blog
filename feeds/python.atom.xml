@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/python.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2015-01-04T23:00:00+05:30</updated><entry><title>Why you should learn Python in 2015?</title><link href="https://parbhatpuri.com/Why-you-should-learn-python-in-2015.html" rel="alternate"></link><updated>2015-01-04T23:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-01-04:Why-you-should-learn-python-in-2015.html</id><summary type="html">&lt;p&gt;Yesterday I saw a question on Quora - &lt;a href="https://www.quora.com/Is-Python-worth-it-to-learn-as-a-programming-language"&gt;Is Python worth it to learn as a programming language?&lt;/a&gt;. I answered the question on quora and decided to write a blog post on Importance of learning Python in 2015.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/python.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2015-04-04T18:00:00+05:30</updated><entry><title>Why you should learn Flask before Django?</title><link href="https://parbhatpuri.com/why-you-should-learn-flask-before-django.html" rel="alternate"></link><updated>2015-04-04T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-04-04:why-you-should-learn-flask-before-django.html</id><summary type="html">&lt;p&gt;Recently I explored &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; and loved the simplicity and power of this Microframework. I learned Django as my first Python Web framework, but now I realise that Flask should be the first &lt;a href="https://python.org"&gt;Python&lt;/a&gt; web framework that everyone should learn while entering into the field of Web Development with Python.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="Flask-logo" src="https://i.imgur.com/Os2jtnk.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Django is a full stack framework with the batteries included approach making it easy for developers to dive it into Web Applications. But for beginners, for learning the basics of &lt;a href="http://wsgi.readthedocs.org/en/latest/index.html"&gt;WSGI&lt;/a&gt; and Python web development and of dynamic web development, I do not know of any web framework that gives a better introduction to the concepts underlying it than Flask.&lt;/p&gt;
+&lt;p&gt;Starting with Flask is so simple that a &lt;em&gt;hello World&lt;/em&gt; Web Application looks like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# from http://flask.pocoo.org/ tutorial&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# take note of this decorator syntax, it&amp;#39;s a common pattern&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello World!&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With only 7 lines of code you have your Web Application running with Flask. From the above &lt;em&gt;Hello World&lt;/em&gt; web application, a developer with no experience building Python Web applications can get Hacking immediately. You should learn flask because - &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Easy to understand&lt;/li&gt;
+&lt;li&gt;Extensive documentation&lt;/li&gt;
+&lt;li&gt;Built in development server and debugger&lt;/li&gt;
+&lt;li&gt;Supports REST&lt;/li&gt;
+&lt;li&gt;Code base small you can check the source code.&lt;/li&gt;
+&lt;li&gt;No ORM so you can use SQLAlchemy or storm&lt;/li&gt;
+&lt;li&gt;Uses Jinja2 templating&lt;/li&gt;
+&lt;li&gt;Support other templates like genshi, mako&lt;/li&gt;
+&lt;li&gt;Integrated unit testing support&lt;/li&gt;
+&lt;li&gt;support for secure cookies (client side sessions)&lt;/li&gt;
+&lt;li&gt;Module level integration&lt;/li&gt;
+&lt;li&gt;100% WSGI compliant.&lt;/li&gt;
+&lt;li&gt;Integration with gevent, twisted, tornado is possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Why it should be your first Python Web Framework?&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Flask is more Pythonic than Django because the code of flask Web Application in most cases is more explicit than the Django Web Application code. So it is easy for Python coders to pick up.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Beginners can learn a lot from the well documented Source Code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flask does include everything you need to start building something more complex than the above &lt;em&gt;Hello World&lt;/em&gt; app. It integrates a templating engine (Jinja2) for you so you don't have to decide whether you would be better off using Genshi, Cheetah or Mako (though you could use). &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The extra work at start to choose components for Flask apps yields more flexibility for developers whose use case doesn't fit a standard ORM, or who need to interoperate with different workflows or templating systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Django is a large framework which includes everything, whether you require it or not. So for smaller application Flask can give more performance. &lt;a href="http://httpbin.org/"&gt;httpbin&lt;/a&gt; is a smaller application built with Flask.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flask also scales well. Pinterest uses Flask for their API. The API Handles over 12 billion requests per day, all in Flask. More information on How Pinterest uses Flask can be found on &lt;a href="https://www.quora.com/What-challenges-has-Pinterest-encountered-with-Flask/answer/Steve-Cohen" target="_blank"&gt; Quora. &lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So, New Python developers should try Microframeworks like Flask before moving to large Frameworks like Django. You should definitely use Django after learning the small pieces of Web Applications.&lt;/p&gt;
+&lt;h2&gt;Learning Resources&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://flask.pocoo.org/docs/0.10/" target="_blank"&gt; Official Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world" target="_blank"&gt;The Flask-Mega Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://exploreflask.com/" target="_blank"&gt;Explore Flask&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://code.tutsplus.com/tutorials/an-introduction-to-pythons-flask-framework--net-28822" target="_blank"&gt;Tuts+ - An Introduction to Python’s Flask Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/#.VR-rV-mUfeS" target="_blank"&gt;Building websites in Python with Flask&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.udacity.com/course/ud088" target="_blank"&gt;Udacity - Full Stack Foundations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask" target="_blank"&gt;Designing a RESTful API with Python and Flask&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="flask"></category><category term="django"></category><category term="python"></category><category term="web"></category><category term="2015"></category><category term="Programming"></category></entry><entry><title>Why you should learn Python in 2015?</title><link href="https://parbhatpuri.com/Why-you-should-learn-python-in-2015.html" rel="alternate"></link><updated>2015-01-04T23:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-01-04:Why-you-should-learn-python-in-2015.html</id><summary type="html">&lt;p&gt;Yesterday I saw a question on Quora - &lt;a href="https://www.quora.com/Is-Python-worth-it-to-learn-as-a-programming-language"&gt;Is Python worth it to learn as a programming language?&lt;/a&gt;. I answered the question on quora and decided to write a blog post on Importance of learning Python in 2015.&lt;/p&gt;
 &lt;p&gt;Happy New Year 2015. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is the golden fish in the Programming languages world. It is being used everywhere from Scientific and Numeric to Web Programming. MIT - One of the Top universities in the world uses Python in its Introduction to Computer Science Course. It is being used by Biggest names in the industry like Google, YouTube, Quora, Pinterest, Instagram, Reddit, Redhat etc. &lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;img alt="python" src="https://qph.is.quoracdn.net/main-qimg-021cf0a7a590d07d95a1c37a9323a31e" /&gt;&lt;/center&gt;&lt;/p&gt;
