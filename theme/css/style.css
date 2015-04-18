@@ -128,6 +128,7 @@ aside {
   color: white;
   box-shadow: 0 0 3px black;
   text-align: center;
+  padding-top: 8%;
 }
 
 aside > ul {
