@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/opensource.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2015-05-27T18:00:00+05:30</updated><entry><title>Why you should Open Source your code?</title><link href="https://parbhatpuri.com/why-you-should-open-source-your-code.html" rel="alternate"></link><updated>2015-05-27T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-05-27:why-you-should-open-source-your-code.html</id><summary type="html">&lt;p&gt;Open source your code is the best way to improve your coding Skills. I have seen people who are reluctant to share their code with others because they know their code is messy. By Open Sourcing your code you learn the best practices in Developing higher quality code. In this article, I will share the reasons why Open source your code is the best practice that every Developer should follow. Below is the Github Open Source graph of a Famous Open Source Contributor.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="Github-Graph" src="https://i.imgur.com/Exp1j8B.png" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The following points highlight the importance of Open Source Code.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Open Source improves your coding skills. The code that is only open to your eyes can be more error prone. When you put your code in public, you test it thoroughly and improve it with recommendations from your team or others.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open Source gives you a good reason to write Good Quality code rather than messy code that is just working and can be broken easily.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you open source some cool project, then you get reviews and contributions from other great Developers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you are a company who is Open Source his code, then You can attract Good Developers to work with you. Great Developers love Open Source World.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You have used many Open Source technologies in your projects like Python, Linux, NodeJS, MongoDB, MySQL. By going Open Source you share your work with the Open Source Community.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Other Developers can also learn from your Good Quality code and improve their skills.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So go ahead and create your profile on &lt;a href="https://github.com" target="_blank"&gt;https://github.com&lt;/a&gt; or any other social coding site and Open Source your projects and start something cool that can benefit the whole Community.&lt;/p&gt;</summary><category term="opensource"></category><category term="web"></category><category term="2015"></category><category term="Programming"></category></entry></feed>
