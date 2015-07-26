@@ -212,6 +212,10 @@ padding: 0.77273rem 0;
 border-bottom: 1px solid #328cc7;
 }
 
+#about {
+  padding-left: 50px;
+}
+
 /*--------Responsive------------*/
 
 @media (max-width: 800px) {
@@ -247,11 +251,14 @@ border-bottom: 1px solid #328cc7;
   {
     margin-left: 10px;
   }
+  #about {
+    padding-left: 0px;
+  }
 }
 
 img {
   max-width: 100%;
-} 
+}
 
 /* --------------------Pygments Style Codeschool--------------------*/
 
