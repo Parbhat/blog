@@ -6,7 +6,7 @@ This repository contains the source code of my Personal Website -
 
 The Website uses [Pelican](http://blog.getpelican.com/) - a
 Static Site Generator which takes great advantage of [Python](https://www.python.org/) Programming
-language.
+language. The theme used is [Pelican-Blue](https://github.com/Parbhat/pelican-blue)
 
 ## Screenshot
 
