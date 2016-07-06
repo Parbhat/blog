@@ -4,165 +4,174 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>https://parbhatpuri.com/</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/pages/about.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/parbhat_resume.pdf</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
-  <loc>https://parbhatpuri.com/open-sourcing-pelican-blue-theme-used-in-this-blog.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <loc>https://parbhatpuri.com/reading-code-makes-you-a-better-developer.html</loc>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/author/parbhat-puri.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/category/opensource.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
+</url>
+<url>
+  <loc>https://parbhatpuri.com/open-sourcing-pelican-blue-theme-used-in-this-blog.html</loc>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/git-workflow-to-contribute-to-an-open-source-project.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/why-you-should-open-source-your-code.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/why-you-should-learn-flask-before-django.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/category/python.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/what-is-an-api.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/category/api.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/angularjs-superhero-of-single-page-application.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/category/javascript.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/skills-essential-for-a-front-end-web-developer-in-2015.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/category/web.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/Why-you-should-learn-python-in-2015.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/virtualenvwrapper-on-top-of-virtualenv.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/why-use-linux-for-python-development.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/django_tutorials.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/opensource.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/web.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/programming.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
+</url>
+<url>
+  <loc>https://parbhatpuri.com/tag/code.html</loc>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/html.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/python.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/pelican.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/2015.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/git.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/flask.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/django.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/api.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/angularjs.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/javascript.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/css.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/front-end.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/tools.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/virtualenv.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/linux.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/windows.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 <url>
   <loc>https://parbhatpuri.com/tag/ubuntu.html</loc>
-  <lastmod>2016-01-18T16:36:07+00:00</lastmod>
+  <lastmod>2016-07-06T14:21:12+00:00</lastmod>
 </url>
 </urlset>
