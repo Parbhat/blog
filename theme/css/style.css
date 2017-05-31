@@ -107,7 +107,8 @@ a:hover { text-decoration: underline; }
 /* Code */
 .highlight pre {
   font-size: 14px;
-  overflow: scroll;
+  overflow: auto;
+  padding: 8px;
 }
 
 /* Sidebar */
@@ -198,6 +199,14 @@ aside > h2 {
   padding: 0.77273rem 0;
   border-bottom: 1px solid #328cc7;
 }
+
+
+.blog_roll_link 
+{
+  display: block;
+  padding: 0.33147rem 0;
+  border-bottom: 3px solid #328cc7;
+} 
 
 
 /*--------Responsive------------*/
