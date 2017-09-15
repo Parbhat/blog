@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Add download CSV option in Wagtail modeladmin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Parbhat Puri">
+
+        <link rel="shortcut icon" href="https://parbhatpuri.com/images/favicon.ico">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="Parbhat Puri">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://parbhatpuri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="Parbhat Puri ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="parbhatpuri">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="parbhatpuri">
+    <meta name="twitter:url" content="https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html">
+    <meta name="twitter:title" content="Parbhat Puri ~ Add download CSV option in Wagtail modeladmin">
+    <meta name="twitter:description" content="This guide will list the steps to add download CSV option in Wagtail modeladmin.">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="Parbhat Puri ~ Add download CSV option in Wagtail modeladmin"/>
+    <meta property="og:description" content="This guide will list the steps to add download CSV option in Wagtail modeladmin."/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
+    <h1>Parbhat Puri</h1>
+        <p>Full Stack Developer</p>
+    <br>
+
+        <a class="twitter-follow-button"
+           href="https://twitter.com/parbhatpuri"
+           data-show-count="false"
+           data-lang="en">
+            Follow @twitterdev
+        </a>
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+            }(document, "script", "twitter-wjs"));
+        </script>
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://parbhatpuri.com">Blog</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/parbhat_resume.pdf">Resume</a></li>
+
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://www.linkedin.com/in/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/linkedin.png"></a>
+                <a href="https://github.com/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/parbhatpuri" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/twitter.png"></a>
+            <a href="https://parbhatpuri.com/feeds/all.atom.xml" rel="alternate">
+                <img src="https://parbhatpuri.com/theme/images/icons/rss.png"></a>
+    </p>
+
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html" rel="bookmark"
+                                                  title="Permalink to Add download CSV option in Wagtail modeladmin">Add download CSV option in Wagtail modeladmin</a></h2>
+            <div class="entry-content blog-post">
+                <p><a href="https://wagtail.io/">Wagtail</a> is a free and open source CMS written in Python and built on the <a href="http://djangoproject.com/">Django</a> framework. If you heard about the Wagtail for the first time. You should check it out and you will love it.</p>
+<p>The <a href="http://docs.wagtail.io/en/stable/reference/contrib/modeladmin/index.html">modeladmin</a> module provided by Wagtail allows to create customisable listing pages for any model in your Wagtail project. Suppose you have a model named <code>EventRegistration</code>. Django developers are used to performing CRUD operations on this model using the Django admin. The modeladmin module from Wagtail helps to perform CRUD operations from the Wagtail admin interface. Wagtail admin has a great UI and non developers using your project will love it.</p>
+<p>This blog lists the steps to add download <em>CSV</em> option in Wagtail admin listing view of your model. For the Wagtail users, you may have seen the similar button in the form submissions listing page. You can follow the modeladmin <a href="http://docs.wagtail.io/en/stable/reference/contrib/modeladmin/index.html">documentation</a> to register your model and display the model in Wagtail admin. The simplest example is to add the following code in <em>wagtail_hooks.py</em> file in the app directory.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wagtail.contrib.modeladmin.options</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelAdmin</span><span class="p">,</span> <span class="n">modeladmin_register</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">EventRegistration</span>
+
+<span class="k">class</span> <span class="nc">EventRegistrationAdmin</span><span class="p">(</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">EventRegistration</span>
+    <span class="n">menu_label</span> <span class="o">=</span> <span class="s1">&#39;Event registrations&#39;</span>  <span class="c1"># ditch this to use verbose_name_plural from model</span>
+    <span class="n">menu_icon</span> <span class="o">=</span> <span class="s1">&#39;form&#39;</span>  <span class="c1"># change as required</span>
+    <span class="n">menu_order</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># will put in 3rd place (000 being 1st, 100 2nd)</span>
+    <span class="n">add_to_settings_menu</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c1"># or True to add your model to the Settings sub-menu</span>
+    <span class="n">exclude_from_explorer</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># or True to exclude pages of this type from Wagtail&#39;s explorer view</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;example_field2&#39;</span><span class="p">,</span> <span class="s1">&#39;example_field3&#39;</span><span class="p">,</span> <span class="s1">&#39;register&#39;</span><span class="p">)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;register&#39;</span><span class="p">,</span> <span class="s1">&#39;example_field2&#39;</span><span class="p">,</span> <span class="s1">&#39;example_field3&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,)</span>
+
+<span class="c1"># Now you just need to register your customised EventRegistrationAdmin class with Wagtail</span>
+<span class="n">modeladmin_register</span><span class="p">(</span><span class="n">EventRegistrationAdmin</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now you can see the <code>Event registrations</code> menu item in Wagtail admin. When you click on it, you can see the listing page which lists all the event registration entries. The top of the page will be similar to</p>
+<p><img alt="listing-page-header" src="https://i.imgur.com/mgw4nBP.png"></p>
+<p>To add <code>Download CSV</code> button next to search input follow the steps:</p>
+<ul>
+<li>The first step is to override the default IndexView to handle CSV creation at the backend and return CSV file.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.utils.encoding</span> <span class="kn">import</span> <span class="n">smart_str</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.utils.decorators</span> <span class="kn">import</span> <span class="n">method_decorator</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">PermissionDenied</span>
+<span class="kn">from</span> <span class="nn">wagtail.contrib.modeladmin.views</span> <span class="kn">import</span> <span class="n">IndexView</span>
+<span class="kn">from</span> <span class="nn">wagtail.contrib.modeladmin.options</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelAdmin</span><span class="p">,</span> <span class="n">modeladmin_register</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">EventRegistration</span>
+
+
+<span class="k">class</span> <span class="nc">EventRegistrationCustomIndexView</span><span class="p">(</span><span class="n">IndexView</span><span class="p">):</span>
+
+    <span class="nd">@method_decorator</span><span class="p">(</span><span class="n">login_required</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Only continue if logged in user has list permission</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">permission_helper</span><span class="o">.</span><span class="n">user_can_list</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PermissionDenied</span>
+
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;CSV&#39;</span><span class="p">:</span>
+
+            <span class="c1"># Get all registrations</span>
+            <span class="n">registrations</span> <span class="o">=</span> <span class="n">EventRegistration</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+            <span class="n">data_headings</span> <span class="o">=</span> <span class="p">[</span><span class="n">field</span><span class="o">.</span><span class="n">verbose_name</span> <span class="k">for</span> <span class="n">field</span>
+                             <span class="ow">in</span> <span class="n">EventRegistration</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_fields</span><span class="p">()]</span>
+
+            <span class="c1"># Get query parameters. If the user has filtered the list view.</span>
+            <span class="c1"># Suppose there is a boolean field named register in the model.</span>
+            <span class="n">registered</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;register__exact&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Filter by registered or not</span>
+            <span class="k">if</span> <span class="n">registered</span><span class="p">:</span>
+                <span class="n">registrations</span> <span class="o">=</span> <span class="n">registrations</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                    <span class="n">register</span><span class="o">=</span><span class="n">registered</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># return a CSV instead</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;text/csv; charset=utf-8&#39;</span><span class="p">)</span>
+            <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Content-Disposition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;attachment;filename=&#39;</span> <span class="o">+</span> \
+                <span class="s1">&#39;registrations.csv&#39;</span>
+
+            <span class="c1"># Prevents UnicodeEncodeError for labels with non-ansi symbols</span>
+            <span class="n">data_headings</span> <span class="o">=</span> <span class="p">[</span><span class="n">smart_str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">data_headings</span><span class="p">]</span>
+
+            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">data_headings</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">registrations</span><span class="p">:</span>
+                <span class="n">data_row</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">data_row</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                    <span class="n">reg</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">example_field2</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">example_field3</span>
+                <span class="p">])</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">data_row</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">EventRegistrationCustomIndexView</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>Now our view can handle CSV download requests. We need to also override the index view template to display the <code>Download CSV</code> button. You need to copy the default template from <a href="https://github.com/wagtail/wagtail/blob/master/wagtail/contrib/modeladmin/templates/modeladmin/index.html">here</a> and change the header block with the following.</li>
+</ul>
+<div class="highlight"><pre><span></span>{% block header %}
+    <span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nice-padding hasform&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;left&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>
+                    {% block h1 %}<span class="p">&lt;</span><span class="nt">h1</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">view</span><span class="err">.</span><span class="na">header_icon</span> <span class="err">%}</span><span class="na">class</span><span class="o">=</span><span class="s">&quot;icon icon-{{ view.header_icon }}&quot;</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="p">&gt;</span>{{ view.get_page_title }}<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>{% endblock %}
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                {% block search %}{% search_form %}{% endblock %}
+
+                <span class="c">&lt;!-- Download CSV --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% if request.GET|length == 0 %}?action=CSV{% else %}{{ request.get_full_path }}&amp;amp;action=CSV{% endif %}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;button bicolor icon icon-download&quot;</span><span class="p">&gt;</span>{% trans &#39;Download CSV&#39; %}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            {% block header_extra %}
+                {% if user_can_create %}
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;addbutton&quot;</span><span class="p">&gt;</span>
+                            {% include &#39;modeladmin/includes/button.html&#39; with button=view.button_helper.add_button %}
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                 {% endif %}
+            {% endblock %}
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+{% endblock %}
+</pre></div>
+
+
+<ul>
+<li>Now we have the custom <strong>index view</strong> and <strong>template</strong> for the event registration. You can customize them further according to your model. We need to add the following attributes to EventRegistrationAdmin class.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EventRegistrationAdmin</span><span class="p">(</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">EventRegistration</span>
+    <span class="n">index_view_class</span> <span class="o">=</span> <span class="n">EventRegistrationCustomIndexView</span>
+    <span class="n">index_template_name</span> <span class="o">=</span> <span class="s1">&#39;events/event_model_admin_index.html&#39;</span>
+    <span class="o">....</span>
+    <span class="o">....</span>
+</pre></div>
+
+
+<p>That's it. You can now see a <code>Download CSV</code> button and can download CSVs.</p>
+<p><img alt="listing-page-header-csv" src="https://i.imgur.com/K3Olh6P.png"></p>
+<p>Thanks for reading.</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://parbhatpuri.com/author/parbhat-puri.html">@Parbhat Puri</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://parbhatpuri.com/category/python.html" rel="bookmark"
+                                               title="Permalink to python">[ python ]</a></span>
+                <span class="post_date">Fri 15 September 2017</span>
+                <div><span>Tags : </span>
+                            <span><a href="https://parbhatpuri.com/tag/wagtail.html">#wagtail, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/django.html">#django, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/opensource.html">#opensource, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/web.html">#web, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/programming.html">#Programming, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/code.html">#code, </a></span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html&text=Add download CSV option in Wagtail modeladmin&via=parbhatpuri"><img
+                            src="https://parbhatpuri.com/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html&t=Add download CSV option in Wagtail modeladmin"><img
+                            src="https://parbhatpuri.com/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html&title=Add download CSV option in Wagtail modeladmin"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Add download CSV option in Wagtail modeladmin&amp;body=Viens découvrir un article à propos de [Add download CSV option in Wagtail modeladmin] sur le site de Parbhat Puri. https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://parbhatpuri.com/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+                <div class="comments">
+                    <h2>Comments !</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_identifier = "add-download-csv-option-in-wagtail-modeladmin.html";
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = 'https://parbhat.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50405008-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</body>
+</html>
