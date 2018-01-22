@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Switch to Custom image model in a Production Wagtail project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Parbhat Puri">
+
+        <link rel="shortcut icon" href="https://parbhatpuri.com/images/favicon.ico">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="Parbhat Puri">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://parbhatpuri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="Parbhat Puri ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="parbhatpuri">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="parbhatpuri">
+    <meta name="twitter:url" content="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html">
+    <meta name="twitter:title" content="Parbhat Puri ~ Switch to Custom image model in a Production Wagtail project">
+    <meta name="twitter:description" content="This guide will list the steps to switch from Wagtail Default image model to Custom image model in a production Wagtail project.">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="Parbhat Puri ~ Switch to Custom image model in a Production Wagtail project"/>
+    <meta property="og:description" content="This guide will list the steps to switch from Wagtail Default image model to Custom image model in a production Wagtail project."/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
+    <h1>Parbhat Puri</h1>
+        <p>Full Stack Developer</p>
+    <br>
+
+        <a class="twitter-follow-button"
+           href="https://twitter.com/parbhatpuri"
+           data-show-count="false"
+           data-lang="en">
+            Follow @twitterdev
+        </a>
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+            }(document, "script", "twitter-wjs"));
+        </script>
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://parbhatpuri.com">Blog</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/parbhat_resume.pdf">Resume</a></li>
+
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://www.linkedin.com/in/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/linkedin.png"></a>
+                <a href="https://github.com/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/parbhatpuri" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/twitter.png"></a>
+            <a href="https://parbhatpuri.com/feeds/all.atom.xml" rel="alternate">
+                <img src="https://parbhatpuri.com/theme/images/icons/rss.png"></a>
+    </p>
+
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html" rel="bookmark"
+                                                  title="Permalink to Switch to Custom image model in a Production Wagtail project">Switch to Custom image model in a Production Wagtail project</a></h2>
+            <div class="entry-content blog-post">
+                <p>A software project is always evolving. New requirements can arise at any stage of the project. One example of a new feature required in a production Wagtail project is to store the <code>source</code> of the Image. This post will list the steps involved to make the migration from Wagtail default Image model to Custom Image model. Therefore it requires some basic understanding of Wagtail. If you heard about the Wagtail for the first time. You should check it at <a href="http://wagtail.io/">wagtail.io</a>.</p>
+<h3>Brief description of the feature</h3>
+<p>Wagtail has a wonderful admin which also allows handling images. Internally wagtail has <code>wagtailimages</code> app which contains the default Image model. But the fields provided in the default Image model may not be sufficient for your project. Like we want to store the <code>source</code> of every image and display on our site. Source field is not present in Image model. Fortunately, Wagtail allows to switching to custom Image model in which new fields can be added based on the project requirements. In our case, we want to add the source field.</p>
+<h3>Implementation</h3>
+<p>Like Django, Wagtail also has a great documentation. It also has documentation on the <a href="http://docs.wagtail.io/en/stable/advanced_topics/images/custom_image_model.html">Custom image models</a>. After following the docs, our project will be switched to Custom Image model with new fields like source. But when we open Images section in Wagtail admin, it will be empty. The reason is mentioned in docs:</p>
+<p>When changing an existing site to use a custom image model, no images will be copied to the new model automatically. Copying old images to the new model would need to be done manually with a data migration.</p>
+<p>So, how much progress we have made?</p>
+<ul>
+<li>Switched to custom image model - Yes</li>
+<li>Migrated old data from default image model to Custom image model - No</li>
+</ul>
+<h4>What are data migrations?</h4>
+<p>There are basically two types of migrations in a Django project.</p>
+<ul>
+<li>
+<p><strong>Schema migrations</strong>: It is the most commonly used and often referred as migrations. These help to change database schema like creating database tables, adding new fields to tables and changing fields etc.</p>
+</li>
+<li>
+<p><strong>Data migrations</strong>: As the name suggests, migrations that alter data are called Data migrations. For example, we add a new field named <code>full_name</code> to the User model. Schema migrations will create the new field in the database. Data migrations help to combine first_name and last_name of the existing users and store it in the new field named full_name. You can read more in the Django <a href="https://docs.djangoproject.com/en/2.0/topics/migrations/#data-migrations">documentation</a>.</p>
+</li>
+</ul>
+<h4>Why we need Data migrations to switch to Custom Image model?</h4>
+<p>In our Wagtail project, we changed the Image model. We created the new model but the image records data is present in old default Image model. To copy images from old to the new model we need to create a data migration which copies the image records. To create data migration:</p>
+<ul>
+<li>Make an empty migration file</li>
+</ul>
+<div class="highlight"><pre><span></span>python manage.py makemigrations --empty yourappname
+</pre></div>
+
+
+<ul>
+<li>Copy the following code to the generated file.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
+
+
+<span class="k">def</span> <span class="nf">forwards_func</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># We get the model from the versioned app registry;</span>
+    <span class="n">wagtail_image_model</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;wagtailimages&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">)</span>
+    <span class="c1"># Change the pages with your project&#39;s app name and also model name if different</span>
+    <span class="n">extended_image_model</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span> <span class="s1">&#39;ExtendedImage&#39;</span><span class="p">)</span>
+    <span class="n">tagged_item_model</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;taggit&#39;</span><span class="p">,</span> <span class="s1">&#39;TaggedItem&#39;</span><span class="p">)</span>
+    <span class="n">django_content_type</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;contenttypes&#39;</span><span class="p">,</span> <span class="s1">&#39;contenttype&#39;</span><span class="p">)</span>
+
+    <span class="n">db_alias</span> <span class="o">=</span> <span class="n">schema_editor</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">alias</span>
+
+    <span class="c1"># Get images stored in default wagtail image model</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">wagtail_image_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">new_images</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+        <span class="n">new_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extended_image_model</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="nb">file</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+            <span class="n">created_at</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+            <span class="n">focal_point_x</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">focal_point_x</span><span class="p">,</span>
+            <span class="n">focal_point_y</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">focal_point_y</span><span class="p">,</span>
+            <span class="n">focal_point_width</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">focal_point_width</span><span class="p">,</span>
+            <span class="n">focal_point_height</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">focal_point_height</span><span class="p">,</span>
+            <span class="n">file_size</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">file_size</span><span class="p">,</span>
+            <span class="n">collection</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">collection</span><span class="p">,</span>
+            <span class="n">uploaded_by_user</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">uploaded_by_user</span><span class="p">,</span>
+        <span class="p">))</span>
+
+    <span class="c1"># Create images in new model</span>
+    <span class="n">extended_image_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span><span class="n">new_images</span><span class="p">)</span>
+    <span class="c1"># Leave all images in previous model</span>
+
+    <span class="c1"># Move tags from old image to new image model. Moving tags is</span>
+    <span class="c1"># a little different case. The lookup table taggit_taggeditem looks like this:</span>
+    <span class="c1"># id   object_id   content_type_id   tag_id</span>
+    <span class="c1"># 1    1           10                 1</span>
+    <span class="c1"># 2    1           10                 2</span>
+    <span class="c1"># 3    1           10                 3</span>
+    <span class="c1"># 4    1           10                 4</span>
+    <span class="c1"># In our case, the object_id will be same for old and new image model</span>
+    <span class="c1"># objects. So, we have to only change the content_type_id</span>
+    <span class="n">ct_extended_model</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">django_content_type</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">app_label</span><span class="o">=</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;extendedimage&#39;</span>
+    <span class="p">)</span>
+    <span class="n">ct_wagtail_model</span> <span class="o">=</span> <span class="n">django_content_type</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">app_label</span><span class="o">=</span><span class="s1">&#39;wagtailimages&#39;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;image&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">tagged_item_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_wagtail_model</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_extended_model</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">reverse_func</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># We get the model from the versioned app registry;</span>
+    <span class="n">extended_image_model</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span> <span class="s1">&#39;ExtendedImage&#39;</span><span class="p">)</span>
+    <span class="n">tagged_item_model</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;taggit&#39;</span><span class="p">,</span> <span class="s1">&#39;TaggedItem&#39;</span><span class="p">)</span>
+    <span class="n">django_content_type</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;contenttypes&#39;</span><span class="p">,</span> <span class="s1">&#39;contenttype&#39;</span><span class="p">)</span>
+
+    <span class="n">db_alias</span> <span class="o">=</span> <span class="n">schema_editor</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">alias</span>
+
+    <span class="c1"># Move tags from new image model to old wagtail model</span>
+    <span class="n">ct_extended_model</span> <span class="o">=</span> <span class="n">django_content_type</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">app_label</span><span class="o">=</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;extendedimage&#39;</span>
+    <span class="p">)</span>
+    <span class="n">ct_wagtail_model</span> <span class="o">=</span> <span class="n">django_content_type</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">app_label</span><span class="o">=</span><span class="s1">&#39;wagtailimages&#39;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;image&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">tagged_item_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_extended_model</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_wagtail_model</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Delete all images created in the new model</span>
+    <span class="n">extended_image_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="c1"># Change the following according to your project</span>
+        <span class="c1"># (&#39;pages&#39;, &#39;0021_auto_20180122_1100&#39;),</span>
+        <span class="p">(</span><span class="s1">&#39;wagtailimages&#39;</span><span class="p">,</span> <span class="s1">&#39;0019_delete_filter&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">forwards_func</span><span class="p">,</span> <span class="n">reverse_func</span><span class="p">),</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<h4>Details about the steps in this data migration</h4>
+<ul>
+<li>
+<p>First, this data migration gets the default Image model objects and create the new Custom Image model objects using <a href="https://docs.djangoproject.com/en/2.0/ref/models/querysets/#bulk-create">bulk_create</a>.</p>
+</li>
+<li>
+<p><strong>Migrating Tags</strong>: Migrating tags is little different than other fields like title. Tags in wagtail work using django-taggit. So, let's use a simple example to understand the concept. This is not the actual model from Django taggit but simplified for this use case.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TaggedItem</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
+    <span class="n">content_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">ContentType</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">object_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+    <span class="n">content_object</span> <span class="o">=</span> <span class="n">GenericForeignKey</span><span class="p">(</span><span class="s1">&#39;content_type&#39;</span><span class="p">,</span> <span class="s1">&#39;object_id&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>
+</pre></div>
+
+
+<p>Django includes a <a href="https://docs.djangoproject.com/en/2.0/ref/contrib/contenttypes/">contenttypes</a> app which can track all of the models installed in your Django-powered project. In this case, the Tags objects point to old Image model using content_type. So, we can filter the TaggedItem model to get the tags used in images and can then update these with the new image model content_type.</p>
+<div class="highlight"><pre><span></span>    <span class="n">tagged_item_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_wagtail_model</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_extended_model</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">)</span>
+</pre></div>
+
+
+<p>content types have various uses like Tags but diving into it further will deviate from the topic of this blog post. Will write a new post on content types.</p>
+<ul>
+<li>You may notice we are using <strong>get_or_create</strong> to get the content type of the new Image model. New instances of ContentType are automatically created whenever new models are installed. But in our case, we have two migrations. The first one create the Schema for new Image model and second one migrate data. You may not encounter the issue running locally but when both the migrations are run during deployment new content types may not be created. In that case, we can create the content type for the new model if not exist.</li>
+</ul>
+<h3>Issues with PostgreSQL</h3>
+<p>One issue you will encounter if you are using PostgreSQL in your project while uploading new images:</p>
+<div class="highlight"><pre><span></span>psycopg2.IntegrityError: duplicate key value violates unique constraint &quot;pages_extendedimage_pkey&quot;
+DETAIL:  Key (id)=(1) already exists.
+</pre></div>
+
+
+<p>The current key is set to 1 so we have to change it to Max. If your project is using a small number of images say &lt; 10 then you can try uploading again and again and error will be removed when the current key equal to Max. But it is not feasible in case of large number of images. So, in that case, you can run SQL query on your database like</p>
+<div class="highlight"><pre><span></span>SELECT pg_catalog.setval<span class="o">(</span>pg_get_serial_sequence<span class="o">(</span><span class="s1">&#39;pages_extendedimage&#39;</span>, <span class="s1">&#39;id&#39;</span><span class="o">)</span>, <span class="o">(</span>SELECT MAX<span class="o">(</span>id<span class="o">)</span> FROM pages_extendedimage<span class="o">))</span><span class="p">;</span>
+</pre></div>
+
+
+<hr>
+
+<p>I have tried to cover all the possible cases encountered by me while migrating a production site to Custom Image model. If you face any issues, feel free to comment below. Thanks for reading.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/41931590/data-migration-of-image-model">https://stackoverflow.com/questions/41931590/data-migration-of-image-model</a></li>
+</ul>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://parbhatpuri.com/author/parbhat-puri.html">@Parbhat Puri</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://parbhatpuri.com/category/python.html" rel="bookmark"
+                                               title="Permalink to python">[ python ]</a></span>
+                <span class="post_date">Mon 22 January 2018</span>
+                <div><span>Tags : </span>
+                            <span><a href="https://parbhatpuri.com/tag/wagtail.html">#wagtail, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/django.html">#django, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/postgres.html">#postgres, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/migrations.html">#migrations, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/opensource.html">#opensource, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/web.html">#web, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/programming.html">#Programming, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/code.html">#code, </a></span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html&text=Switch to Custom image model in a Production Wagtail project&via=parbhatpuri"><img
+                            src="https://parbhatpuri.com/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html&t=Switch to Custom image model in a Production Wagtail project"><img
+                            src="https://parbhatpuri.com/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html&title=Switch to Custom image model in a Production Wagtail project"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Switch to Custom image model in a Production Wagtail project&amp;body=Viens découvrir un article à propos de [Switch to Custom image model in a Production Wagtail project] sur le site de Parbhat Puri. https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://parbhatpuri.com/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+                <div class="comments">
+                    <h2>Comments !</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_identifier = "switch-to-custom-image-model-in-a-production-wagtail-project.html";
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = 'https://parbhat.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50405008-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</body>
+</html>
