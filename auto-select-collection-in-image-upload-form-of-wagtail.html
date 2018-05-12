@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Auto Select collection in Image Upload form of Wagtail</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.">
+        <meta name="author" content="Parbhat Puri">
+
+        <link rel="shortcut icon" href="https://parbhatpuri.com/images/favicon.ico">
+
+        <!-- schema.org -->
+<meta itemprop="name" content="Parbhat Puri ~ Auto Select collection in Image Upload form of Wagtail">
+<meta itemprop="image" content="https://i.imgur.com/vlC93IR.jpg">
+<meta itemprop="description" content="This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://parbhatpuri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="Parbhat Puri ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@parbhatpuri">
+
+    <meta name="twitter:creator" content="@parbhatpuri">
+    <meta name="twitter:url" content="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html">
+    <meta name="twitter:title" content="Parbhat Puri ~ Auto Select collection in Image Upload form of Wagtail">
+    <meta name="twitter:description" content="This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.">
+    <meta name="twitter:image" content="https://i.imgur.com/vlC93IR.jpg">
+    <meta name="twitter:image:alt" content="Wagtail Bird.">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:url" content="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Parbhat Puri ~ Auto Select collection in Image Upload form of Wagtail"/>
+    <meta property="og:description" content="This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page."/>
+    <meta property="og:image" content="https://i.imgur.com/vlC93IR.jpg">
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
+    <h1>Parbhat Puri</h1>
+        <p>Freelance Software Developer</p>
+    <br>
+
+        <a class="twitter-follow-button"
+           href="https://twitter.com/parbhatpuri"
+           data-show-count="false"
+           data-lang="en">
+            Follow @twitterdev
+        </a>
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+            }(document, "script", "twitter-wjs"));
+        </script>
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://parbhatpuri.com">Blog</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/parbhat_resume.pdf">Resume</a></li>
+
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://www.linkedin.com/in/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/linkedin.png"></a>
+                <a href="https://github.com/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/parbhatpuri" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/twitter.png"></a>
+            <a href="https://parbhatpuri.com/feeds/all.atom.xml" rel="alternate">
+                <img src="https://parbhatpuri.com/theme/images/icons/rss.png"></a>
+    </p>
+
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="bookmark"
+                                                  title="Permalink to Auto Select collection in Image Upload form of Wagtail">Auto Select collection in Image Upload form of Wagtail</a></h2>
+            <div class="entry-content blog-post">
+                <p>Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this <a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html">tutorial</a>.</p>
+<h2>Feature description</h2>
+<p>Images in Wagtail can be organised into collections. Collections can be created in Wagtail admin from <code>Settings &gt; Collections</code> menu item. In an example Wagtail site, there are two collections namely <em>Blog</em> and <em>Photo Gallery</em>. On image upload form the user has the option to upload an image into a particular collection. This helps to organise the images into groups like Blog. The image upload form looks like</p>
+<p><img alt="Image upload form wagtail" src="https://i.imgur.com/AREjqfe.png"></p>
+<p>This works great but editor can sometimes forget to select a collection while uploading images. The default selected collection is Root. It would be great if the collection is automatically selected while editing a particular page. For example, a user editing or creating blog pages should upload images to <em>blog</em> collection. Instead of the user selecting <em>blog</em> collection we can detect the type of page user is creating and automatically select the <em>blog</em> collection. This blog post will list the steps to implement this feature.</p>
+<p><img alt="Demo of auto select collection in Upload form" src="https://i.imgur.com/SCIOvA4.gif"></p>
+<h2>Implementation</h2>
+<p>The implementation is tested using Wagtail 2.0.1 and 1.13.1. All code examples are in Wagtail 2.0. To use the code in Wagtail 1.13.1 some import lines should be changed. More details can be found in 2.0 release <a href="http://docs.wagtail.io/en/v2.0.1/releases/2.0.html#wagtail-module-path-updates">notes</a>.</p>
+<ol>
+<li>
+<p>In above gif, <em>blog</em> Collection is automatically selected on a page of type <em>Blog Page</em>. So, we need a model to save relation between Collections and Page models. We can use the Wagtail Snippets feature to make relation model editable in Wagtail admin.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="kn">from</span> <span class="nn">wagtail.core.models</span> <span class="kn">import</span> <span class="n">get_page_models</span>
+<span class="kn">from</span> <span class="nn">wagtail.snippets.models</span> <span class="kn">import</span> <span class="n">register_snippet</span>
+<span class="kn">from</span> <span class="nn">wagtail.admin.edit_handlers</span> <span class="kn">import</span> <span class="n">FieldPanel</span>
+
+<span class="nd">@register_snippet</span>
+<span class="k">class</span> <span class="nc">PageRelationWithImageCollection</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">page_models</span> <span class="o">=</span> <span class="n">get_page_models</span><span class="p">()</span>
+    <span class="n">page_types</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">get_verbose_name</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">page_models</span>
+    <span class="p">)</span>
+
+    <span class="n">page</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">page_types</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="s1">&#39;wagtailcore.Collection&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;+&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">panels</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">FieldPanel</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">),</span>
+        <span class="n">FieldPanel</span><span class="p">(</span><span class="s1">&#39;collection&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;{0} related to {1} collection&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;Pages to Collection relation&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>We use the <a href="https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/core/models.py#L173">get_page_models</a> function from Wagtail core to get a list of all non-abstract Page model classes.</p>
+</li>
+<li>
+<p>Page field is <em>unique</em> as we do not want a page like <em>blogpage</em> to be related to multiple collections. Multiple pages can be related to the same collection.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>We have a model to store relation between Page models and collections. We need a way to get a collection while user is editing a particular page. For example, admin user editing or creating a page of type Blog Page. We need to get the collection related to the blog page. We need a view to get the collection.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+
+<span class="kn">from</span> <span class="nn">wagtail.core.models</span> <span class="kn">import</span> <span class="n">Page</span>
+<span class="kn">from</span> <span class="nn">wagtail.admin.utils</span> <span class="kn">import</span> <span class="n">PermissionPolicyChecker</span>
+<span class="kn">from</span> <span class="nn">wagtail.images.permissions</span> <span class="kn">import</span> <span class="n">permission_policy</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">PageRelationWithImageCollection</span>
+
+<span class="n">permission_checker</span> <span class="o">=</span> <span class="n">PermissionPolicyChecker</span><span class="p">(</span><span class="n">permission_policy</span><span class="p">)</span>
+
+<span class="nd">@permission_checker.require</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_collection_by_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">page_type</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">page</span> <span class="ow">and</span> <span class="n">page_type</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">page_type</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
+                <span class="n">page_obj</span> <span class="o">=</span> <span class="n">Page</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
+                <span class="n">page_modal_name</span> <span class="o">=</span> <span class="n">page_obj</span><span class="o">.</span><span class="n">specific</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">model_name</span>
+            <span class="k">elif</span> <span class="n">page_type</span> <span class="o">==</span> <span class="s1">&#39;pagemodel&#39;</span><span class="p">:</span>
+                <span class="n">page_modal_name</span> <span class="o">=</span> <span class="n">page</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="n">related_collection</span> <span class="o">=</span> <span class="n">PageRelationWithImageCollection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">page</span><span class="o">=</span><span class="n">page_modal_name</span><span class="p">)</span><span class="o">.</span><span class="n">collection</span>
+            <span class="n">user_collection_perm</span> <span class="o">=</span> <span class="n">permission_policy</span><span class="o">.</span><span class="n">_check_perm</span><span class="p">(</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">],</span> <span class="n">related_collection</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">user_collection_perm</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;collection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">related_collection</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">Page</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">,</span> <span class="n">PageRelationWithImageCollection</span><span class="o">.</span><span class="n">DoesNotExist</span>
+        <span class="p">):</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>The view will be accessible to admin users who have <em>add</em> permission for images. The collection will be returned in the response only if the user has <em>add</em> permission for the related collection. For example, the user belongs to Teachers Group and only has permission for teachers collection. If the related collection is students we will not add it to the response as the requesting user is not having access.</p>
+</li>
+<li>
+<p>The view will return a JSON response as we will later call this view with an Ajax request.</p>
+</li>
+</ul>
+<p>Add a URL for this view to your project.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="o">&lt;</span><span class="n">CHANGE</span><span class="o">-</span><span class="n">ME</span><span class="p">(</span><span class="n">app</span><span class="o">-</span><span class="n">name</span><span class="p">)</span><span class="o">&gt;.</span><span class="n">views</span> <span class="kn">import</span> <span class="nn">get_collection_by_page</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="c1"># Other Urls</span>
+
+    <span class="n">url</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s1">&#39;^admin/ajax/get_collection/$&#39;</span><span class="p">,</span> <span class="n">get_collection_by_page</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;get_collection_by_page&#39;</span>
+    <span class="p">),</span>
+
+    <span class="o">...</span>
+    <span class="c1"># Other Urls</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">wagtail_urls</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>This is the last step. We have created a Model snippet and View. Now the question is where we will make an Ajax request while a user is editing a Page. The Image chooser panel which opens a modal work on the
+<a href="https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/admin/modal_workflow.py#L7">render_modal_workflow</a>. Simply when you click to choose an image in the page editor, a request is made to the server which returns the rendered <em>HTML</em> and <em>JS</em> chunk. The HTML creates the modal in the page editor and JS is executed. The <em>HTML</em> is rendered from Django template: <code>templates/wagtailimages/chooser/chooser.html</code> and <em>JS</em> from <code>templates/wagtailimages/chooser/chooser.js</code>.</p>
+<p>We need to override the <code>wagtailimages/chooser/chooser.js</code> so that we can add the Javascript code for AJAX request. You can take the code from Wagtail <a href="https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/images/templates/wagtailimages/chooser/chooser.js">chooser.js</a> and add the custom code. We can not use the <code>insert_editor_js</code> hook to add our JS code because the modal is changed every time user click to choose an image.</p>
+<h4>Overriding template</h4>
+<p>You can either put the <code>chooser.js</code> template in your project's templates directory or in an application's templates directory. For example, you can place the template in your project utils app like <code>utils/templates/wagtailimages/chooser/chooser.js</code>. Also, make sure your <code>utils</code> app is placed before <code>wagtail.images</code> app in <code>INSTALLED_APPS</code> setting. You can also read Django <a href="https://docs.djangoproject.com/en/2.0/howto/overriding-templates/">Overriding templates</a> documentation.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="nx">load</span> <span class="nx">i18n</span> <span class="o">%</span><span class="p">}</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">searchUrl</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.image-search&#39;</span><span class="p">,</span> <span class="nx">modal</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">);</span>
+
+    <span class="cm">/* currentTag stores the tag currently being filtered on, so that we can</span>
+<span class="cm">    preserve this when paginating */</span>
+    <span class="kd">var</span> <span class="nx">currentTag</span><span class="p">;</span>
+
+    <span class="c1">//************* Custom Code**************//</span>
+    <span class="c1">// Overriding the chooser.js so that we can autoselect</span>
+    <span class="c1">// the image collection based on Page type. Wagtail Image</span>
+    <span class="c1">// chooser works on render modal workflow.</span>
+    <span class="p">{</span><span class="o">%</span> <span class="nx">url</span> <span class="s1">&#39;get_collection_by_page&#39;</span> <span class="nx">as</span> <span class="nx">get_collection_url</span> <span class="o">%</span><span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">pathArray</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">edit_word_index</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s1">&#39;edit&#39;</span><span class="p">,</span> <span class="nx">pathArray</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">add_word_index</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="nx">pathArray</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">pages_word_index</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span> <span class="nx">pathArray</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">data_dict</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">pages_word_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">edit_word_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="nx">add_word_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">edit_word_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">data_dict</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">pathArray</span><span class="p">[</span><span class="nx">edit_word_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+            <span class="nx">data_dict</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">add_word_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">data_dict</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">pathArray</span><span class="p">[</span><span class="nx">add_word_index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+            <span class="nx">data_dict</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pagemodel&#39;</span>
+        <span class="p">};</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;{{ get_collection_url }}&quot;</span><span class="p">,</span>
+            <span class="nx">data</span><span class="o">:</span> <span class="nx">data_dict</span><span class="p">,</span>
+            <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+            <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#id_collection option[value=&#39;&quot;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">collection</span> <span class="o">+</span> <span class="s2">&quot;&#39;]&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span><span class="s2">&quot;selected&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="c1">//************** End Custom Code************//</span>
+
+    <span class="kd">function</span> <span class="nx">ajaxifyLinks</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.listing a&#39;</span><span class="p">,</span> <span class="nx">context</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">modal</span><span class="p">.</span><span class="nx">loadUrl</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.pagination a&#39;</span><span class="p">,</span> <span class="nx">context</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-page&quot;</span><span class="p">);</span>
+            <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="p">...</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+    <span class="c1">// COMPLETE IT FROM ORIGINAL CHOOSER.JS</span>
+    <span class="c1">// https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/images/templates/wagtailimages/chooser/chooser.js</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>Ajax request is created with two parameters <em>page</em> and <em>type</em>. The reason is to detect the page that is currently being edited/created we use the URL path. The URL when a page is edited contain the page id so we send the request with page id with type id. But when a new page is created we have the <em>Page modal name</em> in the URL. So, we create request with page model name and type <em>pagemodel</em>.</li>
+</ul>
+</li>
+</ol>
+<h4>The steps can be summed up into:</h4>
+<ol>
+<li>
+<p>Admin User clicks to choose an image, a request is sent to the server which returns HTML and JS chunk. HTML chunk will create the modal.</p>
+</li>
+<li>
+<p>We have overridden the <code>chooser.js</code> template so it will create an AJAX request to get the related collection.</p>
+</li>
+<li>
+<p>If a collection is returned, it will be automatically selected in the Upload form.</p>
+</li>
+</ol>
+<p>Thanks for reading.</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://parbhatpuri.com/author/parbhat-puri.html">@Parbhat Puri</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://parbhatpuri.com/category/python.html" rel="bookmark"
+                                               title="Permalink to python">[ python ]</a></span>
+                <span class="post_date">Sat 12 May 2018</span>
+                <div><span>Tags : </span>
+                            <span><a href="https://parbhatpuri.com/tag/wagtail.html">#wagtail, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/django.html">#django, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/opensource.html">#opensource, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/web.html">#web, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/programming.html">#Programming, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/code.html">#code, </a></span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html&text=Auto Select collection in Image Upload form of Wagtail&via=parbhatpuri"><img
+                            src="https://parbhatpuri.com/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html&t=Auto Select collection in Image Upload form of Wagtail"><img
+                            src="https://parbhatpuri.com/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html&title=Auto Select collection in Image Upload form of Wagtail"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Auto Select collection in Image Upload form of Wagtail&amp;body=Viens découvrir un article à propos de [Auto Select collection in Image Upload form of Wagtail] sur le site de Parbhat Puri. https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://parbhatpuri.com/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+                <div class="comments">
+                    <h2>Comments !</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_identifier = "auto-select-collection-in-image-upload-form-of-wagtail.html";
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = 'https://parbhat.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50405008-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</body>
+</html>
