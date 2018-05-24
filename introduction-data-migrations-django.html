@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>An introduction to data migrations in Django</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Learn to use Data migrations in Django using an example">
+        <meta name="author" content="Parbhat Puri">
+
+        <link rel="shortcut icon" href="https://parbhatpuri.com/images/favicon.ico">
+
+        <!-- schema.org -->
+<meta itemprop="name" content="Parbhat Puri ~ An introduction to data migrations in Django">
+<meta itemprop="image" content="https://i.imgur.com/75w4OAk.jpg">
+<meta itemprop="description" content="Learn to use Data migrations in Django using an example">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://parbhatpuri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="Parbhat Puri ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@parbhatpuri">
+
+    <meta name="twitter:creator" content="@parbhatpuri">
+    <meta name="twitter:url" content="https://parbhatpuri.com/introduction-data-migrations-django.html">
+    <meta name="twitter:title" content="Parbhat Puri ~ An introduction to data migrations in Django">
+    <meta name="twitter:description" content="Learn to use Data migrations in Django using an example">
+    <meta name="twitter:image" content="https://i.imgur.com/75w4OAk.jpg">
+    <meta name="twitter:image:alt" content="Three servers with green light">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:url" content="https://parbhatpuri.com/introduction-data-migrations-django.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Parbhat Puri ~ An introduction to data migrations in Django"/>
+    <meta property="og:description" content="Learn to use Data migrations in Django using an example"/>
+    <meta property="og:image" content="https://i.imgur.com/75w4OAk.jpg">
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
+    <h1>Parbhat Puri</h1>
+        <p>Freelance Software Developer</p>
+    <br>
+
+        <a class="twitter-follow-button"
+           href="https://twitter.com/parbhatpuri"
+           data-show-count="false"
+           data-lang="en">
+            Follow @twitterdev
+        </a>
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+            }(document, "script", "twitter-wjs"));
+        </script>
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://parbhatpuri.com">Blog</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/parbhat_resume.pdf">Resume</a></li>
+
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://www.linkedin.com/in/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/linkedin.png"></a>
+                <a href="https://github.com/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/parbhatpuri" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/twitter.png"></a>
+            <a href="https://parbhatpuri.com/feeds/all.atom.xml" rel="alternate">
+                <img src="https://parbhatpuri.com/theme/images/icons/rss.png"></a>
+    </p>
+
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="bookmark"
+                                                  title="Permalink to An introduction to data migrations in Django">An introduction to data migrations in Django</a></h2>
+            <div class="entry-content blog-post">
+                <p>Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named <em>Image</em>, we add a new field called <em>file_size</em>. The database schema will change after running some simple commands like <em>makemigrations</em> and <em>migrate</em>. We have changed the database schema without touching the database.</p>
+<p>Migrations are of two types:</p>
+<ol>
+<li>
+<p><strong>Schema migrations</strong>: It is the most commonly used and often referred as migrations. These help to change database schema like creating database tables, adding new fields to tables and changing fields etc. These are generated automatically by Django.</p>
+</li>
+<li>
+<p><strong>Data migrations</strong>: As the name suggests, migrations that alter data are called Data migrations. Django can not automatically generate data migrations, as it depends on your use case. Some examples where data migrations can be useful are:</p>
+<ul>
+<li>
+<p>We add a new field named <em>full_name</em> to our <em>User</em> model. We use the schema migration which will add the field to the User database table. User model already has fields like <em>first_name</em> and <em>last_name</em>. Our production database has more than a thousand users. How will we populate the <em>full_name</em> for these users? Data migration will help here. We can write data migration to combine the first_name and last_name then the result can be saved to full_name.</p>
+</li>
+<li>
+<p>Our project uses a third party Django package which provides an option to use a custom model. Initially, we do not require the custom model. But later we want to use the custom model to add new fields. As we are using the package in production, there is data stored in the old model. We have to migrate data from the old model to new model. Data migration can be created to accomplish this.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Learning by example</h3>
+<p>Hope you understand what data migrations are and when to use them. So, let's write a data migration. Suppose we have a model in our project like</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+
+<span class="k">class</span> <span class="nc">Image</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">))</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span>
+        <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">),</span> <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;uploads/&#39;</span><span class="p">,</span>
+        <span class="n">width_field</span><span class="o">=</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="n">height_field</span><span class="o">=</span><span class="s1">&#39;height&#39;</span>
+    <span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span>
+        <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;created at&#39;</span><span class="p">),</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">db_index</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+
+
+<p>The <em>Image</em> model has fields like title, file, width, height and created_at. The file is an <strong>ImageField</strong> which has a method called <strong>size</strong>. The size <a href="https://docs.djangoproject.com/en/2.0/ref/models/fields/#django.db.models.fields.files.FieldFile.size">method</a> returns the total size of the image in bytes. Instead, to call this method when we need to get the image size, we can add a new field called <strong>file_size</strong>.</p>
+<h4>Schema migration</h4>
+<hr>
+<p>A new line to add in above model is:</p>
+<div class="highlight"><pre><span></span><span class="n">file_size</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now Django can automatically create a schema migration to add the field to the Image table in database.</p>
+<div class="highlight"><pre><span></span>python manage.py makemigrations
+</pre></div>
+
+
+<p>A new migration is generated with name like <em>0002_image_file_size.py</em>.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Generated by Django 2.0.5 on 2018-05-23 08:55</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
+
+
+<span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;0001_initial&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">AddField</span><span class="p">(</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;file_size&#39;</span><span class="p">,</span>
+            <span class="n">field</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>The above migration uses migration operation called AddField to add a new field to the Image model. We do not have to write it. Now we have what changes we want in our database table of Image. Run the migrate command to make the changes in the database.</p>
+<div class="highlight"><pre><span></span>python manage.py migrate
+</pre></div>
+
+
+<h4>Data migration</h4>
+<hr>
+<p>We have a new field called <em>file_size</em> in the Image model. Say there are more than thousand objects of the Image model. But the file_size field value for all these image objects is <strong>Null</strong>. We have to update all the current image objects with the file size. We will write a data migration to accomplish the task.</p>
+<p>Create an empty migration file</p>
+<div class="highlight"><pre><span></span>python manage.py makemigrations --empty images
+</pre></div>
+
+
+<p>Here <em>images</em> is the name of the Django app which contains the Image model.</p>
+<p>Data Migration that will update the <em>file_size</em> field to image size will be</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span>
+
+
+<span class="k">def</span> <span class="nf">set_file_size</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># We can&#39;t import the Image model directly as it may be a newer</span>
+    <span class="c1"># version than this migration expects. We use the historical version.</span>
+    <span class="n">Image</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_size__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">file_size</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;file_size&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="c1"># The file doesn&#39;t exist. Internally it uses os.path.getsize</span>
+            <span class="c1"># to get size of image. Raise OSError if the file does not exist</span>
+            <span class="c1"># https://docs.python.org/3/library/os.path.html#os.path.getsize</span>
+            <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">do_nothing</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># The reverse function is not required here as we do not</span>
+    <span class="c1"># want to set the file size to Null again.</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;0002_image_file_size&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">set_file_size</span><span class="p">,</span> <span class="n">do_nothing</span><span class="p">),</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>Run the Data migration like the schema migration.</p>
+<div class="highlight"><pre><span></span>python manage.py migrate
+</pre></div>
+
+
+<ul>
+<li>
+<p>Schema migration has an operation called <em>AddField</em> which adds a field to the database table. Similarly, we use <strong>RunPython</strong> operation in data migration to run custom Python code. We pass two functions called <em>set_file_size</em> and <em>do_nothing</em>. The first function is a <strong>forward function</strong> which gets called when we run migrate command. The second function is necessary if we want to rollback a migration.</p>
+</li>
+<li>
+<p>The <em>set_file_size</em> function gets all the Image objects which have the <em>Null</em> value of <em>file_size</em>. Then set its value to file size and save to the database.</p>
+</li>
+<li>
+<p>Here we have empty reverse function called <em>do_nothing</em> because we do not want to set the <em>file_size</em> to <em>Null</em> again. The do_nothing function will help to roll back the migration.</p>
+<p>We can roll back the data migration by</p>
+<div class="highlight"><pre><span></span>./manage.py migrate images 0002_image_file_size
+</pre></div>
+
+
+<p><em>0002_image_file_size</em> is the schema migration we created before the data migration. we can use the <em>showmigrations</em> command to see applied and unapplied migrations.</p>
+<div class="highlight"><pre><span></span>python manage.py showmigrations images
+
+images
+ <span class="o">[</span>X<span class="o">]</span> 0001_initial
+ <span class="o">[</span>X<span class="o">]</span> 0002_image_file_size
+ <span class="o">[</span> <span class="o">]</span> 0003_auto_20180523_0907
+</pre></div>
+
+
+<p>We can again apply the migration using <em>migrate</em> command. We can also change the data migration name <em>0003_auto_20180523_0907</em> to meaningful like <em>0003_data_migration_image_set_file_size</em>.</p>
+</li>
+<li>
+<p>Data migrations should not be used to load test data. As migrations will run into the production database as well. We do not want test data in the production database. Fixtures can be used to load test data.</p>
+</li>
+</ul>
+<p>Hope the example is useful. In some cases, we have to write the reverse function as well. Simply it reverses the work performed by the forward function. Another example which migrates data from one model to other model is in the blog post. <a href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html">Switch to Custom image model in a Production Wagtail project</a>.</p>
+<p>Thanks for reading.</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://parbhatpuri.com/author/parbhat-puri.html">@Parbhat Puri</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://parbhatpuri.com/category/python.html" rel="bookmark"
+                                               title="Permalink to python">[ python ]</a></span>
+                <span class="post_date">Thu 24 May 2018</span>
+                <div><span>Tags : </span>
+                            <span><a href="https://parbhatpuri.com/tag/django.html">#django, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/migrations.html">#migrations, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/postgres.html">#postgres, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/opensource.html">#opensource, </a></span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://parbhatpuri.com/introduction-data-migrations-django.html&text=An introduction to data migrations in Django&via=parbhatpuri"><img
+                            src="https://parbhatpuri.com/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://parbhatpuri.com/introduction-data-migrations-django.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://parbhatpuri.com/introduction-data-migrations-django.html&t=An introduction to data migrations in Django"><img
+                            src="https://parbhatpuri.com/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://parbhatpuri.com/introduction-data-migrations-django.html&title=An introduction to data migrations in Django"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=An introduction to data migrations in Django&amp;body=Viens découvrir un article à propos de [An introduction to data migrations in Django] sur le site de Parbhat Puri. https://parbhatpuri.com/introduction-data-migrations-django.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://parbhatpuri.com/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+                <div class="comments">
+                    <h2>Comments !</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_identifier = "introduction-data-migrations-django.html";
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = 'https://parbhat.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50405008-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</body>
+</html>

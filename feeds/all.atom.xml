@@ -1,5 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/all.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2018-05-12T20:00:00+05:30</updated><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/all.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2018-05-24T20:00:00+05:30</updated><entry><title>An introduction to data migrations in Django</title><link href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="alternate"></link><published>2018-05-24T20:00:00+05:30</published><updated>2018-05-24T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-24:/introduction-data-migrations-django.html</id><summary type="html">&lt;p&gt;Learn to use Data migrations in Django using an example&lt;/p&gt;</summary><content type="html">&lt;p&gt;Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named &lt;em&gt;Image&lt;/em&gt;, we add a new field called &lt;em&gt;file_size&lt;/em&gt;. The database schema will change after running some simple commands like &lt;em&gt;makemigrations&lt;/em&gt; and &lt;em&gt;migrate&lt;/em&gt;. We have changed the database schema without touching the database.&lt;/p&gt;
+&lt;p&gt;Migrations are of two types:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Schema migrations&lt;/strong&gt;: It is the most commonly used and often referred as migrations. These help to change database schema like creating database tables, adding new fields to tables and changing fields etc. These are generated automatically by Django.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data migrations&lt;/strong&gt;: As the name suggests, migrations that alter data are called Data migrations. Django can not automatically generate data migrations, as it depends on your use case. Some examples where data migrations can be useful are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We add a new field named &lt;em&gt;full_name&lt;/em&gt; to our &lt;em&gt;User&lt;/em&gt; model. We use the schema migration which will add the field to the User database table. User model already has fields like &lt;em&gt;first_name&lt;/em&gt; and &lt;em&gt;last_name&lt;/em&gt;. Our production database has more than a thousand users. How will we populate the &lt;em&gt;full_name&lt;/em&gt; for these users? Data migration will help here. We can write data migration to combine the first_name and last_name then the result can be saved to full_name.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Our project uses a third party Django package which provides an option to use a custom model. Initially, we do not require the custom model. But later we want to use the custom model to add new fields. As we are using the package in production, there is data stored in the old model. We have to migrate data from the old model to new model. Data migration can be created to accomplish this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Learning by example&lt;/h3&gt;
+&lt;p&gt;Hope you understand what data migrations are and when to use them. So, let's write a data migration. Suppose we have a model in our project like&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.translation&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ugettext_lazy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ImageField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;upload_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploads/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;width_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;width&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;height&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;width&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;height&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;created_at&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTimeField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;created at&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auto_now_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;em&gt;Image&lt;/em&gt; model has fields like title, file, width, height and created_at. The file is an &lt;strong&gt;ImageField&lt;/strong&gt; which has a method called &lt;strong&gt;size&lt;/strong&gt;. The size &lt;a href="https://docs.djangoproject.com/en/2.0/ref/models/fields/#django.db.models.fields.files.FieldFile.size"&gt;method&lt;/a&gt; returns the total size of the image in bytes. Instead, to call this method when we need to get the image size, we can add a new field called &lt;strong&gt;file_size&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4&gt;Schema migration&lt;/h4&gt;
+&lt;hr&gt;
+&lt;p&gt;A new line to add in above model is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;file_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now Django can automatically create a schema migration to add the field to the Image table in database.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A new migration is generated with name like &lt;em&gt;0002_image_file_size.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Generated by Django 2.0.5 on 2018-05-23 08:55&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;0001_initial&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;model_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file_size&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above migration uses migration operation called AddField to add a new field to the Image model. We do not have to write it. Now we have what changes we want in our database table of Image. Run the migrate command to make the changes in the database.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Data migration&lt;/h4&gt;
+&lt;hr&gt;
+&lt;p&gt;We have a new field called &lt;em&gt;file_size&lt;/em&gt; in the Image model. Say there are more than thousand objects of the Image model. But the file_size field value for all these image objects is &lt;strong&gt;Null&lt;/strong&gt;. We have to update all the current image objects with the file size. We will write a data migration to accomplish the task.&lt;/p&gt;
+&lt;p&gt;Create an empty migration file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations --empty images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here &lt;em&gt;images&lt;/em&gt; is the name of the Django app which contains the Image model.&lt;/p&gt;
+&lt;p&gt;Data Migration that will update the &lt;em&gt;file_size&lt;/em&gt; field to image size will be&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;set_file_size&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;schema_editor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# We can&amp;#39;t import the Image model directly as it may be a newer&lt;/span&gt;
+    &lt;span class="c1"&gt;# version than this migration expects. We use the historical version.&lt;/span&gt;
+    &lt;span class="n"&gt;Image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_size__isnull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+            &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;update_fields&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file_size&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;OSError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;# The file doesn&amp;#39;t exist. Internally it uses os.path.getsize&lt;/span&gt;
+            &lt;span class="c1"&gt;# to get size of image. Raise OSError if the file does not exist&lt;/span&gt;
+            &lt;span class="c1"&gt;# https://docs.python.org/3/library/os.path.html#os.path.getsize&lt;/span&gt;
+            &lt;span class="k"&gt;pass&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;do_nothing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;schema_editor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# The reverse function is not required here as we do not&lt;/span&gt;
+    &lt;span class="c1"&gt;# want to set the file size to Null again.&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;0002_image_file_size&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunPython&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;set_file_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;do_nothing&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Run the Data migration like the schema migration.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Schema migration has an operation called &lt;em&gt;AddField&lt;/em&gt; which adds a field to the database table. Similarly, we use &lt;strong&gt;RunPython&lt;/strong&gt; operation in data migration to run custom Python code. We pass two functions called &lt;em&gt;set_file_size&lt;/em&gt; and &lt;em&gt;do_nothing&lt;/em&gt;. The first function is a &lt;strong&gt;forward function&lt;/strong&gt; which gets called when we run migrate command. The second function is necessary if we want to rollback a migration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;em&gt;set_file_size&lt;/em&gt; function gets all the Image objects which have the &lt;em&gt;Null&lt;/em&gt; value of &lt;em&gt;file_size&lt;/em&gt;. Then set its value to file size and save to the database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Here we have empty reverse function called &lt;em&gt;do_nothing&lt;/em&gt; because we do not want to set the &lt;em&gt;file_size&lt;/em&gt; to &lt;em&gt;Null&lt;/em&gt; again. The do_nothing function will help to roll back the migration.&lt;/p&gt;
+&lt;p&gt;We can roll back the data migration by&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./manage.py migrate images 0002_image_file_size
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;0002_image_file_size&lt;/em&gt; is the schema migration we created before the data migration. we can use the &lt;em&gt;showmigrations&lt;/em&gt; command to see applied and unapplied migrations.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py showmigrations images
+
+images
+ &lt;span class="o"&gt;[&lt;/span&gt;X&lt;span class="o"&gt;]&lt;/span&gt; 0001_initial
+ &lt;span class="o"&gt;[&lt;/span&gt;X&lt;span class="o"&gt;]&lt;/span&gt; 0002_image_file_size
+ &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; 0003_auto_20180523_0907
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can again apply the migration using &lt;em&gt;migrate&lt;/em&gt; command. We can also change the data migration name &lt;em&gt;0003_auto_20180523_0907&lt;/em&gt; to meaningful like &lt;em&gt;0003_data_migration_image_set_file_size&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Data migrations should not be used to load test data. As migrations will run into the production database as well. We do not want test data in the production database. Fixtures can be used to load test data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hope the example is useful. In some cases, we have to write the reverse function as well. Simply it reverses the work performed by the forward function. Another example which migrates data from one model to other model is in the blog post. &lt;a href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html"&gt;Switch to Custom image model in a Production Wagtail project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks for reading.&lt;/p&gt;</content><category term="django"></category><category term="migrations"></category><category term="postgres"></category><category term="opensource"></category></entry><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Feature description&lt;/h2&gt;
 &lt;p&gt;Images in Wagtail can be organised into collections. Collections can be created in Wagtail admin from &lt;em&gt;Settings &amp;gt; Collections&lt;/em&gt; menu item. In an example Wagtail site, there are two collections namely &lt;em&gt;Blog&lt;/em&gt; and &lt;em&gt;Photo Gallery&lt;/em&gt;. On image upload form the user has the option to upload an image into a particular collection. This helps to organise the images into groups like Blog. The image upload form looks like&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Image upload form wagtail" src="https://i.imgur.com/AREjqfe.png"&gt;&lt;/p&gt;
