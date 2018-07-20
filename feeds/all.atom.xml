@@ -1,5 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/all.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2018-05-24T20:00:00+05:30</updated><entry><title>An introduction to data migrations in Django</title><link href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="alternate"></link><published>2018-05-24T20:00:00+05:30</published><updated>2018-05-24T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-24:/introduction-data-migrations-django.html</id><summary type="html">&lt;p&gt;Learn to use Data migrations in Django using an example&lt;/p&gt;</summary><content type="html">&lt;p&gt;Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named &lt;em&gt;Image&lt;/em&gt;, we add a new field called &lt;em&gt;file_size&lt;/em&gt;. The database schema will change after running some simple commands like &lt;em&gt;makemigrations&lt;/em&gt; and &lt;em&gt;migrate&lt;/em&gt;. We have changed the database schema without touching the database.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/all.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2018-07-20T20:00:00+05:30</updated><entry><title>Amplify a Wagtail/Django site - URLs (Part 1)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html" rel="alternate"></link><published>2018-07-20T20:00:00+05:30</published><updated>2018-07-20T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-07-20:/amplify-wagtail-django-site-urls-part-1.html</id><summary type="html">&lt;p&gt;First part of the series which list multiple ways to create URLs for AMP pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Accelerated Mobile Pages (AMP) is an Open Source project with a focus on creating a fast and smooth experience for website users. AMP version of a page also shows at the top of Google search results for mobile users. AMP is must for every content site these days. If you already have a running website, AMP is just another version of an existing page on the site. AMP version loads fast due to AMP spec like max CSS size can be 50KB only. You can read more about AMP on its &lt;a href="https://www.ampproject.org/"&gt;site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This blog post is the first part of the series: Amplify a Wagtail/Django site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Part 1: Amplify a Wagtail/Django site - URLs (current article)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Part 2: Amplify a Wagtail/Django site - Validation&lt;/li&gt;
+&lt;li&gt;Part 3: Amplify a Wagtail/Django site - CORS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/6Fg7V9Y.jpg" alt="Wagtail and AMP logo." width="550px"/&gt;&lt;/p&gt;
+&lt;p&gt;Wagtail is a beautiful CMS built on top of the Django web framework. This blog series will list the steps to create an AMP version of your existing Wagtail pages. A demo project is available on &lt;a href="https://github.com/Parbhat/wagtail-amp"&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;URL of the AMP version of page&lt;/h2&gt;
+&lt;p&gt;As AMP is just another version of an existing page, it will have a new URL. Commonly &lt;em&gt;amp&lt;/em&gt; keyword is added to the normal page URL. Suppose we want to Amplify a page like &lt;a href="https://wagtail.io/blog/graphql-with-streamfield/"&gt;https://wagtail.io/blog/graphql-with-streamfield/&lt;/a&gt;. AMP version of this page can have the following URLs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;https://wagtail.io/blog/graphql-with-streamfield/&lt;strong&gt;amp/&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;https://wagtail.io/&lt;strong&gt;amp/&lt;/strong&gt;blog/graphql-with-streamfield/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The first URL is easy to create in Wagtail. But the second URL needs some customization in the Wagtail serving mechanism. This blog post will list the steps to use any of these URLs in your project.&lt;/p&gt;
+&lt;h3&gt;URL 1: AMP keyword at end of Normal URL&lt;/h3&gt;
+&lt;p&gt;Wagtail comes with a contrib app called &lt;a href="http://docs.wagtail.io/en/v2.1.1/reference/contrib/routablepage.html"&gt;RoutablePageMixin&lt;/a&gt;. The RoutablePageMixin extend a page to respond on multiple sub URLs with different views.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RoutablePageMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L47&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^amp/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TemplateResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog/blog_page_amp.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
+
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the above example, we get the Blog Page object context and use it in the AMP template of a blog page. So, if a blog page has a URL &lt;a href="https://wagtail.io/blog/wagtail-space-usa/"&gt;https://wagtail.io/blog/wagtail-space-usa/&lt;/a&gt;. AMP version will exist at https://wagtail.io/blog/wagtail-space-usa/&lt;strong&gt;amp/&lt;/strong&gt;&lt;/p&gt;
+&lt;h4&gt;Template requirements&lt;/h4&gt;
+&lt;p&gt;Normal page template (&lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page.html#L8"&gt;blog_page.html&lt;/a&gt;) should include this Meta tag. It helps Google know the location of AMP version of this page.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% load wagtailroutablepage_tags %}
+
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amphtml&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ request.site.root_url }}{% routablepageurl page &amp;#39;amp&amp;#39; %}&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;AMP template (&lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html#L5"&gt;blog_page_amp.html&lt;/a&gt;) should include&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ page.full_url }}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;URL 2: AMP keyword after site root URL&lt;/h3&gt;
+&lt;p&gt;Using the first approach is sufficient in most cases. In some custom Django projects, this approach will be useful if the non Wagtail powered AMP pages also use amp keyword after root URL. So, we need to maintain consistency in the URL pattern of Wagtail powered and other URLs. We have to customize the Wagtail serving mechanism. First, we will understand the Wagtail serving mechanism and then work on the customization.&lt;/p&gt;
+&lt;h4&gt;Wagtail Serving mechanism:&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;When a request is made, it is passed to Wagtail &lt;a href="https://github.com/wagtail/wagtail/blob/stable/2.1.x/wagtail/core/views.py#L10"&gt;serve&lt;/a&gt; view.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Serve view creates path components list for the requested path. For example, if a request is made for URL &lt;a href="https://wagtail.io/blog/graphql-with-streamfield/"&gt;https://wagtail.io/blog/graphql-with-streamfield/&lt;/a&gt;. Path components list will be&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Then current site's root page &lt;a href="https://github.com/wagtail/wagtail/blob/stable/2.1.x/wagtail/core/models.py#L600"&gt;route&lt;/a&gt; method is called with &lt;em&gt;path_components&lt;/em&gt;. In demo project, root page is &lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/home/models.py#L9"&gt;home.HomePage&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wagtail checks the page existence by slug one by one from the &lt;em&gt;path_components&lt;/em&gt; list. For example, it first checks the root page (HomePage) has a child with &lt;em&gt;slug: blog&lt;/em&gt;. If a page is found, the &lt;em&gt;route&lt;/em&gt; method of the blog index page is called with remaining path components. In case a page is not found with a slug, 404 error is raised.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The process continues and takes a slug from the &lt;em&gt;path_components&lt;/em&gt; list until it becomes empty. And if a page is live it is returned to serve view.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In serve view, the serve method of the page object is called.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Wagtail docs also have a great explanation on &lt;a href="http://docs.wagtail.io/en/v2.1.1/reference/pages/theory.html#anatomy-of-a-wagtail-request"&gt;Anatomy of a Wagtail Request&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Changes in the Serving mechanism for AMP&lt;/h4&gt;
+&lt;p&gt;As the AMP version of Wagtail page should be served from https://wagtail.io/amp/&lt;strong&gt;*&lt;/strong&gt;, some changes are required in above workflow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;As the HomePage &lt;em&gt;route&lt;/em&gt; method is first called. We can have a flag (&lt;em&gt;is_amp_request&lt;/em&gt;) which helps to determine the request is for the AMP page. If the first item in the &lt;em&gt;path_components&lt;/em&gt; list is &lt;em&gt;amp&lt;/em&gt;, we set the Flag on and reduce the list to &lt;em&gt;path_components[1:]&lt;/em&gt;. So, we can check page with remaining path components exists. For example, if the request is made for &lt;strong&gt;https://wagtail.io/amp/blog/graphql-with-streamfield/&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Wagtail creates path components list in serve view.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In HomePage &lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/home/models.py#L18"&gt;route&lt;/a&gt; method, it is changed to&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Overriding route method&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HomePage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RichTextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Check the request is for AMP page&lt;/span&gt;
+        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+            &lt;span class="c1"&gt;# Remove the amp from path components to check if the page exist&lt;/span&gt;
+            &lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+
+        &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HomePage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;# If the page has amp template serve it otherwise raise 404&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;hasattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;get_template_amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;Http404&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;
+
+    &lt;span class="n"&gt;content_panels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content_panels&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;FieldPanel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;full&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;parent_page_types&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wagtailcore.Page&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If the page exists in Wagtail with the remaining &lt;em&gt;path_components&lt;/em&gt;, we check the page has an AMP version by method &lt;em&gt;get_template_amp&lt;/em&gt;. If no, we raise 404 error as the AMP version for the page not exists. If yes, we add a kwarg argument &lt;em&gt;kwargs['is_amp_request'] = is_amp_request&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The page object, args and kwargs are returned to Wagtail Serve view from the root page's route method.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In Wagtail serve view, page's &lt;em&gt;serve&lt;/em&gt; method is called with &lt;em&gt;args, kwargs&lt;/em&gt;. In the case of a blog page, we customised the Serve method to handle AMP requests. Using the kwarg argument &lt;em&gt;is_amp_request&lt;/em&gt;, we return the AMP version of the blog page.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L85&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog/amp_blog_page_amp.html&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;TemplateResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;context&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;What's Next&lt;/h2&gt;
+&lt;p&gt;Part 1 of this series list two options to choose a URL for AMP version. The focus of next parts in the series will be&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Part 2 on Validation&lt;/strong&gt;: AMP spec has some restriction on the elements like &lt;em&gt;img&lt;/em&gt; tag. AMP page should pass Validation to get served from Google AMP cache. In the next part, we will work on creating Valid Wagtail powered AMP pages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Part 3 on CORS&lt;/strong&gt;: When using AMP components like &lt;a href="https://ampbyexample.com/components/amp-list/"&gt;amp-list&lt;/a&gt;, the server should include CORS headers in the response. It is not specific to Wagtail and applies to any Django project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can also follow the Github &lt;a href="https://github.com/Parbhat/wagtail-amp"&gt;repo&lt;/a&gt;. AMP-lify!&lt;/p&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>An introduction to data migrations in Django</title><link href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="alternate"></link><published>2018-05-24T20:00:00+05:30</published><updated>2018-05-24T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-24:/introduction-data-migrations-django.html</id><summary type="html">&lt;p&gt;Learn to use Data migrations in Django using an example&lt;/p&gt;</summary><content type="html">&lt;p&gt;Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named &lt;em&gt;Image&lt;/em&gt;, we add a new field called &lt;em&gt;file_size&lt;/em&gt;. The database schema will change after running some simple commands like &lt;em&gt;makemigrations&lt;/em&gt; and &lt;em&gt;migrate&lt;/em&gt;. We have changed the database schema without touching the database.&lt;/p&gt;
 &lt;p&gt;Migrations are of two types:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
