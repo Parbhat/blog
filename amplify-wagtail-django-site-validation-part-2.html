@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Amplify a Wagtail/Django site - Validation (Part 2)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Second part of the series on valid AMP pages as only valid pages appears in Google search results.">
+        <meta name="author" content="Parbhat Puri">
+
+        <link rel="shortcut icon" href="https://parbhatpuri.com/images/favicon.ico">
+
+        <!-- schema.org -->
+<meta itemprop="name" content="Parbhat Puri ~ Amplify a Wagtail/Django site - Validation (Part 2)">
+<meta itemprop="image" content="https://i.imgur.com/6Fg7V9Y.jpg">
+<meta itemprop="description" content="Second part of the series on valid AMP pages as only valid pages appears in Google search results.">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://parbhatpuri.com/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://parbhatpuri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="Parbhat Puri ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@parbhatpuri">
+
+    <meta name="twitter:creator" content="@parbhatpuri">
+    <meta name="twitter:url" content="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html">
+    <meta name="twitter:title" content="Parbhat Puri ~ Amplify a Wagtail/Django site - Validation (Part 2)">
+    <meta name="twitter:description" content="Second part of the series on valid AMP pages as only valid pages appears in Google search results.">
+    <meta name="twitter:image" content="https://i.imgur.com/6Fg7V9Y.jpg">
+    <meta name="twitter:image:alt" content="Wagtail and AMP logo.">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:url" content="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Parbhat Puri ~ Amplify a Wagtail/Django site - Validation (Part 2)"/>
+    <meta property="og:description" content="Second part of the series on valid AMP pages as only valid pages appears in Google search results."/>
+    <meta property="og:image" content="https://i.imgur.com/6Fg7V9Y.jpg">
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
+    <h1>Parbhat Puri</h1>
+        <p>Freelance Software Developer</p>
+    <br>
+
+        <a class="twitter-follow-button"
+           href="https://twitter.com/parbhatpuri"
+           data-show-count="false"
+           data-lang="en">
+            Follow @twitterdev
+        </a>
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+            }(document, "script", "twitter-wjs"));
+        </script>
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://parbhatpuri.com">Blog</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="https://parbhatpuri.com/parbhat_resume.pdf">Resume</a></li>
+
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://www.linkedin.com/in/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/linkedin.png"></a>
+                <a href="https://github.com/parbhat" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/parbhatpuri" target="_blank"><img
+                        src="https://parbhatpuri.com/theme/images/icons/twitter.png"></a>
+            <a href="https://parbhatpuri.com/feeds/all.atom.xml" rel="alternate">
+                <img src="https://parbhatpuri.com/theme/images/icons/rss.png"></a>
+    </p>
+
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html" rel="bookmark"
+                                                  title="Permalink to Amplify a Wagtail/Django site - Validation (Part 2)">Amplify a Wagtail/Django site - Validation (Part 2)</a></h2>
+            <div class="entry-content blog-post">
+                <p>The driving force behind creating AMP pages for a content website is to appear at the top of Google search results. AMP pages appear in search results with a lightning bolt icon. Page speed is also one of the important factors in the ranking of search results. As AMP pages are very fast due to its strict specification, it is common to see AMP version of a page appearing at the top. AMP pages with structured data also appear in the Top stories carousel, host carousel of rich results, Visual stories, and rich results in mobile Search results.</p>
+<p>This blog post is the second part of the series: Amplify a Wagtail/Django site.</p>
+<ul>
+<li>Part 1: <a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html">Amplify a Wagtail/Django site - URLs</a></li>
+<li><strong>Part 2: Amplify a Wagtail/Django site - Validation (current article)</strong></li>
+<li>Part 3: Amplify a Wagtail/Django site - CORS</li>
+</ul>
+<p style="text-align: center">
+    <img src="https://i.imgur.com/WsEBnXk.gif" alt="AMP pages in google search" height="500px">
+</p>
+
+<p>In the above gif, notice the ⚡ icon next to search results. Most of the results are AMP pages and only the last search result is a normal page. It is a highly likely case that mobile users only click the top links. Therefore AMP page becomes a necessity for online content publishers who publish 100s of articles daily.</p>
+<h3>How to make AMP page discoverable to Google search?</h3>
+<p>The initial requirement is to have a <em>link</em> tag in the non-AMP page with <em>rel="amphtml"</em> and <em>href</em> contains URL of AMP version.</p>
+<p>Add the following to the non-AMP page:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;amphtml&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/amp/document.html&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>And this to the AMP page:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;canonical&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/non-amp/document.html&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>The <strong>important</strong> requirement is the AMP page should be valid. When a mobile user clicks on an AMP search result, Google search retrieves the page from the <a href="https://developers.google.com/amp/cache/">Google AMP cache</a>. Only valid AMP pages are cached. Valid AMP pages are preloaded efficiently and stored in Google cache to improve the user experience.</p>
+<h3>Render valid AMP pages in Wagtail/Django powered site</h3>
+<p>Valid means AMP page should not contain tags which are restricted as per AMP specification. AMP HTML is a subset of HTML, it puts some restrictions on the full set of tags and functionality available through HTML. For performance, AMP HTML does not allow author written JavaScript beyond what is provided through the custom elements.</p>
+<p>In Wagtail powered site, AMP templates should not use restricted tags. For example, <code>&lt;img&gt;</code> tag should be replaced with <code>&lt;amp-img&gt;</code>. <code>&lt;img&gt;</code> does not have an end tag. However, <code>&lt;amp-img&gt;</code> does have an end tag <code>&lt;/amp-img&gt;</code>.</p>
+<ul>
+<li><strong>Change tags for fields whose properties can be accessed</strong>: It is easy to change tags in cases where we can directly access field properties. Wagtail image tag render <code>&lt;img&gt;</code> tag so we can directly access image properties to create <code>&lt;amp-img&gt;</code> tag:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&gt;</span>
+
+{% for item in page.gallery_images.all %}
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        {% image item.image fill-600x500 as gallery_image %}
+        <span class="p">&lt;</span><span class="nt">amp-img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;{{ gallery_image.alt }}&quot;</span>
+          <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ gallery_image.url }}&quot;</span>
+          <span class="na">width</span><span class="o">=</span><span class="s">&quot;{{ gallery_image.width }}&quot;</span>
+          <span class="na">height</span><span class="o">=</span><span class="s">&quot;{{ gallery_image.height }}&quot;</span>
+          <span class="na">layout</span><span class="o">=</span><span class="s">&quot;responsive&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">amp-img</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ item.caption }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endfor %}
+</pre></div>
+
+
+<ul>
+<li><strong>Change tags in Richtext and Streamfield</strong>: The main feature of a CMS is a WYSIWYG HTML Editor to create content. Wagtail also uses Draftail in Richtext field and Streamfield's Richtext block. As the content created with these fields is stored as HTML, we do not have direct access to images etc. To create a valid AMP page, we can use a Python package called <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> to modify the HTML.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+
+<span class="k">def</span> <span class="nf">amplify_html</span><span class="p">(</span><span class="n">rendered_html</span><span class="p">):</span>
+    <span class="n">bs</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">rendered_html</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">bs</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}):</span>
+        <span class="n">amp_img</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span>
+            <span class="s1">&#39;amp-img&#39;</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;alt&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;responsive&quot;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="mi">550</span><span class="p">),</span>
+            <span class="n">height</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="mi">368</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">amp_img</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">replace_with</span><span class="p">(</span><span class="n">amp_img</span><span class="p">)</span>
+
+    <span class="c1"># ...</span>
+    <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/utils.py</span>
+
+    <span class="k">return</span> <span class="n">bs</span><span class="o">.</span><span class="n">decode_contents</span><span class="p">()</span>
+</pre></div>
+
+
+<p>In the first <a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html">part</a> of the series, we learned the Wagtail serving mechanism. Serve method on a Page model is responsible for sending HTML response. Body field is a Streamfield and we can get the rendered HTML using the <code>__html__()</code> method. The body field HTML is non-AMP, it can contain tags which are restricted in AMP pages. Therefore we get the AMP HTML using <code>amplify_html</code> method and add it in the context.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AmpBlogPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/8abd9d6b0ee36fe2183167ad6c5f4556dd825590/blog/models.py#L92</span>
+
+    <span class="k">def</span> <span class="nf">get_template_amp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;blog/amp_blog_page_amp.html&#39;</span>
+
+    <span class="k">def</span> <span class="nf">serve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">is_amp_request</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_amp_request</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">body_html</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">__html__</span><span class="p">()</span>
+            <span class="n">body_amp_html</span> <span class="o">=</span> <span class="n">amplify_html</span><span class="p">(</span><span class="n">body_html</span><span class="p">)</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;body_amp_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mark_safe</span><span class="p">(</span><span class="n">body_amp_html</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">TemplateResponse</span><span class="p">(</span>
+                <span class="n">request</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_template_amp</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                <span class="n">context</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AmpBlogPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<p><code>body_amp_html</code> is used in <a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/amp_blog_page_amp.html">template</a> instead of <code>page.body</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+    {{ body_amp_html }}
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Similarly we can get AMP HTML for Richtext field. In Richtext field, we need to use <a href="https://github.com/wagtail/wagtail/blob/stable/2.4.x/wagtail/core/rich_text/__init__.py#L17">expand_db_html</a> function to expand database-representation HTML into proper HTML.</p>
+<p>We can also use a separate field for AMP content and use publish hook to fill it. Then we do not have to parse and modify HTML in the request-response cycle. But we can avoid it. As the process is fast and also pages are served from Google cache in Google search. Each time a user accesses AMP content from the cache, the content is automatically updated, and the updated version is served to the next user once the content has been cached.</p>
+<h4>For streamfield, there is another option:</h4>
+<p>If your project uses Streamfield's Richtext block without the image, embed <a href="https://docs.wagtail.io/en/v2.4/advanced_topics/customisation/page_editing_interface.html#limiting-features-in-a-rich-text-field">feature</a> then you can skip the beautiful soup method. It is recommended to use Richtext field with a small set of features and use <a href="https://docs.wagtail.io/en/v2.4/topics/streamfield.html#imagechooserblock">Image chooser block</a>. New Streamfield blocks should be created depending on the UI requirements. We only need to add <code>is_amp_request</code> in context.</p>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">serve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">is_amp_request</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_amp_request</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+
+            <span class="k">return</span> <span class="n">TemplateResponse</span><span class="p">(</span>
+                <span class="n">request</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_template_amp</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                <span class="n">context</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AmpBlogPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- Template for streamfield block like Service block --&gt;</span>
+{% if is_amp_request %}
+    {% image value.image fill-400x300 as amp_img %}
+    <span class="p">&lt;</span><span class="nt">amp-img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;{{ amp_img.alt }}&quot;</span>
+      <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ amp_img.url }}&quot;</span>
+      <span class="na">width</span><span class="o">=</span><span class="s">&quot;{{ amp_img.width }}&quot;</span>
+      <span class="na">height</span><span class="o">=</span><span class="s">&quot;{{ amp_img.height }}&quot;</span>
+      <span class="na">layout</span><span class="o">=</span><span class="s">&quot;responsive&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">amp-img</span><span class="p">&gt;</span>
+{% else %}
+    {% image value.image fill-400x300 %}
+{% endif %}
+</pre></div>
+
+
+<p>With these small changes, our AMP page is ready to fly high with Wagtail. In the next part of the series, we will add CORS headers required in <a href="https://www.ampproject.org/docs/reference/components/amp-list">amp-list</a> and <a href="https://www.ampproject.org/docs/reference/components/amp-form">amp-form</a> components.</p>
+<p>Thanks for reading. You can also follow the Github <a href="https://github.com/Parbhat/wagtail-amp">repo</a>. AMP-lify!</p>
+<p>Useful links:</p>
+<ol>
+<li><a href="https://www.ampproject.org/docs/fundamentals/validate">Validate AMP pages</a></li>
+<li><a href="https://www.ampproject.org/docs/fundamentals/discovery">Make your page discoverable</a></li>
+<li><a href="https://developers.google.com/amp/cache/overview">Google AMP Cache</a></li>
+<li><a href="https://developers.google.com/search/docs/data-types/article#amp">Google search</a></li>
+<li><a href="https://developers.google.com/search/docs/guides/about-amp">Understand how AMP looks in search results</a></li>
+<li><a href="https://www.ampproject.org/docs/fundamentals/spec">AMP HTML Specification</a></li>
+<li><a href="https://www.ampproject.org/docs/fundamentals/how_cached">How AMP pages are cached</a></li>
+</ol>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://parbhatpuri.com/author/parbhat-puri.html">@Parbhat Puri</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://parbhatpuri.com/category/python.html" rel="bookmark"
+                                               title="Permalink to python">[ python ]</a></span>
+                <span class="post_date">Tue 01 January 2019</span>
+                <div><span>Tags : </span>
+                            <span><a href="https://parbhatpuri.com/tag/wagtail.html">#wagtail, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/django.html">#django, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/opensource.html">#opensource, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/web.html">#web, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/programming.html">#Programming, </a></span>
+                            <span><a href="https://parbhatpuri.com/tag/code.html">#code, </a></span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html&text=Amplify a Wagtail/Django site - Validation (Part 2)&via=parbhatpuri"><img
+                            src="https://parbhatpuri.com/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html&t=Amplify a Wagtail/Django site - Validation (Part 2)"><img
+                            src="https://parbhatpuri.com/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html&title=Amplify a Wagtail/Django site - Validation (Part 2)"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://parbhatpuri.com/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Amplify a Wagtail/Django site - Validation (Part 2)&amp;body=Viens découvrir un article à propos de [Amplify a Wagtail/Django site - Validation (Part 2)] sur le site de Parbhat Puri. https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://parbhatpuri.com/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+                <div class="comments">
+                    <h2>Comments !</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_identifier = "amplify-wagtail-django-site-validation-part-2.html";
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = 'https://parbhat.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-50405008-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</body>
+</html>

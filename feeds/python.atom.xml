@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri - python</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/python.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2018-07-20T20:00:00+05:30</updated><entry><title>Amplify a Wagtail/Django site - URLs (Part 1)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html" rel="alternate"></link><published>2018-07-20T20:00:00+05:30</published><updated>2018-07-20T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-07-20:/amplify-wagtail-django-site-urls-part-1.html</id><summary type="html">&lt;p&gt;First part of the series which list multiple ways to create URLs for AMP pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Accelerated Mobile Pages (AMP) is an Open Source project with a focus on creating a fast and smooth experience for website users. AMP version of a page also shows at the top of Google search results for mobile users. AMP is must for every content site these days. If you already have a running website, AMP is just another version of an existing page on the site. AMP version loads fast due to AMP spec like max CSS size can be 50KB only. You can read more about AMP on its &lt;a href="https://www.ampproject.org/"&gt;site&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Parbhat Puri - python</title><link href="https://parbhatpuri.com/" rel="alternate"></link><link href="https://parbhatpuri.com/feeds/python.atom.xml" rel="self"></link><id>https://parbhatpuri.com/</id><updated>2019-01-01T20:00:00+05:30</updated><entry><title>Amplify a Wagtail/Django site - Validation (Part 2)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html" rel="alternate"></link><published>2019-01-01T20:00:00+05:30</published><updated>2019-01-01T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2019-01-01:/amplify-wagtail-django-site-validation-part-2.html</id><summary type="html">&lt;p&gt;Second part of the series on valid AMP pages as only valid pages appears in Google search results.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The driving force behind creating AMP pages for a content website is to appear at the top of Google search results. AMP pages appear in search results with a lightning bolt icon. Page speed is also one of the important factors in the ranking of search results. As AMP pages are very fast due to its strict specification, it is common to see AMP version of a page appearing at the top. AMP pages with structured data also appear in the Top stories carousel, host carousel of rich results, Visual stories, and rich results in mobile Search results.&lt;/p&gt;
+&lt;p&gt;This blog post is the second part of the series: Amplify a Wagtail/Django site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Part 1: &lt;a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html"&gt;Amplify a Wagtail/Django site - URLs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 2: Amplify a Wagtail/Django site - Validation (current article)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Part 3: Amplify a Wagtail/Django site - CORS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="text-align: center"&gt;
+    &lt;img src="https://i.imgur.com/WsEBnXk.gif" alt="AMP pages in google search" height="500px"&gt;
+&lt;/p&gt;
+
+&lt;p&gt;In the above gif, notice the ⚡ icon next to search results. Most of the results are AMP pages and only the last search result is a normal page. It is a highly likely case that mobile users only click the top links. Therefore AMP page becomes a necessity for online content publishers who publish 100s of articles daily.&lt;/p&gt;
+&lt;h3&gt;How to make AMP page discoverable to Google search?&lt;/h3&gt;
+&lt;p&gt;The initial requirement is to have a &lt;em&gt;link&lt;/em&gt; tag in the non-AMP page with &lt;em&gt;rel="amphtml"&lt;/em&gt; and &lt;em&gt;href&lt;/em&gt; contains URL of AMP version.&lt;/p&gt;
+&lt;p&gt;Add the following to the non-AMP page:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amphtml&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And this to the AMP page:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/non-amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;strong&gt;important&lt;/strong&gt; requirement is the AMP page should be valid. When a mobile user clicks on an AMP search result, Google search retrieves the page from the &lt;a href="https://developers.google.com/amp/cache/"&gt;Google AMP cache&lt;/a&gt;. Only valid AMP pages are cached. Valid AMP pages are preloaded efficiently and stored in Google cache to improve the user experience.&lt;/p&gt;
+&lt;h3&gt;Render valid AMP pages in Wagtail/Django powered site&lt;/h3&gt;
+&lt;p&gt;Valid means AMP page should not contain tags which are restricted as per AMP specification. AMP HTML is a subset of HTML, it puts some restrictions on the full set of tags and functionality available through HTML. For performance, AMP HTML does not allow author written JavaScript beyond what is provided through the custom elements.&lt;/p&gt;
+&lt;p&gt;In Wagtail powered site, AMP templates should not use restricted tags. For example, &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag should be replaced with &lt;code&gt;&amp;lt;amp-img&amp;gt;&lt;/code&gt;. &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; does not have an end tag. However, &lt;code&gt;&amp;lt;amp-img&amp;gt;&lt;/code&gt; does have an end tag &lt;code&gt;&amp;lt;/amp-img&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Change tags for fields whose properties can be accessed&lt;/strong&gt;: It is easy to change tags in cases where we can directly access field properties. Wagtail image tag render &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag so we can directly access image properties to create &lt;code&gt;&amp;lt;amp-img&amp;gt;&lt;/code&gt; tag:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&amp;gt;&lt;/span&gt;
+
+{% for item in page.gallery_images.all %}
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        {% image item.image fill-600x500 as gallery_image %}
+        &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;amp-img&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ gallery_image.alt }}&amp;quot;&lt;/span&gt;
+          &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ gallery_image.url }}&amp;quot;&lt;/span&gt;
+          &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ gallery_image.width }}&amp;quot;&lt;/span&gt;
+          &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ gallery_image.height }}&amp;quot;&lt;/span&gt;
+          &lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;responsive&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;amp-img&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ item.caption }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+{% endfor %}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Change tags in Richtext and Streamfield&lt;/strong&gt;: The main feature of a CMS is a WYSIWYG HTML Editor to create content. Wagtail also uses Draftail in Richtext field and Streamfield's Richtext block. As the content created with these fields is stored as HTML, we do not have direct access to images etc. To create a valid AMP page, we can use a Python package called &lt;a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/"&gt;Beautiful Soup&lt;/a&gt; to modify the HTML.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;amplify_html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rendered_html&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;bs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rendered_html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;img&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;src&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;}):&lt;/span&gt;
+        &lt;span class="n"&gt;amp_img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;amp-img&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;src&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;responsive&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;width&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;550&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;368&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;amp_img&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace_with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;amp_img&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/utils.py&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode_contents&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the first &lt;a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html"&gt;part&lt;/a&gt; of the series, we learned the Wagtail serving mechanism. Serve method on a Page model is responsible for sending HTML response. Body field is a Streamfield and we can get the rendered HTML using the &lt;code&gt;__html__()&lt;/code&gt; method. The body field HTML is non-AMP, it can contain tags which are restricted in AMP pages. Therefore we get the AMP HTML using &lt;code&gt;amplify_html&lt;/code&gt; method and add it in the context.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/8abd9d6b0ee36fe2183167ad6c5f4556dd825590/blog/models.py#L92&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog/amp_blog_page_amp.html&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;body_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__html__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="n"&gt;body_amp_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;amplify_html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;body_html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body_amp_html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mark_safe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;body_amp_html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;TemplateResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;context&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;body_amp_html&lt;/code&gt; is used in &lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/amp_blog_page_amp.html"&gt;template&lt;/a&gt; instead of &lt;code&gt;page.body&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    {{ body_amp_html }}
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Similarly we can get AMP HTML for Richtext field. In Richtext field, we need to use &lt;a href="https://github.com/wagtail/wagtail/blob/stable/2.4.x/wagtail/core/rich_text/__init__.py#L17"&gt;expand_db_html&lt;/a&gt; function to expand database-representation HTML into proper HTML.&lt;/p&gt;
+&lt;p&gt;We can also use a separate field for AMP content and use publish hook to fill it. Then we do not have to parse and modify HTML in the request-response cycle. But we can avoid it. As the process is fast and also pages are served from Google cache in Google search. Each time a user accesses AMP content from the cache, the content is automatically updated, and the updated version is served to the next user once the content has been cached.&lt;/p&gt;
+&lt;h4&gt;For streamfield, there is another option:&lt;/h4&gt;
+&lt;p&gt;If your project uses Streamfield's Richtext block without the image, embed &lt;a href="https://docs.wagtail.io/en/v2.4/advanced_topics/customisation/page_editing_interface.html#limiting-features-in-a-rich-text-field"&gt;feature&lt;/a&gt; then you can skip the beautiful soup method. It is recommended to use Richtext field with a small set of features and use &lt;a href="https://docs.wagtail.io/en/v2.4/topics/streamfield.html#imagechooserblock"&gt;Image chooser block&lt;/a&gt;. New Streamfield blocks should be created depending on the UI requirements. We only need to add &lt;code&gt;is_amp_request&lt;/code&gt; in context.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;TemplateResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;context&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- Template for streamfield block like Service block --&amp;gt;&lt;/span&gt;
+{% if is_amp_request %}
+    {% image value.image fill-400x300 as amp_img %}
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;amp-img&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ amp_img.alt }}&amp;quot;&lt;/span&gt;
+      &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ amp_img.url }}&amp;quot;&lt;/span&gt;
+      &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ amp_img.width }}&amp;quot;&lt;/span&gt;
+      &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ amp_img.height }}&amp;quot;&lt;/span&gt;
+      &lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;responsive&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;amp-img&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+{% else %}
+    {% image value.image fill-400x300 %}
+{% endif %}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With these small changes, our AMP page is ready to fly high with Wagtail. In the next part of the series, we will add CORS headers required in &lt;a href="https://www.ampproject.org/docs/reference/components/amp-list"&gt;amp-list&lt;/a&gt; and &lt;a href="https://www.ampproject.org/docs/reference/components/amp-form"&gt;amp-form&lt;/a&gt; components.&lt;/p&gt;
+&lt;p&gt;Thanks for reading. You can also follow the Github &lt;a href="https://github.com/Parbhat/wagtail-amp"&gt;repo&lt;/a&gt;. AMP-lify!&lt;/p&gt;
+&lt;p&gt;Useful links:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/validate"&gt;Validate AMP pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/discovery"&gt;Make your page discoverable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developers.google.com/amp/cache/overview"&gt;Google AMP Cache&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developers.google.com/search/docs/data-types/article#amp"&gt;Google search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developers.google.com/search/docs/guides/about-amp"&gt;Understand how AMP looks in search results&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/spec"&gt;AMP HTML Specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/how_cached"&gt;How AMP pages are cached&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Amplify a Wagtail/Django site - URLs (Part 1)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html" rel="alternate"></link><published>2018-07-20T20:00:00+05:30</published><updated>2018-07-20T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-07-20:/amplify-wagtail-django-site-urls-part-1.html</id><summary type="html">&lt;p&gt;First part of the series which list multiple ways to create URLs for AMP pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Accelerated Mobile Pages (AMP) is an Open Source project with a focus on creating a fast and smooth experience for website users. AMP version of a page also shows at the top of Google search results for mobile users. AMP is must for every content site these days. If you already have a running website, AMP is just another version of an existing page on the site. AMP version loads fast due to AMP spec like max CSS size can be 50KB only. You can read more about AMP on its &lt;a href="https://www.ampproject.org/"&gt;site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This blog post is the first part of the series: Amplify a Wagtail/Django site.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Part 1: Amplify a Wagtail/Django site - URLs (current article)&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Part 2: Amplify a Wagtail/Django site - Validation&lt;/li&gt;
+&lt;li&gt;Part 2: &lt;a href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2"&gt;Amplify a Wagtail/Django site - Validation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part 3: Amplify a Wagtail/Django site - CORS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/6Fg7V9Y.jpg" alt="Wagtail and AMP logo." width="550px"/&gt;&lt;/p&gt;
@@ -19,8 +175,8 @@
 &lt;p&gt;Wagtail comes with a contrib app called &lt;a href="http://docs.wagtail.io/en/v2.1.1/reference/contrib/routablepage.html"&gt;RoutablePageMixin&lt;/a&gt;. The RoutablePageMixin extend a page to respond on multiple sub URLs with different views.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RoutablePageMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L47&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 
     &lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^amp/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -30,7 +186,7 @@
         &lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
 
-    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -136,8 +292,8 @@
 &lt;p&gt;In Wagtail serve view, page's &lt;em&gt;serve&lt;/em&gt; method is called with &lt;em&gt;args, kwargs&lt;/em&gt;. In the case of a blog page, we customised the Serve method to handle AMP requests. Using the kwarg argument &lt;em&gt;is_amp_request&lt;/em&gt;, we return the AMP version of the blog page.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L85&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_template_amp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog/amp_blog_page_amp.html&amp;#39;&lt;/span&gt;
@@ -155,7 +311,7 @@
             &lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -165,7 +321,7 @@
 &lt;p&gt;Part 1 of this series list two options to choose a URL for AMP version. The focus of next parts in the series will be&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Part 2 on Validation&lt;/strong&gt;: AMP spec has some restriction on the elements like &lt;em&gt;img&lt;/em&gt; tag. AMP page should pass Validation to get served from Google AMP cache. In the next part, we will work on creating Valid Wagtail powered AMP pages.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2"&gt;Part 2 on Validation&lt;/a&gt;: AMP spec has some restriction on the elements like &lt;em&gt;img&lt;/em&gt; tag. AMP page should pass Validation to get served from Google AMP cache. In the next part, we will work on creating Valid Wagtail powered AMP pages.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Part 3 on CORS&lt;/strong&gt;: When using AMP components like &lt;a href="https://ampbyexample.com/components/amp-list/"&gt;amp-list&lt;/a&gt;, the server should include CORS headers in the response. It is not specific to Wagtail and applies to any Django project.&lt;/p&gt;
@@ -336,7 +492,7 @@ images
 &lt;p&gt;Hope the example is useful. In some cases, we have to write the reverse function as well. Simply it reverses the work performed by the forward function. Another example which migrates data from one model to other model is in the blog post. &lt;a href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html"&gt;Switch to Custom image model in a Production Wagtail project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 &lt;p&gt;Update:&lt;/p&gt;
-&lt;p&gt;We can also use &lt;code&gt;migrations.RunPython.noop&lt;/code&gt; as mentioned in official &lt;a href="https://docs.djangoproject.com/en/stable/howto/writing-migrations/"&gt;docs&lt;/a&gt; instead of &lt;em&gt;do_nothing&lt;/em&gt; function above. Thanks to Blair Gemmer for suggesting it in comments.&lt;/p&gt;</content><category term="django"></category><category term="migrations"></category><category term="postgres"></category><category term="opensource"></category></entry><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We can also use &lt;code&gt;migrations.RunPython.noop&lt;/code&gt; as mentioned in official &lt;a href="https://docs.djangoproject.com/en/stable/howto/writing-migrations/"&gt;docs&lt;/a&gt; instead of &lt;code&gt;do_nothing&lt;/code&gt; function above. Thanks to Blair Gemmer for suggesting it in comments.&lt;/p&gt;</content><category term="django"></category><category term="migrations"></category><category term="postgres"></category><category term="opensource"></category></entry><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Feature description&lt;/h2&gt;
 &lt;p&gt;Images in Wagtail can be organised into collections. Collections can be created in Wagtail admin from &lt;em&gt;Settings &amp;gt; Collections&lt;/em&gt; menu item. In an example Wagtail site, there are two collections namely &lt;em&gt;Blog&lt;/em&gt; and &lt;em&gt;Photo Gallery&lt;/em&gt;. On image upload form the user has the option to upload an image into a particular collection. This helps to organise the images into groups like Blog. The image upload form looks like&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Image upload form wagtail" src="https://i.imgur.com/AREjqfe.png"&gt;&lt;/p&gt;

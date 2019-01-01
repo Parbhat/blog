@@ -5,35 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/</loc>
-<lastmod>2018-12-21T11:26:53-00:00</lastmod>
+<lastmod>2019-01-01T19:27:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/archives.html</loc>
-<lastmod>2018-12-21T11:26:53-00:00</lastmod>
+<lastmod>2019-01-01T19:27:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tags.html</loc>
-<lastmod>2018-12-21T11:26:53-00:00</lastmod>
+<lastmod>2019-01-01T19:27:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/categories.html</loc>
-<lastmod>2018-12-21T11:26:53-00:00</lastmod>
+<lastmod>2019-01-01T19:27:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/pages/about.html</loc>
-<lastmod>2018-12-21T11:26:53-00:00</lastmod>
+<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2.html</loc>
+<lastmod>2019-01-01T20:00:00+05:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -187,7 +194,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/category/python.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -208,42 +215,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/tag/wagtail.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tag/django.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tag/opensource.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tag/web.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tag/programming.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tag/code.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -390,7 +397,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/author/parbhat-puri.html</loc>
-<lastmod>2018-07-20T20:00:00+05:53</lastmod>
+<lastmod>2019-01-01T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

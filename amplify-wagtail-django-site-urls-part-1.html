@@ -110,7 +110,7 @@
 <p>This blog post is the first part of the series: Amplify a Wagtail/Django site.</p>
 <ul>
 <li><strong>Part 1: Amplify a Wagtail/Django site - URLs (current article)</strong></li>
-<li>Part 2: Amplify a Wagtail/Django site - Validation</li>
+<li>Part 2: <a href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2">Amplify a Wagtail/Django site - Validation</a></li>
 <li>Part 3: Amplify a Wagtail/Django site - CORS</li>
 </ul>
 <p><img src="https://i.imgur.com/6Fg7V9Y.jpg" alt="Wagtail and AMP logo." width="550px"/></p>
@@ -126,8 +126,8 @@
 <p>Wagtail comes with a contrib app called <a href="http://docs.wagtail.io/en/v2.1.1/reference/contrib/routablepage.html">RoutablePageMixin</a>. The RoutablePageMixin extend a page to respond on multiple sub URLs with different views.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BlogPage</span><span class="p">(</span><span class="n">RoutablePageMixin</span><span class="p">,</span> <span class="n">Page</span><span class="p">):</span>
     <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L47</span>
-    <span class="o">...</span>
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
 
     <span class="nd">@route</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^amp/$&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">amp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
@@ -137,7 +137,7 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span>
 
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 
 
@@ -243,8 +243,8 @@
 <p>In Wagtail serve view, page's <em>serve</em> method is called with <em>args, kwargs</em>. In the case of a blog page, we customised the Serve method to handle AMP requests. Using the kwarg argument <em>is_amp_request</em>, we return the AMP version of the blog page.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AmpBlogPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
     <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L85</span>
-    <span class="o">...</span>
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
 
     <span class="k">def</span> <span class="nf">get_template_amp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;blog/amp_blog_page_amp.html&#39;</span>
@@ -262,7 +262,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AmpBlogPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="o">...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 
 
@@ -272,7 +272,7 @@
 <p>Part 1 of this series list two options to choose a URL for AMP version. The focus of next parts in the series will be</p>
 <ul>
 <li>
-<p><strong>Part 2 on Validation</strong>: AMP spec has some restriction on the elements like <em>img</em> tag. AMP page should pass Validation to get served from Google AMP cache. In the next part, we will work on creating Valid Wagtail powered AMP pages.</p>
+<p><a href="https://parbhatpuri.com/amplify-wagtail-django-site-validation-part-2">Part 2 on Validation</a>: AMP spec has some restriction on the elements like <em>img</em> tag. AMP page should pass Validation to get served from Google AMP cache. In the next part, we will work on creating Valid Wagtail powered AMP pages.</p>
 </li>
 <li>
 <p><strong>Part 3 on CORS</strong>: When using AMP components like <a href="https://ampbyexample.com/components/amp-list/">amp-list</a>, the server should include CORS headers in the response. It is not specific to Wagtail and applies to any Django project.</p>
