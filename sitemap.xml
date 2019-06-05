@@ -5,35 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/</loc>
-<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<lastmod>2019-06-05T19:35:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/archives.html</loc>
-<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<lastmod>2019-06-05T19:35:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/tags.html</loc>
-<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<lastmod>2019-06-05T19:35:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/categories.html</loc>
-<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<lastmod>2019-06-05T19:35:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://parbhatpuri.com/pages/about.html</loc>
-<lastmod>2019-01-01T19:27:27-00:00</lastmod>
+<lastmod>2019-06-05T19:35:38-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://parbhatpuri.com/benefits-of-remote-work-from-an-indian-context.html</loc>
+<lastmod>2019-06-03T20:00:00+05:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -201,7 +208,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/category/remote.html</loc>
-<lastmod>2018-04-28T20:00:00+05:53</lastmod>
+<lastmod>2019-06-03T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -209,6 +216,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://parbhatpuri.com/category/web.html</loc>
 <lastmod>2015-01-11T11:00:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://parbhatpuri.com/tag/remote.html</loc>
+<lastmod>2019-06-03T20:00:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://parbhatpuri.com/tag/freelance.html</loc>
+<lastmod>2019-06-03T20:00:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://parbhatpuri.com/tag/code.html</loc>
+<lastmod>2019-06-03T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -249,13 +277,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://parbhatpuri.com/tag/code.html</loc>
-<lastmod>2019-01-01T20:00:00+05:53</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://parbhatpuri.com/tag/migrations.html</loc>
 <lastmod>2018-05-24T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
@@ -265,20 +286,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://parbhatpuri.com/tag/postgres.html</loc>
 <lastmod>2018-05-24T20:00:00+05:53</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://parbhatpuri.com/tag/remote.html</loc>
-<lastmod>2018-04-28T20:00:00+05:53</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://parbhatpuri.com/tag/freelance.html</loc>
-<lastmod>2018-04-28T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -397,7 +404,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://parbhatpuri.com/author/parbhat-puri.html</loc>
-<lastmod>2019-01-01T20:00:00+05:53</lastmod>
+<lastmod>2019-06-03T20:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
