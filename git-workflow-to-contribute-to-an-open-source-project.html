@@ -44,7 +44,7 @@
 <aside>
     <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
     <h1>Parbhat Puri</h1>
-        <p>Freelance Software Developer</p>
+        <p>Software Developer and Founder</p>
     <br>
 
         <a class="twitter-follow-button"
@@ -105,23 +105,23 @@
                 <p>Open Source is the way by which great projects are built. This is made possible by people like you who give their precious time to the community and great stuff is built. So you may be a beginner and wants to contribute to Open Source projects. This article will guide you to contribute to Open Source projects hosted on Collaboration platform <a target="_blank" href="https://github.com">Github</a>.</p>
 <p><center><img alt="Github" src="https://i.imgur.com/IXBmJj4.jpg"></center></p>
 <p>This summer I was working as an Intern with <a target="_blank" href="http://chrisdev.com/">ChrisDev</a>. The company is one of the corporate members of the <a target="_blank" href="https://www.djangoproject.com/foundation/corporate-members/">Django</a> Web Framework. The company works with open source technologies like Python/Django, Pandas, Postgresql, Ansible, Linux, etc. The company has a number of open source projects hosted on <a target="_blank" href="https://github.com/chrisdev">Github</a> and Pypi. I worked on a cookiecutter in Django. The project Url is- <a target="_blank" href="https://github.com/chrisdev/wagtail-cookiecutter-foundation">https://github.com/chrisdev/wagtail-cookiecutter-foundation</a></p>
-<p>In this article, I will explain the workflow used by me to contribute to this project. The same workflow is applicable to almost any project on Github. </p>
+<p>In this article, I will explain the workflow used by me to contribute to this project. The same workflow is applicable to almost any project on Github.</p>
 <h1>Git and Github</h1>
 <hr>
 
 <p>Before continuing I want to clarify the difference between Git and Github. Git is a version control system(VCS) which is a tool to manage the history of our Source Code. GitHub is a hosting service for Git projects.</p>
 <p>I assume you have created an account on <a target="_blank" href="https://github.com/join">Github</a> and installed <a target="_blank" href="http://git-scm.com/downloads">Git</a> on your System.</p>
 <p>Now tell Git your name and E-mail (used on Github) address.</p>
-<div class="highlight"><pre><span></span> $ git config --global user.name &quot;YOUR NAME&quot;
- $ git config --global user.email &quot;YOUR EMAIL ADDRESS&quot;
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git config --global user.name <span class="s2">&quot;YOUR NAME&quot;</span>
+$ git config --global user.email <span class="s2">&quot;YOUR EMAIL ADDRESS&quot;</span>
+</code></pre></div>
 
 
 <p>This is an important step to mark your commits to your name and email.</p>
 <h1>Fork a Project</h1>
 <hr>
 
-<p>You can use github explore - <a target="_blank" href="https://github.com/explore">https://github.com/explore</a> to find a project that interests you and match your skills. Once you find your cool project to workon, you can make a copy of project to your account. This process is called forking a project to your Github account. On Upper right side of project page on Github, you can see - </p>
+<p>You can use github explore - <a target="_blank" href="https://github.com/explore">https://github.com/explore</a> to find a project that interests you and match your skills. Once you find your cool project to workon, you can make a copy of project to your account. This process is called forking a project to your Github account. On Upper right side of project page on Github, you can see -</p>
 <p><center><img alt="Github-fork" src="https://i.imgur.com/P0n6f97.png"></center></p>
 <p>Click on fork to create a copy of project to your account. This creates a separate copy for you to workon.</p>
 <h1>Finding a feature or bug to workon</h1>
@@ -133,8 +133,8 @@
 <hr>
 
 <p>You have forked the project you want to contribute to your github account. To get this project on your development machine we use clone command of git.</p>
-<div class="highlight"><pre><span></span> $ git clone https://github.com/&lt;your-account-username&gt;/&lt;your-forked-project&gt;.git
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/&lt;your-account-username&gt;/&lt;your-forked-project&gt;.git
+</code></pre></div>
 
 
 <p>Now you have the project on your local machine.</p>
@@ -142,9 +142,9 @@
 <hr>
 
 <p>Remote means the remote location of project on Github. By cloning, we have a remote called origin which points to your forked repository. Now we will add a remote to the original repository from where we had forked.</p>
-<div class="highlight"><pre><span></span> $ cd &lt;your-forked-project-folder&gt;
- $ git remote add upstream https://github.com/&lt;author-account-username&gt;/&lt;project&gt;.git
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> &lt;your-forked-project-folder&gt;
+$ git remote add upstream https://github.com/&lt;author-account-username&gt;/&lt;project&gt;.git
+</code></pre></div>
 
 
 <p>You will see the benefits of adding remote later.</p>
@@ -152,11 +152,11 @@
 <hr>
 
 <p>Open Source projects have a number of contributors who can push code anytime. So it is necessary to make your forked copy equal with the original repository. The remote added above called Upstream helps in this.</p>
-<div class="highlight"><pre><span></span> $ git checkout master
- $ git fetch upstream
- $ git merge upstream/master
- $ git push origin master
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git checkout master
+$ git fetch upstream
+$ git merge upstream/master
+$ git push origin master
+</code></pre></div>
 
 
 <p>The last command pushes the latest code to your forked repository on Github. The origin is the remote pointing to your forked repository on github.</p>
@@ -164,14 +164,14 @@
 <hr>
 
 <p>Normally, all repositories have a master branch which is considered to remain stable and all new features should be made in a separate branch and after completion merged into master branch. So we should create a new branch for our feature or bugfix and start working on the issue.</p>
-<div class="highlight"><pre><span></span> $ git checkout -b &lt;feature-branch&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git checkout -b &lt;feature-branch&gt;
+</code></pre></div>
 
 
 <p>This will create a new branch out of master branch. Now start working on the problem and commit your changes.</p>
-<div class="highlight"><pre><span></span> $ git add --all
- $ git commit -m &quot;&lt;commit message&gt;&quot;
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git add --all
+$ git commit -m <span class="s2">&quot;&lt;commit message&gt;&quot;</span>
+</code></pre></div>
 
 
 <p>The first command adds all the files or you can add specific files by removing -a and adding the file names. The second command gives a message to your changes so you can know in future what changes this commit makes. If you are solving an issue on original repository, you should add the issue number like #35 to your commit message. This will show the reference to commits in the issue.</p>
@@ -179,9 +179,9 @@
 <hr>
 
 <p>It can happen that your feature takes time to complete and other contributors are constantly pushing code. After completing the feature your feature branch should be rebase on latest changes to upstream master branch.</p>
-<div class="highlight"><pre><span></span> $ git checkout &lt;feature-branch&gt;
- $ git pull --rebase upstream master
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git checkout &lt;feature-branch&gt;
+$ git pull --rebase upstream master
+</code></pre></div>
 
 
 <p>Now you get the latest commits from other contributors and check that your commits are compatible with the new commits. If there are any conflicts solve them.</p>
@@ -189,8 +189,8 @@
 <hr>
 
 <p>You have completed the feature, but you have made a number of commits which make less sense. You should squash your commits to make good commits.</p>
-<div class="highlight"><pre><span></span> $ git rebase -i HEAD~5
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git rebase -i HEAD~5
+</code></pre></div>
 
 
 <p>This will open an editor which will allow you to squash the commits.</p>
@@ -198,11 +198,11 @@
 <hr>
 
 <p>Till this point you have a new branch with the feature or bugfix you want in the project you had forked. Now push your new branch to your remote fork on github.</p>
-<div class="highlight"><pre><span></span> $ git push origin &lt;feature-branch&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ git push origin &lt;feature-branch&gt;
+</code></pre></div>
 
 
-<p>Now you are ready to help the project by opening a pull request means you now tell the project managers to add the feature or bugfix to original repository. You can open a pull request by clicking on green icon - </p>
+<p>Now you are ready to help the project by opening a pull request means you now tell the project managers to add the feature or bugfix to original repository. You can open a pull request by clicking on green icon -</p>
 <p><center><img alt="github-pullrequest" src="https://i.imgur.com/aGaqAD5.png"></center></p>
 <p>Remember your upstream base branch should be master and source should be your feature branch. Click on create pull request and add a name to your pull request. You can also describe your feature.</p>
 <p>Awesome! You have made your first contribution. If you have any doubts please let me know in the comments.</p>

@@ -48,7 +48,7 @@
 <aside>
     <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
     <h1>Parbhat Puri</h1>
-        <p>Freelance Software Developer</p>
+        <p>Software Developer and Founder</p>
     <br>
 
         <a class="twitter-follow-button"
@@ -126,42 +126,42 @@
 </ol>
 <h3>Learning by example</h3>
 <p>Hope you understand what data migrations are and when to use them. So, let's write a data migration. Suppose we have a model in our project like</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
 
 
 <span class="k">class</span> <span class="nc">Image</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">))</span>
-    <span class="nb">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span>
         <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">),</span> <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;uploads/&#39;</span><span class="p">,</span>
         <span class="n">width_field</span><span class="o">=</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="n">height_field</span><span class="o">=</span><span class="s1">&#39;height&#39;</span>
     <span class="p">)</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">),</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span>
-        <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;created at&#39;</span><span class="p">),</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">db_index</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;created at&#39;</span><span class="p">),</span> <span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">db_index</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The <em>Image</em> model has fields like title, file, width, height and created_at. The file is an <strong>ImageField</strong> which has a method called <strong>size</strong>. The size <a href="https://docs.djangoproject.com/en/2.0/ref/models/fields/#django.db.models.fields.files.FieldFile.size">method</a> returns the total size of the image in bytes. Instead, to call this method when we need to get the image size, we can add a new field called <strong>file_size</strong>.</p>
 <h4>Schema migration</h4>
 <hr>
 <p>A new line to add in above model is:</p>
-<div class="highlight"><pre><span></span><span class="n">file_size</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">file_size</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 
 
 <p>Now Django can automatically create a schema migration to add the field to the Image table in database.</p>
-<div class="highlight"><pre><span></span>python manage.py makemigrations
-</pre></div>
+<div class="highlight"><pre><span></span><code>python manage.py makemigrations
+</code></pre></div>
 
 
 <p>A new migration is generated with name like <em>0002_image_file_size.py</em>.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Generated by Django 2.0.5 on 2018-05-23 08:55</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generated by Django 2.0.5 on 2018-05-23 08:55</span>
 
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
 
@@ -176,35 +176,35 @@
         <span class="n">migrations</span><span class="o">.</span><span class="n">AddField</span><span class="p">(</span>
             <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;file_size&#39;</span><span class="p">,</span>
-            <span class="n">field</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="n">field</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
         <span class="p">),</span>
     <span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The above migration uses migration operation called AddField to add a new field to the Image model. We do not have to write it. Now we have what changes we want in our database table of Image. Run the migrate command to make the changes in the database.</p>
-<div class="highlight"><pre><span></span>python manage.py migrate
-</pre></div>
+<div class="highlight"><pre><span></span><code>python manage.py migrate
+</code></pre></div>
 
 
 <h4>Data migration</h4>
 <hr>
 <p>We have a new field called <em>file_size</em> in the Image model. Say there are more than thousand objects of the Image model. But the file_size field value for all these image objects is <strong>Null</strong>. We have to update all the current image objects with the file size. We will write a data migration to accomplish the task.</p>
 <p>Create an empty migration file</p>
-<div class="highlight"><pre><span></span>python manage.py makemigrations --empty images
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">python manage.py makemigrations --empty images</span>
+</code></pre></div>
 
 
 <p>Here <em>images</em> is the name of the Django app which contains the Image model.</p>
 <p>Data Migration that will update the <em>file_size</em> field to image size will be</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span>
 
 
 <span class="k">def</span> <span class="nf">set_file_size</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
     <span class="c1"># We can&#39;t import the Image model directly as it may be a newer</span>
     <span class="c1"># version than this migration expects. We use the historical version.</span>
     <span class="n">Image</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_size__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">file_size__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">image</span><span class="o">.</span><span class="n">file_size</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
             <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;file_size&#39;</span><span class="p">])</span>
@@ -230,12 +230,12 @@
     <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">set_file_size</span><span class="p">,</span> <span class="n">do_nothing</span><span class="p">),</span>
     <span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Run the Data migration like the schema migration.</p>
-<div class="highlight"><pre><span></span>python manage.py migrate
-</pre></div>
+<div class="highlight"><pre><span></span><code>python manage.py migrate
+</code></pre></div>
 
 
 <ul>
@@ -248,18 +248,18 @@
 <li>
 <p>Here we have empty reverse function called <em>do_nothing</em> because we do not want to set the <em>file_size</em> to <em>Null</em> again. The do_nothing function will help to roll back the migration.</p>
 <p>We can roll back the data migration by</p>
-<div class="highlight"><pre><span></span>./manage.py migrate images 0002_image_file_size
-</pre></div>
+<div class="highlight"><pre><span></span><code>./manage.py migrate images 0002_image_file_size
+</code></pre></div>
 
 
 <p><em>0002_image_file_size</em> is the schema migration we created before the data migration. we can use the <em>showmigrations</em> command to see applied and unapplied migrations.</p>
-<div class="highlight"><pre><span></span>python manage.py showmigrations images
+<div class="highlight"><pre><span></span><code>python manage.py showmigrations images
 
 images
  <span class="o">[</span>X<span class="o">]</span> 0001_initial
  <span class="o">[</span>X<span class="o">]</span> 0002_image_file_size
  <span class="o">[</span> <span class="o">]</span> 0003_auto_20180523_0907
-</pre></div>
+</code></pre></div>
 
 
 <p>We can again apply the migration using <em>migrate</em> command. We can also change the data migration name <em>0003_auto_20180523_0907</em> to meaningful like <em>0003_data_migration_image_set_file_size</em>.</p>

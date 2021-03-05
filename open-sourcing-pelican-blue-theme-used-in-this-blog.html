@@ -44,7 +44,7 @@
 <aside>
     <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
     <h1>Parbhat Puri</h1>
-        <p>Freelance Software Developer</p>
+        <p>Software Developer and Founder</p>
     <br>
 
         <a class="twitter-follow-button"
@@ -127,64 +127,64 @@
 <ul>
 <li>Clone the repository</li>
 </ul>
-<div class="highlight"><pre><span></span>    $ git clone https://github.com/Parbhat/pelican-blue.git
-</pre></div>
+<div class="highlight"><pre><span></span><code>    $ git clone https://github.com/Parbhat/pelican-blue.git
+</code></pre></div>
 
 
 <ul>
 <li>Create a THEME variable in your pelicanconf.py file and set its value to the location of pelican-blue theme.</li>
 </ul>
-<div class="highlight"><pre><span></span>    <span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;path-to-pelican-blue-theme&#39;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>    <span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;path-to-pelican-blue-theme&#39;</span>
+</code></pre></div>
 
 
 <p>If you have placed the pelican-blue theme inside your project's pelican-themes folder, change the THEME variable in pelicanconf.py to</p>
-<div class="highlight"><pre><span></span>    <span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;pelican-themes/pelican-blue&#39;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>    <span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;pelican-themes/pelican-blue&#39;</span>
+</code></pre></div>
 
 
 <ul>
 <li>Add the following code to your pelicanconf.py file to display the social icons.</li>
 </ul>
-<div class="highlight"><pre><span></span>    <span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">(</span>
         <span class="p">(</span><span class="s1">&#39;linkedin&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.linkedin.com/in/username&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;https://github.com/username&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;twitter&#39;</span><span class="p">,</span> <span class="s1">&#39;https://twitter.com/username&#39;</span><span class="p">),</span>
     <span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>That's it! You have installed pelican-blue. To see the Theme in action run the devserver</li>
 </ul>
-<div class="highlight"><pre><span></span>    make devserver
-</pre></div>
+<div class="highlight"><pre><span></span><code>    make devserver
+</code></pre></div>
 
 
 <p><strong>Note</strong>: If you are new to Pelican Static Site Generator, you can read the Pelican <a href="http://docs.getpelican.com/en/stable/">Docs</a> to learn the working of Pelican. You can also customize the theme after reading the documentation.</p>
 <h3>Settings</h3>
 <h4>pelicanconf.py</h4>
 <p>Pelican-Blue theme use the following settings. You can add the following to your pelicanconf.py to get the site shown in the screenshots.</p>
-<div class="highlight"><pre><span></span>    <span class="n">SIDEBAR_DIGEST</span> <span class="o">=</span> <span class="s1">&#39;Programmer and Web Developer&#39;</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">SIDEBAR_DIGEST</span> <span class="o">=</span> <span class="s1">&#39;Programmer and Web Developer&#39;</span>
 
     <span class="n">FAVICON</span> <span class="o">=</span> <span class="s1">&#39;url-to-favicon&#39;</span>
 
-    <span class="n">DISPLAY_PAGES_ON_MENU</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">DISPLAY_PAGES_ON_MENU</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="n">TWITTER_USERNAME</span> <span class="o">=</span> <span class="s1">&#39;twitter-user-name&#39;</span>
 
     <span class="n">MENUITEMS</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Blog&#39;</span><span class="p">,</span> <span class="n">SITEURL</span><span class="p">),)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>When developing locally, set the following variable:</p>
-<div class="highlight"><pre><span></span>    <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>    <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
+</code></pre></div>
 
 
 <h4>publishconf.py</h4>
 <p>When you are ready to publish your site add the following settings to publishconf.py file</p>
-<div class="highlight"><pre><span></span>    <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://your-domain-address&#39;</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://your-domain-address&#39;</span>
 
     <span class="n">FEED_ALL_ATOM</span> <span class="o">=</span> <span class="s1">&#39;feeds/all.atom.xml&#39;</span>
     <span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="s1">&#39;feeds/</span><span class="si">%s</span><span class="s1">.atom.xml&#39;</span>
@@ -193,7 +193,7 @@
 
     <span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">GOOGLE_ANALYTICS</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>For more information on publishing your site, read the publishing <a href="http://docs.getpelican.com/en/stable/publish.html">docs</a></p>

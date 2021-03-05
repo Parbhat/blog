@@ -14,13 +14,13 @@
 &lt;h3&gt;How to make AMP page discoverable to Google search?&lt;/h3&gt;
 &lt;p&gt;The initial requirement is to have a &lt;em&gt;link&lt;/em&gt; tag in the non-AMP page with &lt;em&gt;rel="amphtml"&lt;/em&gt; and &lt;em&gt;href&lt;/em&gt; contains URL of AMP version.&lt;/p&gt;
 &lt;p&gt;Add the following to the non-AMP page:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amphtml&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amphtml&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And this to the AMP page:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/non-amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.example.com/url/to/non-amp/document.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;strong&gt;important&lt;/strong&gt; requirement is the AMP page should be valid. When a mobile user clicks on an AMP search result, Google search retrieves the page from the &lt;a href="https://developers.google.com/amp/cache/"&gt;Google AMP cache&lt;/a&gt;. Only valid AMP pages are cached. Valid AMP pages are preloaded efficiently and stored in Google cache to improve the user experience.&lt;/p&gt;
@@ -30,7 +30,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Change tags for fields whose properties can be accessed&lt;/strong&gt;: It is easy to change tags in cases where we can directly access field properties. Wagtail image tag render &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag so we can directly access image properties to create &lt;code&gt;&amp;lt;amp-img&amp;gt;&lt;/code&gt; tag:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;&amp;lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&amp;gt;&lt;/span&gt;
 
 {% for item in page.gallery_images.all %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -44,19 +44,19 @@
         &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ item.caption }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 {% endfor %}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Change tags in Richtext and Streamfield&lt;/strong&gt;: The main feature of a CMS is a WYSIWYG HTML Editor to create content. Wagtail also uses Draftail in Richtext field and Streamfield's Richtext block. As the content created with these fields is stored as HTML, we do not have direct access to images etc. To create a valid AMP page, we can use a Python package called &lt;a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/"&gt;Beautiful Soup&lt;/a&gt; to modify the HTML.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
 
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;amplify_html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rendered_html&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;bs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rendered_html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;img&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;src&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;}):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;img&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;src&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;}):&lt;/span&gt;
         &lt;span class="n"&gt;amp_img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="s1"&gt;&amp;#39;amp-img&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;src&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
             &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -71,11 +71,11 @@
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/utils.py&lt;/span&gt;
 
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode_contents&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In the first &lt;a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html"&gt;part&lt;/a&gt; of the series, we learned the Wagtail serving mechanism. Serve method on a Page model is responsible for sending HTML response. Body field is a Streamfield and we can get the rendered HTML using the &lt;code&gt;__html__()&lt;/code&gt; method. The body field HTML is non-AMP, it can contain tags which are restricted in AMP pages. Therefore we get the AMP HTML using &lt;code&gt;amplify_html&lt;/code&gt; method and add it in the context.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/8abd9d6b0ee36fe2183167ad6c5f4556dd825590/blog/models.py#L92&lt;/span&gt;
 
@@ -99,26 +99,26 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;body_amp_html&lt;/code&gt; is used in &lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/amp_blog_page_amp.html"&gt;template&lt;/a&gt; instead of &lt;code&gt;page.body&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {{ body_amp_html }}
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Similarly we can get AMP HTML for Richtext field. In Richtext field, we need to use &lt;a href="https://github.com/wagtail/wagtail/blob/stable/2.4.x/wagtail/core/rich_text/__init__.py#L17"&gt;expand_db_html&lt;/a&gt; function to expand database-representation HTML into proper HTML.&lt;/p&gt;
 &lt;p&gt;We can also use a separate field for AMP content and use publish hook to fill it. Then we do not have to parse and modify HTML in the request-response cycle. But we can avoid it. As the process is fast and also pages are served from Google cache in Google search. Each time a user accesses AMP content from the cache, the content is automatically updated, and the updated version is served to the next user once the content has been cached.&lt;/p&gt;
 &lt;h4&gt;For streamfield, there is another option:&lt;/h4&gt;
 &lt;p&gt;If your project uses Streamfield's Richtext block without the image, embed &lt;a href="https://docs.wagtail.io/en/v2.4/advanced_topics/customisation/page_editing_interface.html#limiting-features-in-a-rich-text-field"&gt;feature&lt;/a&gt; then you can skip the beautiful soup method. It is recommended to use Richtext field with a small set of features and use &lt;a href="https://docs.wagtail.io/en/v2.4/topics/streamfield.html#imagechooserblock"&gt;Image chooser block&lt;/a&gt;. New Streamfield blocks should be created depending on the UI requirements. We only need to add &lt;code&gt;is_amp_request&lt;/code&gt; in context.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;is_amp_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-            &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;is_amp_request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
 
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;TemplateResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
                 &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -126,10 +126,10 @@
                 &lt;span class="n"&gt;context&lt;/span&gt;
             &lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- Template for streamfield block like Service block --&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;&amp;lt;!-- Template for streamfield block like Service block --&amp;gt;&lt;/span&gt;
 {% if is_amp_request %}
     {% image value.image fill-400x300 as amp_img %}
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;amp-img&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ amp_img.alt }}&amp;quot;&lt;/span&gt;
@@ -141,7 +141,7 @@
 {% else %}
     {% image value.image fill-400x300 %}
 {% endif %}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;With these small changes, our AMP page is ready to fly high with Wagtail. In the next part of the series, we will add CORS headers required in &lt;a href="https://www.ampproject.org/docs/reference/components/amp-list"&gt;amp-list&lt;/a&gt; and &lt;a href="https://www.ampproject.org/docs/reference/components/amp-form"&gt;amp-form&lt;/a&gt; components.&lt;/p&gt;
@@ -155,7 +155,7 @@
 &lt;li&gt;&lt;a href="https://developers.google.com/search/docs/guides/about-amp"&gt;Understand how AMP looks in search results&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/spec"&gt;AMP HTML Specification&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.ampproject.org/docs/fundamentals/how_cached"&gt;How AMP pages are cached&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Amplify a Wagtail/Django site - URLs (Part 1)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html" rel="alternate"></link><published>2018-07-20T20:00:00+05:30</published><updated>2018-07-20T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-07-20:/amplify-wagtail-django-site-urls-part-1.html</id><summary type="html">&lt;p&gt;First part of the series which list multiple ways to create URLs for AMP pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Accelerated Mobile Pages (AMP) is an Open Source project with a focus on creating a fast and smooth experience for website users. AMP version of a page also shows at the top of Google search results for mobile users. AMP is must for every content site these days. If you already have a running website, AMP is just another version of an existing page on the site. AMP version loads fast due to AMP spec like max CSS size can be 50KB only. You can read more about AMP on its &lt;a href="https://www.ampproject.org/"&gt;site&lt;/a&gt;.&lt;/p&gt;
+&lt;/ol&gt;</content><category term="python"></category><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Amplify a Wagtail/Django site - URLs (Part 1)</title><link href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html" rel="alternate"></link><published>2018-07-20T20:00:00+05:30</published><updated>2018-07-20T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-07-20:/amplify-wagtail-django-site-urls-part-1.html</id><summary type="html">&lt;p&gt;First part of the series which list multiple ways to create URLs for AMP pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Accelerated Mobile Pages (AMP) is an Open Source project with a focus on creating a fast and smooth experience for website users. AMP version of a page also shows at the top of Google search results for mobile users. AMP is must for every content site these days. If you already have a running website, AMP is just another version of an existing page on the site. AMP version loads fast due to AMP spec like max CSS size can be 50KB only. You can read more about AMP on its &lt;a href="https://www.ampproject.org/"&gt;site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This blog post is the first part of the series: Amplify a Wagtail/Django site.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Part 1: Amplify a Wagtail/Django site - URLs (current article)&lt;/strong&gt;&lt;/li&gt;
@@ -173,7 +173,7 @@
 &lt;p&gt;The first URL is easy to create in Wagtail. But the second URL needs some customization in the Wagtail serving mechanism. This blog post will list the steps to use any of these URLs in your project.&lt;/p&gt;
 &lt;h3&gt;URL 1: AMP keyword at end of Normal URL&lt;/h3&gt;
 &lt;p&gt;Wagtail comes with a contrib app called &lt;a href="http://docs.wagtail.io/en/v2.1.1/reference/contrib/routablepage.html"&gt;RoutablePageMixin&lt;/a&gt;. The RoutablePageMixin extend a page to respond on multiple sub URLs with different views.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RoutablePageMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RoutablePageMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L47&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
@@ -187,21 +187,21 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
 
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In the above example, we get the Blog Page object context and use it in the AMP template of a blog page. So, if a blog page has a URL &lt;a href="https://wagtail.io/blog/wagtail-space-usa/"&gt;https://wagtail.io/blog/wagtail-space-usa/&lt;/a&gt;. AMP version will exist at https://wagtail.io/blog/wagtail-space-usa/&lt;strong&gt;amp/&lt;/strong&gt;&lt;/p&gt;
 &lt;h4&gt;Template requirements&lt;/h4&gt;
 &lt;p&gt;Normal page template (&lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page.html#L8"&gt;blog_page.html&lt;/a&gt;) should include this Meta tag. It helps Google know the location of AMP version of this page.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% load wagtailroutablepage_tags %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% load wagtailroutablepage_tags %}
 
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amphtml&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ request.site.root_url }}{% routablepageurl page &amp;#39;amp&amp;#39; %}&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;AMP template (&lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html#L5"&gt;blog_page_amp.html&lt;/a&gt;) should include&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ page.full_url }}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;canonical&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ page.full_url }}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;URL 2: AMP keyword after site root URL&lt;/h3&gt;
@@ -213,8 +213,8 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Serve view creates path components list for the requested path. For example, if a request is made for URL &lt;a href="https://wagtail.io/blog/graphql-with-streamfield/"&gt;https://wagtail.io/blog/graphql-with-streamfield/&lt;/a&gt;. Path components list will be&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -238,24 +238,24 @@
 &lt;li&gt;
 &lt;p&gt;As the HomePage &lt;em&gt;route&lt;/em&gt; method is first called. We can have a flag (&lt;em&gt;is_amp_request&lt;/em&gt;) which helps to determine the request is for the AMP page. If the first item in the &lt;em&gt;path_components&lt;/em&gt; list is &lt;em&gt;amp&lt;/em&gt;, we set the Flag on and reduce the list to &lt;em&gt;path_components[1:]&lt;/em&gt;. So, we can check page with remaining path components exists. For example, if the request is made for &lt;strong&gt;https://wagtail.io/amp/blog/graphql-with-streamfield/&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Wagtail creates path components list in serve view.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In HomePage &lt;a href="https://github.com/Parbhat/wagtail-amp/blob/master/home/models.py#L18"&gt;route&lt;/a&gt; method, it is changed to&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;graphql-with-streamfield&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Overriding route method&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HomePage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RichTextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;HomePage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RichTextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="c1"&gt;# Check the request is for AMP page&lt;/span&gt;
-        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+        &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;amp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+            &lt;span class="n"&gt;is_amp_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
             &lt;span class="c1"&gt;# Remove the amp from path components to check if the page exist&lt;/span&gt;
             &lt;span class="n"&gt;path_components&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path_components&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
 
@@ -276,7 +276,7 @@
     &lt;span class="p"&gt;]&lt;/span&gt;
 
     &lt;span class="n"&gt;parent_page_types&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wagtailcore.Page&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -290,7 +290,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;In Wagtail serve view, page's &lt;em&gt;serve&lt;/em&gt; method is called with &lt;em&gt;args, kwargs&lt;/em&gt;. In the case of a blog page, we customised the Serve method to handle AMP requests. Using the kwarg argument &lt;em&gt;is_amp_request&lt;/em&gt;, we return the AMP version of the blog page.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/models.py#L85&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
@@ -312,7 +312,7 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AmpBlogPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -327,7 +327,7 @@
 &lt;p&gt;&lt;strong&gt;Part 3 on CORS&lt;/strong&gt;: When using AMP components like &lt;a href="https://ampbyexample.com/components/amp-list/"&gt;amp-list&lt;/a&gt;, the server should include CORS headers in the response. It is not specific to Wagtail and applies to any Django project.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;You can also follow the Github &lt;a href="https://github.com/Parbhat/wagtail-amp"&gt;repo&lt;/a&gt;. AMP-lify!&lt;/p&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>An introduction to data migrations in Django</title><link href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="alternate"></link><published>2018-05-24T20:00:00+05:30</published><updated>2018-05-24T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-24:/introduction-data-migrations-django.html</id><summary type="html">&lt;p&gt;Learn to use Data migrations in Django using an example&lt;/p&gt;</summary><content type="html">&lt;p&gt;Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named &lt;em&gt;Image&lt;/em&gt;, we add a new field called &lt;em&gt;file_size&lt;/em&gt;. The database schema will change after running some simple commands like &lt;em&gt;makemigrations&lt;/em&gt; and &lt;em&gt;migrate&lt;/em&gt;. We have changed the database schema without touching the database.&lt;/p&gt;
+&lt;p&gt;You can also follow the Github &lt;a href="https://github.com/Parbhat/wagtail-amp"&gt;repo&lt;/a&gt;. AMP-lify!&lt;/p&gt;</content><category term="python"></category><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>An introduction to data migrations in Django</title><link href="https://parbhatpuri.com/introduction-data-migrations-django.html" rel="alternate"></link><published>2018-05-24T20:00:00+05:30</published><updated>2018-05-24T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-24:/introduction-data-migrations-django.html</id><summary type="html">&lt;p&gt;Learn to use Data migrations in Django using an example&lt;/p&gt;</summary><content type="html">&lt;p&gt;Migrations are one of the great features that come out of the box with Django. It automates the process of changing database after modifications in the models. With few simple commands, model changes will reflect in the database. For example, In a model named &lt;em&gt;Image&lt;/em&gt;, we add a new field called &lt;em&gt;file_size&lt;/em&gt;. The database schema will change after running some simple commands like &lt;em&gt;makemigrations&lt;/em&gt; and &lt;em&gt;migrate&lt;/em&gt;. We have changed the database schema without touching the database.&lt;/p&gt;
 &lt;p&gt;Migrations are of two types:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -347,42 +347,42 @@
 &lt;/ol&gt;
 &lt;h3&gt;Learning by example&lt;/h3&gt;
 &lt;p&gt;Hope you understand what data migrations are and when to use them. So, let's write a data migration. Suppose we have a model in our project like&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.translation&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ugettext_lazy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ImageField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ImageField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;upload_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploads/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="n"&gt;width_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;width&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height_field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;height&amp;#39;&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;width&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;height&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;width&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;height&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;created_at&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTimeField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;created at&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auto_now_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;
+        &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;created at&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auto_now_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;em&gt;Image&lt;/em&gt; model has fields like title, file, width, height and created_at. The file is an &lt;strong&gt;ImageField&lt;/strong&gt; which has a method called &lt;strong&gt;size&lt;/strong&gt;. The size &lt;a href="https://docs.djangoproject.com/en/2.0/ref/models/fields/#django.db.models.fields.files.FieldFile.size"&gt;method&lt;/a&gt; returns the total size of the image in bytes. Instead, to call this method when we need to get the image size, we can add a new field called &lt;strong&gt;file_size&lt;/strong&gt;.&lt;/p&gt;
 &lt;h4&gt;Schema migration&lt;/h4&gt;
 &lt;hr&gt;
 &lt;p&gt;A new line to add in above model is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;file_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;file_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now Django can automatically create a schema migration to add the field to the Image table in database.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python manage.py makemigrations
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A new migration is generated with name like &lt;em&gt;0002_image_file_size.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Generated by Django 2.0.5 on 2018-05-23 08:55&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Generated by Django 2.0.5 on 2018-05-23 08:55&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
@@ -397,35 +397,35 @@
         &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="n"&gt;model_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file_size&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;editable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
         &lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The above migration uses migration operation called AddField to add a new field to the Image model. We do not have to write it. Now we have what changes we want in our database table of Image. Run the migrate command to make the changes in the database.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Data migration&lt;/h4&gt;
 &lt;hr&gt;
 &lt;p&gt;We have a new field called &lt;em&gt;file_size&lt;/em&gt; in the Image model. Say there are more than thousand objects of the Image model. But the file_size field value for all these image objects is &lt;strong&gt;Null&lt;/strong&gt;. We have to update all the current image objects with the file size. We will write a data migration to accomplish the task.&lt;/p&gt;
 &lt;p&gt;Create an empty migration file&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations --empty images
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;python manage.py makemigrations --empty images&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Here &lt;em&gt;images&lt;/em&gt; is the name of the Django app which contains the Image model.&lt;/p&gt;
 &lt;p&gt;Data Migration that will update the &lt;em&gt;file_size&lt;/em&gt; field to image size will be&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;
 
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;set_file_size&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;schema_editor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# We can&amp;#39;t import the Image model directly as it may be a newer&lt;/span&gt;
     &lt;span class="c1"&gt;# version than this migration expects. We use the historical version.&lt;/span&gt;
     &lt;span class="n"&gt;Image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_size__isnull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_size__isnull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
             &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;update_fields&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file_size&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -451,12 +451,12 @@
     &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
         &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunPython&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;set_file_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;do_nothing&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Run the Data migration like the schema migration.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -469,18 +469,18 @@
 &lt;li&gt;
 &lt;p&gt;Here we have empty reverse function called &lt;em&gt;do_nothing&lt;/em&gt; because we do not want to set the &lt;em&gt;file_size&lt;/em&gt; to &lt;em&gt;Null&lt;/em&gt; again. The do_nothing function will help to roll back the migration.&lt;/p&gt;
 &lt;p&gt;We can roll back the data migration by&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./manage.py migrate images 0002_image_file_size
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;./manage.py migrate images 0002_image_file_size
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;0002_image_file_size&lt;/em&gt; is the schema migration we created before the data migration. we can use the &lt;em&gt;showmigrations&lt;/em&gt; command to see applied and unapplied migrations.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py showmigrations images
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python manage.py showmigrations images
 
 images
  &lt;span class="o"&gt;[&lt;/span&gt;X&lt;span class="o"&gt;]&lt;/span&gt; 0001_initial
  &lt;span class="o"&gt;[&lt;/span&gt;X&lt;span class="o"&gt;]&lt;/span&gt; 0002_image_file_size
  &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; 0003_auto_20180523_0907
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We can again apply the migration using &lt;em&gt;migrate&lt;/em&gt; command. We can also change the data migration name &lt;em&gt;0003_auto_20180523_0907&lt;/em&gt; to meaningful like &lt;em&gt;0003_data_migration_image_set_file_size&lt;/em&gt;.&lt;/p&gt;
@@ -492,7 +492,7 @@ images
 &lt;p&gt;Hope the example is useful. In some cases, we have to write the reverse function as well. Simply it reverses the work performed by the forward function. Another example which migrates data from one model to other model is in the blog post. &lt;a href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html"&gt;Switch to Custom image model in a Production Wagtail project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 &lt;p&gt;Update:&lt;/p&gt;
-&lt;p&gt;We can also use &lt;code&gt;migrations.RunPython.noop&lt;/code&gt; as mentioned in official &lt;a href="https://docs.djangoproject.com/en/stable/howto/writing-migrations/"&gt;docs&lt;/a&gt; instead of &lt;code&gt;do_nothing&lt;/code&gt; function above. Thanks to Blair Gemmer for suggesting it in comments.&lt;/p&gt;</content><category term="django"></category><category term="migrations"></category><category term="postgres"></category><category term="opensource"></category></entry><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We can also use &lt;code&gt;migrations.RunPython.noop&lt;/code&gt; as mentioned in official &lt;a href="https://docs.djangoproject.com/en/stable/howto/writing-migrations/"&gt;docs&lt;/a&gt; instead of &lt;code&gt;do_nothing&lt;/code&gt; function above. Thanks to Blair Gemmer for suggesting it in comments.&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="migrations"></category><category term="postgres"></category><category term="opensource"></category></entry><entry><title>Auto Select collection in Image Upload form of Wagtail</title><link href="https://parbhatpuri.com/auto-select-collection-in-image-upload-form-of-wagtail.html" rel="alternate"></link><published>2018-05-12T20:00:00+05:30</published><updated>2018-05-12T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-05-12:/auto-select-collection-in-image-upload-form-of-wagtail.html</id><summary type="html">&lt;p&gt;This guide will list the steps to auto select collection in Image Upload form while editing a Wagtail Page.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Wagtail has some great features for Images like Automatic feature detection using OpenCV, custom cropping, Multiple image upload and organising images into collections. This blog post requires some basic understanding of Wagtail. If you are new to Wagtail, you can get started with this &lt;a href="http://docs.wagtail.io/en/stable/getting_started/tutorial.html"&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Feature description&lt;/h2&gt;
 &lt;p&gt;Images in Wagtail can be organised into collections. Collections can be created in Wagtail admin from &lt;em&gt;Settings &amp;gt; Collections&lt;/em&gt; menu item. In an example Wagtail site, there are two collections namely &lt;em&gt;Blog&lt;/em&gt; and &lt;em&gt;Photo Gallery&lt;/em&gt;. On image upload form the user has the option to upload an image into a particular collection. This helps to organise the images into groups like Blog. The image upload form looks like&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Image upload form wagtail" src="https://i.imgur.com/AREjqfe.png"&gt;&lt;/p&gt;
@@ -503,7 +503,7 @@ images
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;In above gif, &lt;em&gt;blog&lt;/em&gt; Collection is automatically selected on a page of type &lt;em&gt;Blog Page&lt;/em&gt;. So, we need a model to save relation between Collections and Page models. We can use the Wagtail Snippets feature to make relation model editable in Wagtail admin.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.core.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_page_models&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.snippets.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;register_snippet&lt;/span&gt;
@@ -517,7 +517,7 @@ images
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;page_models&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;choices&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;page_types&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;choices&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;page_types&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;wagtailcore.Collection&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;on_delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CASCADE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;related_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;+&amp;#39;&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
@@ -528,13 +528,13 @@ images
     &lt;span class="p"&gt;]&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{0} related to {1} collection&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s2"&gt; related to &lt;/span&gt;&lt;span class="si"&gt;{1}&lt;/span&gt;&lt;span class="s2"&gt; collection&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
         &lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Pages to Collection relation&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -548,7 +548,7 @@ images
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;We have a model to store relation between Page models and collections. We need a way to get a collection while user is editing a particular page. For example, admin user editing or creating a page of type Blog Page. We need to get the collection related to the blog page. We need a view to get the collection.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.core.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Page&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.admin.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PermissionPolicyChecker&lt;/span&gt;
@@ -558,10 +558,10 @@ images
 
 &lt;span class="n"&gt;permission_checker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;PermissionPolicyChecker&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;permission_policy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nd"&gt;@permission_checker.require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@permission_checker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;add&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_collection_by_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;page&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;page_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;page&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;page_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;page_type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -586,7 +586,7 @@ images
             &lt;span class="k"&gt;pass&lt;/span&gt;
 
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -598,7 +598,7 @@ images
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Add a URL for this view to your project.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;CHANGE&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ME&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;.&lt;/span&gt;&lt;span class="n"&gt;views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;get_collection_by_page&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;CHANGE&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ME&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;.&lt;/span&gt;&lt;span class="n"&gt;views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;get_collection_by_page&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
@@ -613,7 +613,7 @@ images
     &lt;span class="c1"&gt;# Other Urls&lt;/span&gt;
     &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;wagtail_urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/li&gt;
@@ -623,7 +623,7 @@ images
 &lt;p&gt;We need to override the &lt;em&gt;wagtailimages/chooser/chooser.js&lt;/em&gt; so that we can add the Javascript code for AJAX request. You can take the code from Wagtail &lt;a href="https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/images/templates/wagtailimages/chooser/chooser.js"&gt;chooser.js&lt;/a&gt; and add the custom code. We can not use the &lt;em&gt;insert_editor_js&lt;/em&gt; hook to add our JS code because the modal is changed every time user click to choose an image.&lt;/p&gt;
 &lt;h4&gt;Overriding template&lt;/h4&gt;
 &lt;p&gt;You can either put the &lt;em&gt;chooser.js&lt;/em&gt; template in your project's templates directory or in an application's templates directory. For example, you can place the template in your project utils app like &lt;em&gt;utils/templates/wagtailimages/chooser/chooser.js&lt;/em&gt;. Also, make sure your &lt;em&gt;utils&lt;/em&gt; app is placed before &lt;em&gt;wagtail.images&lt;/em&gt; app in &lt;em&gt;INSTALLED_APPS&lt;/em&gt; setting. You can also read Django &lt;a href="https://docs.djangoproject.com/en/2.0/howto/overriding-templates/"&gt;Overriding templates&lt;/a&gt; documentation.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;load&lt;/span&gt; &lt;span class="nx"&gt;i18n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;load&lt;/span&gt; &lt;span class="nx"&gt;i18n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;modal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;searchUrl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form.image-search&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;modal&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;action&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
@@ -686,7 +686,7 @@ images
     &lt;span class="c1"&gt;// COMPLETE IT FROM ORIGINAL CHOOSER.JS&lt;/span&gt;
     &lt;span class="c1"&gt;// https://github.com/wagtail/wagtail/blob/stable/2.0.x/wagtail/images/templates/wagtailimages/chooser/chooser.js&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -706,7 +706,7 @@ images
 &lt;p&gt;If a collection is returned, it will be automatically selected in the Upload form.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Thanks for reading.&lt;/p&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Switch to Custom image model in a Production Wagtail project</title><link href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html" rel="alternate"></link><published>2018-01-22T20:00:00+05:30</published><updated>2018-01-22T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-01-22:/switch-to-custom-image-model-in-a-production-wagtail-project.html</id><summary type="html">&lt;p&gt;This guide will list the steps to switch from Wagtail Default image model to Custom image model in a production Wagtail project.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A software project is always evolving. New requirements can arise at any stage of the project. One example of a new feature required in a production Wagtail project is to store the &lt;code&gt;source&lt;/code&gt; of the Image. This post will list the steps involved to make the migration from Wagtail default Image model to Custom Image model. Therefore it requires some basic understanding of Wagtail. If you heard about the Wagtail for the first time. You should check it at &lt;a href="http://wagtail.io/"&gt;wagtail.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks for reading.&lt;/p&gt;</content><category term="python"></category><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Switch to Custom image model in a Production Wagtail project</title><link href="https://parbhatpuri.com/switch-to-custom-image-model-in-a-production-wagtail-project.html" rel="alternate"></link><published>2018-01-22T20:00:00+05:30</published><updated>2018-01-22T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2018-01-22:/switch-to-custom-image-model-in-a-production-wagtail-project.html</id><summary type="html">&lt;p&gt;This guide will list the steps to switch from Wagtail Default image model to Custom image model in a production Wagtail project.&lt;/p&gt;</summary><content type="html">&lt;p&gt;A software project is always evolving. New requirements can arise at any stage of the project. One example of a new feature required in a production Wagtail project is to store the &lt;code&gt;source&lt;/code&gt; of the Image. This post will list the steps involved to make the migration from Wagtail default Image model to Custom Image model. Therefore it requires some basic understanding of Wagtail. If you heard about the Wagtail for the first time. You should check it at &lt;a href="http://wagtail.io/"&gt;wagtail.io&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Brief description of the feature&lt;/h3&gt;
 &lt;p&gt;Wagtail has a wonderful admin which also allows handling images. Internally wagtail has &lt;code&gt;wagtailimages&lt;/code&gt; app which contains the default Image model. But the fields provided in the default Image model may not be sufficient for your project. Like we want to store the &lt;code&gt;source&lt;/code&gt; of every image and display on our site. Source field is not present in Image model. Fortunately, Wagtail allows switching to custom Image model in which new fields can be added based on the project requirements. In our case, we want to add the source field.&lt;/p&gt;
 &lt;h3&gt;Implementation&lt;/h3&gt;
@@ -732,14 +732,14 @@ images
 &lt;ul&gt;
 &lt;li&gt;Make an empty migration file&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations --empty yourappname
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python manage.py makemigrations --empty yourappname
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Copy the following code to the generated file.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 
@@ -760,7 +760,7 @@ images
         &lt;span class="n"&gt;new_images&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;extended_image_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
             &lt;span class="n"&gt;created_at&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created_at&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -839,7 +839,7 @@ images
     &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
         &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunPython&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forwards_func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reverse_func&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Details about the steps in this data migration&lt;/h4&gt;
@@ -851,7 +851,7 @@ images
 &lt;p&gt;&lt;strong&gt;Migrating Tags&lt;/strong&gt;: Migrating tags is little different than other fields like title. Tags in wagtail work using django-taggit. So, let's use a simple example to understand the concept. This is not the actual model from Django taggit but simplified for this use case.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TaggedItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TaggedItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;tag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SlugField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;content_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ContentType&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;on_delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CASCADE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;object_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PositiveIntegerField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -859,15 +859,15 @@ images
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__str__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Django includes a &lt;a href="https://docs.djangoproject.com/en/2.0/ref/contrib/contenttypes/"&gt;contenttypes&lt;/a&gt; app which can track all of the models installed in your Django-powered project. In this case, the Tags objects point to old Image model using content_type. So, we can filter the TaggedItem model to get the tags used in images and can then update these with the new image model content_type.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;tagged_item_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_alias&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;tagged_item_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_alias&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;content_type_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ct_wagtail_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
             &lt;span class="n"&gt;content_type_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ct_extended_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;content types have various uses like Tags but diving into it further will deviate from the topic of this blog post. Will write a new post on content types.&lt;/p&gt;
@@ -876,14 +876,14 @@ images
 &lt;/ul&gt;
 &lt;h3&gt;Issues with PostgreSQL&lt;/h3&gt;
 &lt;p&gt;One issue you will encounter if you are using PostgreSQL in your project while uploading new images:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;psycopg2.IntegrityError: duplicate key value violates unique constraint &amp;quot;pages_extendedimage_pkey&amp;quot;
-DETAIL:  Key (id)=(1) already exists.
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;psycopg2.IntegrityError: duplicate key value violates unique constraint &amp;quot;pages_extendedimage_pkey&amp;quot;&lt;/span&gt;
+&lt;span class="c"&gt;DETAIL:  Key (id)=(1) already exists.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The current key is set to 1 so we have to change it to Max. If your project is using a small number of images say &amp;lt; 10 then you can try uploading again and again and error will be removed when the current key equal to Max. But it is not feasible in case of large number of images. So, in that case, you can run SQL query on your database like&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT pg_catalog.setval&lt;span class="o"&gt;(&lt;/span&gt;pg_get_serial_sequence&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pages_extendedimage&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="o"&gt;(&lt;/span&gt;SELECT MAX&lt;span class="o"&gt;(&lt;/span&gt;id&lt;span class="o"&gt;)&lt;/span&gt; FROM pages_extendedimage&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;SELECT pg_catalog.setval&lt;span class="o"&gt;(&lt;/span&gt;pg_get_serial_sequence&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pages_extendedimage&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="o"&gt;(&lt;/span&gt;SELECT MAX&lt;span class="o"&gt;(&lt;/span&gt;id&lt;span class="o"&gt;)&lt;/span&gt; FROM pages_extendedimage&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr&gt;
@@ -892,10 +892,10 @@ DETAIL:  Key (id)=(1) already exists.
 &lt;p&gt;References:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/41931590/data-migration-of-image-model"&gt;https://stackoverflow.com/questions/41931590/data-migration-of-image-model&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="wagtail"></category><category term="django"></category><category term="postgres"></category><category term="migrations"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Add download CSV option in Wagtail modeladmin</title><link href="https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html" rel="alternate"></link><published>2017-09-15T18:00:00+05:30</published><updated>2017-09-15T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2017-09-15:/add-download-csv-option-in-wagtail-modeladmin.html</id><summary type="html">&lt;p&gt;This guide will list the steps to add download CSV option in Wagtail modeladmin.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://wagtail.io/"&gt;Wagtail&lt;/a&gt; is a free and open source CMS written in Python and built on the &lt;a href="http://djangoproject.com/"&gt;Django&lt;/a&gt; framework. If you heard about the Wagtail for the first time. You should check it out and you will love it.&lt;/p&gt;
+&lt;/ul&gt;</content><category term="python"></category><category term="wagtail"></category><category term="django"></category><category term="postgres"></category><category term="migrations"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Add download CSV option in Wagtail modeladmin</title><link href="https://parbhatpuri.com/add-download-csv-option-in-wagtail-modeladmin.html" rel="alternate"></link><published>2017-09-15T18:00:00+05:30</published><updated>2017-09-15T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2017-09-15:/add-download-csv-option-in-wagtail-modeladmin.html</id><summary type="html">&lt;p&gt;This guide will list the steps to add download CSV option in Wagtail modeladmin.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://wagtail.io/"&gt;Wagtail&lt;/a&gt; is a free and open source CMS written in Python and built on the &lt;a href="http://djangoproject.com/"&gt;Django&lt;/a&gt; framework. If you heard about the Wagtail for the first time. You should check it out and you will love it.&lt;/p&gt;
 &lt;p&gt;The &lt;a href="http://docs.wagtail.io/en/stable/reference/contrib/modeladmin/index.html"&gt;modeladmin&lt;/a&gt; module provided by Wagtail allows to create customisable listing pages for any model in your Wagtail project. Suppose you have a model named &lt;code&gt;EventRegistration&lt;/code&gt;. Django developers are used to performing CRUD operations on this model using the Django admin. The modeladmin module from Wagtail helps to perform CRUD operations from the Wagtail admin interface. Wagtail admin has a great UI and non developers using your project will love it.&lt;/p&gt;
 &lt;p&gt;This blog lists the steps to add download &lt;em&gt;CSV&lt;/em&gt; option in Wagtail admin listing view of your model. For the Wagtail users, you may have seen the similar button in the form submissions listing page. You can follow the modeladmin &lt;a href="http://docs.wagtail.io/en/stable/reference/contrib/modeladmin/index.html"&gt;documentation&lt;/a&gt; to register your model and display the model in Wagtail admin. The simplest example is to add the following code in &lt;em&gt;wagtail_hooks.py&lt;/em&gt; file in the app directory.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.contrib.modeladmin.options&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wagtail.contrib.modeladmin.options&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;modeladmin_register&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EventRegistration&lt;/span&gt;
 
@@ -904,15 +904,15 @@ DETAIL:  Key (id)=(1) already exists.
     &lt;span class="n"&gt;menu_label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Event registrations&amp;#39;&lt;/span&gt;  &lt;span class="c1"&gt;# ditch this to use verbose_name_plural from model&lt;/span&gt;
     &lt;span class="n"&gt;menu_icon&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;  &lt;span class="c1"&gt;# change as required&lt;/span&gt;
     &lt;span class="n"&gt;menu_order&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;  &lt;span class="c1"&gt;# will put in 3rd place (000 being 1st, 100 2nd)&lt;/span&gt;
-    &lt;span class="n"&gt;add_to_settings_menu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;  &lt;span class="c1"&gt;# or True to add your model to the Settings sub-menu&lt;/span&gt;
-    &lt;span class="n"&gt;exclude_from_explorer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# or True to exclude pages of this type from Wagtail&amp;#39;s explorer view&lt;/span&gt;
+    &lt;span class="n"&gt;add_to_settings_menu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;  &lt;span class="c1"&gt;# or True to add your model to the Settings sub-menu&lt;/span&gt;
+    &lt;span class="n"&gt;exclude_from_explorer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# or True to exclude pages of this type from Wagtail&amp;#39;s explorer view&lt;/span&gt;
     &lt;span class="n"&gt;list_display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;example_field2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;example_field3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;register&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;list_filter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;register&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;example_field2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;example_field3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;search_fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Now you just need to register your customised EventRegistrationAdmin class with Wagtail&lt;/span&gt;
 &lt;span class="n"&gt;modeladmin_register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EventRegistrationAdmin&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now you can see the &lt;code&gt;Event registrations&lt;/code&gt; menu item in Wagtail admin. When you click on it, you can see the listing page which lists all the event registration entries. The top of the page will be similar to&lt;/p&gt;
@@ -921,7 +921,7 @@ DETAIL:  Key (id)=(1) already exists.
 &lt;ul&gt;
 &lt;li&gt;The first step is to override the default IndexView to handle CSV creation at the backend and return CSV file.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.encoding&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;smart_str&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
@@ -978,13 +978,13 @@ DETAIL:  Key (id)=(1) already exists.
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EventRegistrationCustomIndexView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                      &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now our view can handle CSV download requests. We need to also create the new index view template like &lt;code&gt;event_model_admin_index.html&lt;/code&gt; to display the &lt;code&gt;Download CSV&lt;/code&gt; button.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;modeladmin/index.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% extends &amp;quot;modeladmin/index.html&amp;quot; %}
 {% load i18n modeladmin_tags %}
 
 {% block header_extra %}
@@ -992,19 +992,19 @@ DETAIL:  Key (id)=(1) already exists.
     &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% if request.GET|length == 0 %}?action=CSV{% else %}{{ request.get_full_path }}&amp;amp;amp;action=CSV{% endif %}&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;button bicolor icon icon-download&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{% trans &amp;#39;Download CSV&amp;#39; %}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     {{ block.super }}
 {% endblock %}
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now we have the custom &lt;strong&gt;index view&lt;/strong&gt; and &lt;strong&gt;template&lt;/strong&gt; for the event registration. You can customize them further according to your model. We need to add the following attributes to EventRegistrationAdmin class.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EventRegistrationAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EventRegistrationAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EventRegistration&lt;/span&gt;
     &lt;span class="n"&gt;index_view_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EventRegistrationCustomIndexView&lt;/span&gt;
     &lt;span class="n"&gt;index_template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;events/event_model_admin_index.html&amp;#39;&lt;/span&gt;
     &lt;span class="o"&gt;....&lt;/span&gt;
     &lt;span class="o"&gt;....&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;That's it. You can now see a &lt;code&gt;Download CSV&lt;/code&gt; button and can download CSVs.&lt;/p&gt;
@@ -1012,7 +1012,7 @@ DETAIL:  Key (id)=(1) already exists.
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 &lt;h2&gt;&lt;strong&gt;Update&lt;/strong&gt;:&lt;/h2&gt;
 &lt;p&gt;I got a message from a Linkedin user that he liked this article and also pointed to &lt;a href="https://stackoverflow.com/questions/46206693/adding-a-button-to-wagtail-dashboard"&gt;this&lt;/a&gt; stackoverflow question. The answer by &lt;code&gt;Loïc Teixeira&lt;/code&gt; uses an alternate approach and better than the above. The difference between the two approaches is: the above approach overrides the same index view to handle CSV logic and the below approach create a new view which is called by a different URL. So, here is the approach which uses the modeladmin &lt;a href="http://docs.wagtail.io/en/stable/reference/contrib/modeladmin/primer.html#overriding-helper-classes"&gt;helper classes&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.encoding&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;smart_str&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
@@ -1037,15 +1037,15 @@ DETAIL:  Key (id)=(1) already exists.
 
     &lt;span class="n"&gt;export_button_classnames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;icon&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;icon-download&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;export_button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classnames_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classnames_exclude&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;classnames_add&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;export_button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classnames_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classnames_exclude&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;classnames_add&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;classnames_add&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;classnames_exclude&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;classnames_exclude&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;classnames_exclude&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
 
         &lt;span class="n"&gt;classnames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;export_button_classnames&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;classnames_add&lt;/span&gt;
         &lt;span class="n"&gt;cn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;finalise_classname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;classnames&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classnames_exclude&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Export {}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;verbose_name_plural&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Export &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;verbose_name_plural&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="s1"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url_helper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_action_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;export&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;query_params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -1070,7 +1070,7 @@ DETAIL:  Key (id)=(1) already exists.
     &lt;span class="n"&gt;non_object_specific_actions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;create&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;choose_parent&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;export&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_action_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;query_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;query_params&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;query_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;query_params&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
         &lt;span class="n"&gt;url_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_action_url_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;non_object_specific_actions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -1079,7 +1079,7 @@ DETAIL:  Key (id)=(1) already exists.
             &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;query_params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;?{params}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;query_params&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlencode&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+            &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;?&lt;/span&gt;&lt;span class="si"&gt;{params}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;query_params&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlencode&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 
@@ -1151,44 +1151,44 @@ DETAIL:  Key (id)=(1) already exists.
         &lt;span class="n"&gt;kwargs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;model_admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
         &lt;span class="n"&gt;view_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;export_view_class&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;view_class&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now use the ExportModelAdminMixin in EventRegistrationAdmin class.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EventRegistrationAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ExportModelAdminMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EventRegistrationAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ExportModelAdminMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EventRegistration&lt;/span&gt;
     &lt;span class="n"&gt;index_template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;events/event_model_admin_index.html&amp;#39;&lt;/span&gt;
     &lt;span class="o"&gt;....&lt;/span&gt;
     &lt;span class="o"&gt;....&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Also update the template to use the button helper.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% extends &amp;quot;modeladmin/index.html&amp;quot; %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{% extends &amp;quot;modeladmin/index.html&amp;quot; %}
 
 {% block header_extra %}
     {% include &amp;#39;modeladmin/includes/button.html&amp;#39; with button=view.button_helper.export_button %}
     {{ block.super }}{% comment %}Display the original buttons {% endcomment %}
 {% endblock %}
-&lt;/pre&gt;&lt;/div&gt;</content><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Why you should learn Flask before Django?</title><link href="https://parbhatpuri.com/why-you-should-learn-flask-before-django.html" rel="alternate"></link><published>2015-04-04T18:00:00+05:30</published><updated>2015-04-04T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-04-04:/why-you-should-learn-flask-before-django.html</id><summary type="html">&lt;p&gt;Flask is a Micro Web framework for Python which is expressive and powerful.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently I explored &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; and loved the simplicity and power of this Microframework. I learned Django as my first Python Web framework, but now I realise that Flask should be the first &lt;a href="https://python.org"&gt;Python&lt;/a&gt; web framework that everyone should learn while entering into the field of Web Development with Python.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="wagtail"></category><category term="django"></category><category term="opensource"></category><category term="web"></category><category term="Programming"></category><category term="code"></category></entry><entry><title>Why you should learn Flask before Django?</title><link href="https://parbhatpuri.com/why-you-should-learn-flask-before-django.html" rel="alternate"></link><published>2015-04-04T18:00:00+05:30</published><updated>2015-04-04T18:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-04-04:/why-you-should-learn-flask-before-django.html</id><summary type="html">&lt;p&gt;Flask is a Micro Web framework for Python which is expressive and powerful.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently I explored &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; and loved the simplicity and power of this Microframework. I learned Django as my first Python Web framework, but now I realise that Flask should be the first &lt;a href="https://python.org"&gt;Python&lt;/a&gt; web framework that everyone should learn while entering into the field of Web Development with Python.&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;&lt;img alt="Flask-logo" src="https://i.imgur.com/Os2jtnk.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;Django is a full stack framework with the batteries included approach making it easy for developers to dive it into Web Applications. But for beginners, for learning the basics of &lt;a href="http://wsgi.readthedocs.org/en/latest/index.html"&gt;WSGI&lt;/a&gt; and Python web development and of dynamic web development, I do not know of any web framework that gives a better introduction to the concepts underlying it than Flask.&lt;/p&gt;
 &lt;p&gt;Starting with Flask is so simple that a &lt;em&gt;hello World&lt;/em&gt; Web Application looks like this&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# from http://flask.pocoo.org/ tutorial&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# from http://flask.pocoo.org/ tutorial&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# take note of this decorator syntax, it&amp;#39;s a common pattern&lt;/span&gt;
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# take note of this decorator syntax, it&amp;#39;s a common pattern&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello World!&amp;quot;&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;With only 7 lines of code you have your Web Application running with Flask. From the above &lt;em&gt;Hello World&lt;/em&gt; web application, a developer with no experience building Python Web applications can get Hacking immediately. You should learn flask because - &lt;/p&gt;
@@ -1242,7 +1242,7 @@ DETAIL:  Key (id)=(1) already exists.
 &lt;li&gt;&lt;a href="http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/#.VR-rV-mUfeS" target="_blank"&gt;Building websites in Python with Flask&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udacity.com/course/ud088" target="_blank"&gt;Udacity - Full Stack Foundations&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask" target="_blank"&gt;Designing a RESTful API with Python and Flask&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="flask"></category><category term="django"></category><category term="python"></category><category term="web"></category><category term="2015"></category><category term="Programming"></category></entry><entry><title>Why you should learn Python in 2015?</title><link href="https://parbhatpuri.com/Why-you-should-learn-python-in-2015.html" rel="alternate"></link><published>2015-01-04T23:00:00+05:30</published><updated>2015-01-04T23:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-01-04:/Why-you-should-learn-python-in-2015.html</id><summary type="html">&lt;p&gt;Python is the golden fish in the Programming languages world. It is being used everywhere from Scientific and Numeric to Web Programming.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Yesterday I saw a question on Quora - &lt;a href="https://www.quora.com/Is-Python-worth-it-to-learn-as-a-programming-language"&gt;Is Python worth it to learn as a programming language?&lt;/a&gt;. I answered the question on quora and decided to write a blog post on Importance of learning Python in 2015.&lt;/p&gt;
+&lt;/ol&gt;</content><category term="python"></category><category term="flask"></category><category term="django"></category><category term="python"></category><category term="web"></category><category term="2015"></category><category term="Programming"></category></entry><entry><title>Why you should learn Python in 2015?</title><link href="https://parbhatpuri.com/Why-you-should-learn-python-in-2015.html" rel="alternate"></link><published>2015-01-04T23:00:00+05:30</published><updated>2015-01-04T23:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2015-01-04:/Why-you-should-learn-python-in-2015.html</id><summary type="html">&lt;p&gt;Python is the golden fish in the Programming languages world. It is being used everywhere from Scientific and Numeric to Web Programming.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Yesterday I saw a question on Quora - &lt;a href="https://www.quora.com/Is-Python-worth-it-to-learn-as-a-programming-language"&gt;Is Python worth it to learn as a programming language?&lt;/a&gt;. I answered the question on quora and decided to write a blog post on Importance of learning Python in 2015.&lt;/p&gt;
 &lt;p&gt;Happy New Year 2015. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is the golden fish in the Programming languages world. It is being used everywhere from Scientific and Numeric to Web Programming. MIT - One of the Top universities in the world uses Python in its Introduction to Computer Science Course. It is being used by Biggest names in the industry like Google, YouTube, Quora, Pinterest, Instagram, Reddit, Redhat etc. &lt;/p&gt;
 &lt;p&gt;You have a number of options after learning this powerful Programming language. It is easy to learn and code. The open source community behind Python is really awesome and working collectively to improve it. Without any further writing I will show you the importance of this language in the images below -&lt;/p&gt;
@@ -1258,7 +1258,7 @@ DETAIL:  Key (id)=(1) already exists.
 &lt;p&gt;So go ahead and dive in the world of Python full of learning and Adventures.
 &lt;br&gt;
 Best learning Resource - &lt;a href="https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-0"&gt;6.00.1x introduction to computer science&lt;/a&gt; from MIT.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="python-keep-calm" src="http://i.imgur.com/VBOXm7Y.png"&gt;&lt;/center&gt;&lt;/p&gt;</content><category term="python"></category><category term="2015"></category><category term="Programming"></category></entry><entry><title>VirtualenvWrapper on top of Virtualenv</title><link href="https://parbhatpuri.com/virtualenvwrapper-on-top-of-virtualenv.html" rel="alternate"></link><published>2014-11-27T20:00:00+05:30</published><updated>2014-11-27T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-27:/virtualenvwrapper-on-top-of-virtualenv.html</id><summary type="html">&lt;p&gt;Virtualenv is a tool for creating isolated Python environment which means you can have separate python environments for your projects.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;What is Virtualenv?&lt;/h2&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="python-keep-calm" src="http://i.imgur.com/VBOXm7Y.png"&gt;&lt;/center&gt;&lt;/p&gt;</content><category term="python"></category><category term="python"></category><category term="2015"></category><category term="Programming"></category></entry><entry><title>VirtualenvWrapper on top of Virtualenv</title><link href="https://parbhatpuri.com/virtualenvwrapper-on-top-of-virtualenv.html" rel="alternate"></link><published>2014-11-27T20:00:00+05:30</published><updated>2014-11-27T20:00:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-27:/virtualenvwrapper-on-top-of-virtualenv.html</id><summary type="html">&lt;p&gt;Virtualenv is a tool for creating isolated Python environment which means you can have separate python environments for your projects.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;What is Virtualenv?&lt;/h2&gt;
 &lt;p&gt;Virtualenv is a tool for creating isolated Python environments which means you can have separate python environments for your projects.&lt;/p&gt;
 &lt;p&gt;Lets keep it simple suppose you are working on a project which depends on any python package like &lt;strong&gt;Django == 1.6.5&lt;/strong&gt;. And wow the new version &lt;strong&gt;Django == 1.7&lt;/strong&gt; is launched with some cool features like migrations etc. You want to start a new project on Django == 1.7 but wait how you are gonna do that?&lt;/p&gt;
 &lt;h4&gt;How to maintain two separate versions of Django.&lt;/h4&gt;
@@ -1266,20 +1266,20 @@ Best learning Resource - &lt;a href="https://www.edx.org/course/introduction-com
 &lt;h4&gt;Installing Virtualenv&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 The easiest way to install virtualenv is to use &lt;a href="http://pip.readthedocs.org/en/latest"&gt;pip&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install virtualenv
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Usage&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 &lt;strong&gt;To create a Virtual environment&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv ENV_NAME
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ virtualenv ENV_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt; Activate the Virtual environment&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;But wait where is &lt;strike&gt;Virtualenv&lt;/strike&gt; VirtualenvWrapper&lt;/h2&gt;
@@ -1288,40 +1288,40 @@ The easiest way to install virtualenv is to use &lt;a href="http://pip.readthedo
 &lt;h4&gt;Installing Virtualenvwrapper&lt;/h4&gt;
 &lt;p&gt;&lt;hr&gt;
 As usual the best way to install any python package is to use pip.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install virtualenvwrapper
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pip install virtualenvwrapper
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Some configuration&lt;/strong&gt;
 &lt;hr&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi ~/.bashrc
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vi ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;(maybe virtualenvwrapper.sh is in other location, change if necessary)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.virtualenvs
+&lt;span class="nb"&gt;source&lt;/span&gt; /usr/local/bin/virtualenvwrapper.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Load file .bashrc&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;source ~/.bashrc
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Creating a Virtual Environment using Virtualenv Wrapper&lt;/h4&gt;
 &lt;hr&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkvirtualenv env_name
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkvirtualenv env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;center&gt;&lt;div class="imga"&gt;&lt;img src="https://i.imgur.com/eCXWgI8.png"&gt;&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;h4&gt;Activating the Virtual environment&lt;/h4&gt;
 &lt;hr&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ workon env_name
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ workon env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You can see the changes before the username. This indicates that your virtual
@@ -1334,19 +1334,19 @@ environment is activated.&lt;/p&gt;
 &lt;h4&gt;Deactivate Environment&lt;/h4&gt;
 &lt;hr&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Great we have come to the end of this post.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;virtualenv is a great tool for any python project and virtualenvwrapper makes the process easier. For more details refer to their Official Documentation - &lt;/p&gt;
+&lt;p&gt;virtualenv is a great tool for any python project and virtualenvwrapper makes the process easier. For more details refer to their Official Documentation -&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://virtualenv.readthedocs.org/en/latest/"&gt;http://virtualenv.readthedocs.org/en/latest/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://virtualenvwrapper.readthedocs.org/en/latest"&gt;http://virtualenvwrapper.readthedocs.org/en/latest&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Oh I forget something&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install have-a-great-development
-&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="virtualenv"></category><category term="Programming"></category></entry><entry><title>Why use Linux for Python development?</title><link href="https://parbhatpuri.com/why-use-linux-for-python-development.html" rel="alternate"></link><published>2014-11-22T19:40:00+05:30</published><updated>2014-11-22T19:40:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-22:/why-use-linux-for-python-development.html</id><summary type="html">&lt;p&gt;Python is a high level programming language.The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is a high level programming language. The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pip install have-a-great-development
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="python"></category><category term="virtualenv"></category><category term="Programming"></category></entry><entry><title>Why use Linux for Python development?</title><link href="https://parbhatpuri.com/why-use-linux-for-python-development.html" rel="alternate"></link><published>2014-11-22T19:40:00+05:30</published><updated>2014-11-22T19:40:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-11-22:/why-use-linux-for-python-development.html</id><summary type="html">&lt;p&gt;Python is a high level programming language.The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; is a high level programming language. The development time is precious so using Linux based operating systems makes the development easier and fun.&lt;/p&gt;
 &lt;p&gt;I had been using windows for a couple of months for my &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; Projects. Initially during my learning stage windows was working fine for me but as the knowledge and project size grew I faced many difficulties which I want to summarize here. I am not supporting any operating system here but want every Developer to understand the reasons for switching. For following reasons every Developer should switch to Linux based OS like &lt;a href="http://www.ubuntu.com/"&gt;Ubuntu&lt;/a&gt; for Python Development.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1367,11 +1367,11 @@ environment is activated.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;center&gt;&lt;img alt="python-linux" src="https://i.imgur.com/lhlh6Lx.png"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Switch to linux and use apt-get to install your packages&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Happy Coding.&lt;/p&gt;</content><category term="python"></category><category term="linux"></category><category term="windows"></category><category term="ubuntu"></category><category term="Programming"></category></entry><entry><title>Django (Python Web Framework) Tutorials</title><link href="https://parbhatpuri.com/django_tutorials.html" rel="alternate"></link><published>2014-07-18T10:20:00+05:30</published><updated>2014-07-18T19:30:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-07-18:/django_tutorials.html</id><summary type="html">&lt;p&gt;The Web framework for perfectionists with deadlines.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Django Tutorials&lt;/h2&gt;
+&lt;p&gt;Happy Coding.&lt;/p&gt;</content><category term="python"></category><category term="python"></category><category term="linux"></category><category term="windows"></category><category term="ubuntu"></category><category term="Programming"></category></entry><entry><title>Django (Python Web Framework) Tutorials</title><link href="https://parbhatpuri.com/django_tutorials.html" rel="alternate"></link><published>2014-07-18T10:20:00+05:30</published><updated>2014-07-18T19:30:00+05:30</updated><author><name>Parbhat Puri</name></author><id>tag:parbhatpuri.com,2014-07-18:/django_tutorials.html</id><summary type="html">&lt;p&gt;The Web framework for perfectionists with deadlines.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Django Tutorials&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;&lt;a href="https://www.djangoproject.com" target="_blank"&gt;Django&lt;/a&gt; is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/1.6/intro/tutorial01/" target="_blank"&gt;Official Tutorial &lt;/a&gt; - It is the Official tutorial of django on the django site.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.tangowithdjango.com/" target="_blank"&gt;Tango with Django&lt;/a&gt; - A Good Introduction to the django terminology.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://gettingstartedwithdjango.com" target="_blank"&gt;Getting Started With Django&lt;/a&gt; - A video series to upgrade  from beginner to pro.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://twoscoopspress.org" target="_blank"&gt;Two Scoops of Django&lt;/a&gt; - A book covering the best practices in Django.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="python"></category><category term="django"></category><category term="web"></category></entry></feed>
+&lt;/ul&gt;</content><category term="Python"></category><category term="python"></category><category term="django"></category><category term="web"></category></entry></feed>

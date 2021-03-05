@@ -44,7 +44,7 @@
 <aside>
     <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
     <h1>Parbhat Puri</h1>
-        <p>Freelance Software Developer</p>
+        <p>Software Developer and Founder</p>
     <br>
 
         <a class="twitter-follow-button"
@@ -128,14 +128,14 @@
 <ul>
 <li>Make an empty migration file</li>
 </ul>
-<div class="highlight"><pre><span></span>python manage.py makemigrations --empty yourappname
-</pre></div>
+<div class="highlight"><pre><span></span><code>python manage.py makemigrations --empty yourappname
+</code></pre></div>
 
 
 <ul>
 <li>Copy the following code to the generated file.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
 
 
@@ -156,7 +156,7 @@
         <span class="n">new_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extended_image_model</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
             <span class="n">title</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
-            <span class="nb">file</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">file</span><span class="p">,</span>
             <span class="n">width</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
             <span class="n">height</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
             <span class="n">created_at</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
@@ -235,7 +235,7 @@
     <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">forwards_func</span><span class="p">,</span> <span class="n">reverse_func</span><span class="p">),</span>
     <span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4>Details about the steps in this data migration</h4>
@@ -247,7 +247,7 @@
 <p><strong>Migrating Tags</strong>: Migrating tags is little different than other fields like title. Tags in wagtail work using django-taggit. So, let's use a simple example to understand the concept. This is not the actual model from Django taggit but simplified for this use case.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TaggedItem</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TaggedItem</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">tag</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
     <span class="n">content_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">ContentType</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">object_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
@@ -255,15 +255,15 @@
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Django includes a <a href="https://docs.djangoproject.com/en/2.0/ref/contrib/contenttypes/">contenttypes</a> app which can track all of the models installed in your Django-powered project. In this case, the Tags objects point to old Image model using content_type. So, we can filter the TaggedItem model to get the tags used in images and can then update these with the new image model content_type.</p>
-<div class="highlight"><pre><span></span>    <span class="n">tagged_item_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">tagged_item_model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">db_alias</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
         <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_wagtail_model</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="n">content_type_id</span><span class="o">=</span><span class="n">ct_extended_model</span><span class="o">.</span><span class="n">id</span>
     <span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>content types have various uses like Tags but diving into it further will deviate from the topic of this blog post. Will write a new post on content types.</p>
@@ -272,14 +272,14 @@
 </ul>
 <h3>Issues with PostgreSQL</h3>
 <p>One issue you will encounter if you are using PostgreSQL in your project while uploading new images:</p>
-<div class="highlight"><pre><span></span>psycopg2.IntegrityError: duplicate key value violates unique constraint &quot;pages_extendedimage_pkey&quot;
-DETAIL:  Key (id)=(1) already exists.
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">psycopg2.IntegrityError: duplicate key value violates unique constraint &quot;pages_extendedimage_pkey&quot;</span>
+<span class="c">DETAIL:  Key (id)=(1) already exists.</span>
+</code></pre></div>
 
 
 <p>The current key is set to 1 so we have to change it to Max. If your project is using a small number of images say &lt; 10 then you can try uploading again and again and error will be removed when the current key equal to Max. But it is not feasible in case of large number of images. So, in that case, you can run SQL query on your database like</p>
-<div class="highlight"><pre><span></span>SELECT pg_catalog.setval<span class="o">(</span>pg_get_serial_sequence<span class="o">(</span><span class="s1">&#39;pages_extendedimage&#39;</span>, <span class="s1">&#39;id&#39;</span><span class="o">)</span>, <span class="o">(</span>SELECT MAX<span class="o">(</span>id<span class="o">)</span> FROM pages_extendedimage<span class="o">))</span><span class="p">;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>SELECT pg_catalog.setval<span class="o">(</span>pg_get_serial_sequence<span class="o">(</span><span class="s1">&#39;pages_extendedimage&#39;</span>, <span class="s1">&#39;id&#39;</span><span class="o">)</span>, <span class="o">(</span>SELECT MAX<span class="o">(</span>id<span class="o">)</span> FROM pages_extendedimage<span class="o">))</span><span class="p">;</span>
+</code></pre></div>
 
 
 <hr>

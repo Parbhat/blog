@@ -48,7 +48,7 @@
 <aside>
     <!--<center><a href="https://parbhatpuri.com"><img id="avatar" src=""></a></center>-->
     <h1>Parbhat Puri</h1>
-        <p>Freelance Software Developer</p>
+        <p>Software Developer and Founder</p>
     <br>
 
         <a class="twitter-follow-button"
@@ -121,13 +121,13 @@
 <h3>How to make AMP page discoverable to Google search?</h3>
 <p>The initial requirement is to have a <em>link</em> tag in the non-AMP page with <em>rel="amphtml"</em> and <em>href</em> contains URL of AMP version.</p>
 <p>Add the following to the non-AMP page:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;amphtml&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/amp/document.html&quot;</span><span class="p">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;amphtml&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/amp/document.html&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
 
 
 <p>And this to the AMP page:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;canonical&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/non-amp/document.html&quot;</span><span class="p">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;canonical&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.example.com/url/to/non-amp/document.html&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
 
 
 <p>The <strong>important</strong> requirement is the AMP page should be valid. When a mobile user clicks on an AMP search result, Google search retrieves the page from the <a href="https://developers.google.com/amp/cache/">Google AMP cache</a>. Only valid AMP pages are cached. Valid AMP pages are preloaded efficiently and stored in Google cache to improve the user experience.</p>
@@ -137,7 +137,7 @@
 <ul>
 <li><strong>Change tags for fields whose properties can be accessed</strong>: It is easy to change tags in cases where we can directly access field properties. Wagtail image tag render <code>&lt;img&gt;</code> tag so we can directly access image properties to create <code>&lt;amp-img&gt;</code> tag:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- Template: https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/blog_page_amp.html --&gt;</span>
 
 {% for item in page.gallery_images.all %}
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -151,19 +151,19 @@
         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ item.caption }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {% endfor %}
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li><strong>Change tags in Richtext and Streamfield</strong>: The main feature of a CMS is a WYSIWYG HTML Editor to create content. Wagtail also uses Draftail in Richtext field and Streamfield's Richtext block. As the content created with these fields is stored as HTML, we do not have direct access to images etc. To create a valid AMP page, we can use a Python package called <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> to modify the HTML.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 
 <span class="k">def</span> <span class="nf">amplify_html</span><span class="p">(</span><span class="n">rendered_html</span><span class="p">):</span>
     <span class="n">bs</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">rendered_html</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">bs</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}):</span>
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">bs</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}):</span>
         <span class="n">amp_img</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span>
             <span class="s1">&#39;amp-img&#39;</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">),</span>
             <span class="n">alt</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;alt&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
@@ -178,11 +178,11 @@
     <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/master/blog/utils.py</span>
 
     <span class="k">return</span> <span class="n">bs</span><span class="o">.</span><span class="n">decode_contents</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>In the first <a href="https://parbhatpuri.com/amplify-wagtail-django-site-urls-part-1.html">part</a> of the series, we learned the Wagtail serving mechanism. Serve method on a Page model is responsible for sending HTML response. Body field is a Streamfield and we can get the rendered HTML using the <code>__html__()</code> method. The body field HTML is non-AMP, it can contain tags which are restricted in AMP pages. Therefore we get the AMP HTML using <code>amplify_html</code> method and add it in the context.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AmpBlogPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AmpBlogPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
     <span class="c1"># ...</span>
     <span class="c1"># Complete code: https://github.com/Parbhat/wagtail-amp/blob/8abd9d6b0ee36fe2183167ad6c5f4556dd825590/blog/models.py#L92</span>
 
@@ -206,26 +206,26 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AmpBlogPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># ...</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><code>body_amp_html</code> is used in <a href="https://github.com/Parbhat/wagtail-amp/blob/master/blog/templates/blog/amp_blog_page_amp.html">template</a> instead of <code>page.body</code>.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
     {{ body_amp_html }}
 <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Similarly we can get AMP HTML for Richtext field. In Richtext field, we need to use <a href="https://github.com/wagtail/wagtail/blob/stable/2.4.x/wagtail/core/rich_text/__init__.py#L17">expand_db_html</a> function to expand database-representation HTML into proper HTML.</p>
 <p>We can also use a separate field for AMP content and use publish hook to fill it. Then we do not have to parse and modify HTML in the request-response cycle. But we can avoid it. As the process is fast and also pages are served from Google cache in Google search. Each time a user accesses AMP content from the cache, the content is automatically updated, and the updated version is served to the next user once the content has been cached.</p>
 <h4>For streamfield, there is another option:</h4>
 <p>If your project uses Streamfield's Richtext block without the image, embed <a href="https://docs.wagtail.io/en/v2.4/advanced_topics/customisation/page_editing_interface.html#limiting-features-in-a-rich-text-field">feature</a> then you can skip the beautiful soup method. It is recommended to use Richtext field with a small set of features and use <a href="https://docs.wagtail.io/en/v2.4/topics/streamfield.html#imagechooserblock">Image chooser block</a>. New Streamfield blocks should be created depending on the UI requirements. We only need to add <code>is_amp_request</code> in context.</p>
-<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">serve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">serve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">is_amp_request</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">is_amp_request</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">)</span>
             <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;is_amp_request&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
             <span class="k">return</span> <span class="n">TemplateResponse</span><span class="p">(</span>
                 <span class="n">request</span><span class="p">,</span>
@@ -233,10 +233,10 @@
                 <span class="n">context</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AmpBlogPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- Template for streamfield block like Service block --&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- Template for streamfield block like Service block --&gt;</span>
 {% if is_amp_request %}
     {% image value.image fill-400x300 as amp_img %}
     <span class="p">&lt;</span><span class="nt">amp-img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;{{ amp_img.alt }}&quot;</span>
@@ -248,7 +248,7 @@
 {% else %}
     {% image value.image fill-400x300 %}
 {% endif %}
-</pre></div>
+</code></pre></div>
 
 
 <p>With these small changes, our AMP page is ready to fly high with Wagtail. In the next part of the series, we will add CORS headers required in <a href="https://www.ampproject.org/docs/reference/components/amp-list">amp-list</a> and <a href="https://www.ampproject.org/docs/reference/components/amp-form">amp-form</a> components.</p>
